@@ -5,14 +5,21 @@
   
 
   
-  <title>A Software Guy Blog</title>
+  <title>200808 TIL | A Software Guy Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="A Software Guy Blog">
-<meta property="og:url" content="https://namhogim.github.io/index.html">
+  <meta name="description" content="Database and Database Management System (DBMS)도서관의 책들이 데이터베이스 라고 한다면, 도서관 사서 또는 도서 정보를 찾아주는 컴퓨터를 DBMS 라고 할 수 있다. Database 데이터의 집합 (A Set of Data) 여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(share) 데이터">
+<meta property="og:type" content="article">
+<meta property="og:title" content="200808 TIL">
+<meta property="og:url" content="https://namhogim.github.io/2020/08/08/200808-TIL/index.html">
 <meta property="og:site_name" content="A Software Guy Blog">
+<meta property="og:description" content="Database and Database Management System (DBMS)도서관의 책들이 데이터베이스 라고 한다면, 도서관 사서 또는 도서 정보를 찾아주는 컴퓨터를 DBMS 라고 할 수 있다. Database 데이터의 집합 (A Set of Data) 여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(share) 데이터">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-08T11:00:05.000Z">
+<meta property="article:modified_time" content="2020-08-08T12:11:53.159Z">
 <meta property="article:author" content="Namho Kim">
+<meta property="article:tag" content="DBMS">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="Table">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="A Software Guy Blog" type="application/atom+xml">
@@ -62,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-200808-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-200808-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/08/200808-TIL/" class="article-date">
   <time datetime="2020-08-08T11:00:05.000Z" itemprop="datePublished">2020-08-08</time>
@@ -77,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/08/200808-TIL/">200808 TIL</a>
+    <h1 class="article-title" itemprop="name">
+      200808 TIL
     </h1>
   
 
@@ -196,189 +201,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-200807-TIL" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/200807-TIL/" class="article-date">
-  <time datetime="2020-08-07T09:07:20.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/200807-TIL/">200807-TIL</a>
-    </h1>
+    <a href="/2020/08/07/200807-TIL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">200807-TIL</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Git-Summary"><a href="#Git-Summary" class="headerlink" title="Git Summary"></a>Git Summary</h1><h2 id="git-Process-and-command"><a href="#git-Process-and-command" class="headerlink" title="git Process and command"></a>git Process and command</h2><p><img src="/images/1.png" alt="git diagram"></p>
-<h2 id="Set-configuration"><a href="#Set-configuration" class="headerlink" title="Set configuration"></a>Set configuration</h2><pre><code>$ git config --global user.name &quot;&#123;github username&#125;&quot;
-$ git config --global user.email &quot;&#123;github email address&#125;&quot;
-$ git config --global core.editor &quot;vim&quot;
-$ git config --global core.pager &quot;cat&quot;
-$ git config --list</code></pre>
-<ul>
-<li>optional: <code>$ git config --global alias.lg &quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></li>
-</ul>
-<h2 id="First-Repo"><a href="#First-Repo" class="headerlink" title="First Repo"></a>First Repo</h2><pre><code>$ mkdir first-repo &amp;&amp; cd first-repo
-$ git init
-$ git remote add origin https://github.com/&#123;username&#125;/&#123;reponame&#125;.git
-$ touch README.md
-$ git add README.md
-$ git commit -m &quot;docs: Create README.md&quot;
-$ git push -u origin master # setting up stream</code></pre>
-<h2 id="Basic-workflow-of-git"><a href="#Basic-workflow-of-git" class="headerlink" title="Basic workflow of git"></a>Basic workflow of git</h2><pre><code>$ git status
-$ git add .
-$ git commit
-$ git push origin master</code></pre>
-<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><ul>
-<li>커밋 제목은 50자 이내</li>
-<li>제목과 내용사이 한칸</li>
-<li>prefix를 사용하여 한눈에 커밋의 용도를 알기 쉽게 한다<ul>
-<li>feat: features</li>
-<li>docs: documentations</li>
-<li>conf:  configurations</li>
-<li>test: test</li>
-<li>fix: bug-fix</li>
-<li>refactor: refactoring</li>
-<li>perf: Performance</li>
-</ul>
-</li>
-</ul>
-<h2 id="vim-key"><a href="#vim-key" class="headerlink" title="vim key"></a>vim key</h2><ul>
-<li>A: append text at the end of the string</li>
-<li>o: add line below</li>
-<li>O: insert line above</li>
-</ul>
-<h2 id="Using-Hexo-Blog-posting"><a href="#Using-Hexo-Blog-posting" class="headerlink" title="Using Hexo: Blog posting"></a>Using Hexo: Blog posting</h2><h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><ol>
-<li>git</li>
-<li>node.js<br><code>npm install -g hexo-cli</code></li>
-</ol>
-<h3 id="Init-Blog"><a href="#Init-Blog" class="headerlink" title="Init Blog"></a>Init Blog</h3><pre><code>$ npm install hexo-cli -g
-$ hexo init blog
-$ cd blog
-$ npm install
-$ hexo server</code></pre>
-<h3 id="New-Post"><a href="#New-Post" class="headerlink" title="New Post"></a>New Post</h3><pre><code>$ hexo new post &quot;&#123;file name&#125;&quot;
-$ vi source/_posts/&#123;file name&#125;
-$ `jot something`</code></pre>
-<h3 id="Generate-test-and-deploy"><a href="#Generate-test-and-deploy" class="headerlink" title="Generate, test and deploy"></a>Generate, test and deploy</h3><pre><code>$ hexo clean &amp;&amp; hexo generate
-$ hexo server // local run and check whether the article is generated and displayed well.
-$ hexo deploy</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/200807-TIL/" data-id="ckdk1g9ap00001vni6yardf3z" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vi/" rel="tag">vi</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-My-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/My-new-hexo-post/" class="article-date">
-  <time datetime="2020-08-07T07:20:03.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/My-new-hexo-post/">My new hexo post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Let me introduce myself!!!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/My-new-hexo-post/" data-id="ckdk1g9au00011vniblqvhp8r" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/hello-world/" class="article-date">
-  <time datetime="2020-08-07T07:11:27.768Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/hello-world/" data-id="ckdk1g9ay00031vnibmeh4vfw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
