@@ -64,6 +64,219 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-200814-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/14/200814-TIL/" class="article-date">
+  <time datetime="2020-08-14T13:21:33.000Z" itemprop="datePublished">2020-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/14/200814-TIL/">200814 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Wrapper-Class"><a href="#Wrapper-Class" class="headerlink" title="Wrapper Class"></a>Wrapper Class</h2><ul>
+<li>기본형 타입을 객체로 쓰기 위해 있는 클래스</li>
+<li>기본형 타입이 허용되지 않는 문법에 기본형 타입을 쓰기 위해서 사용</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Wrapper Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">byte</td>
+<td align="left">Byte</td>
+</tr>
+<tr>
+<td align="left">char</td>
+<td align="left">Character</td>
+</tr>
+<tr>
+<td align="left">short</td>
+<td align="left">Short</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">Integer</td>
+</tr>
+<tr>
+<td align="left">long</td>
+<td align="left">Long</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">Float</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">Double</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">Boolean</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Examples</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">add</span><span class="params">(Integer x, Integer y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y; <span class="comment">// Unboxing</span></span><br><span class="line">    <span class="comment">// 자동으로 기본자료형으로 변형되어서 계산</span></span><br><span class="line">    <span class="comment">// 반환시 다시 Autoboxing 이루어짐</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WrapperClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">bypass</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Integer integer = <span class="keyword">new</span> Integer(<span class="number">10</span>); <span class="comment">// Deprecated.., not recomended</span></span><br><span class="line">    Integer integer1 = Integer.valueOf(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    Character character = <span class="keyword">new</span> Character(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">    Character character1 = Character.valueOf(<span class="string">&#x27;f&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Autoboxing</span></span><br><span class="line">    Integer integer2 = <span class="number">4</span>;</span><br><span class="line">    System.out.println(add(<span class="number">4</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    bypass(<span class="number">5</span>); <span class="comment">// autoboxing</span></span><br><span class="line">    <span class="comment">// T: Wrapper class인 Integer로 결정됨</span></span><br><span class="line">    <span class="comment">// 5 -&gt; new Integer(5), Autoboxing</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 문자열 &lt;-&gt; 기본 자료형</span></span><br><span class="line">    <span class="keyword">int</span> x = Integer.parseInt(<span class="string">&quot;100&quot;</span>); <span class="comment">// recommended, parse+자료형, 정적 메소드, 리턴 타입이 int임</span></span><br><span class="line">    <span class="keyword">int</span> z = Integer.valueOf(<span class="string">&quot;200&quot;</span>); <span class="comment">// return type Integer unboxing</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Errors-Exceptions"><a href="#Errors-Exceptions" class="headerlink" title="Errors / Exceptions"></a>Errors / Exceptions</h2><h3 id="오류-Errors"><a href="#오류-Errors" class="headerlink" title="오류 (Errors)"></a>오류 (Errors)</h3><ul>
+<li>메모리 부족 또는 프로그램 실행이 꼬이는 경우.</li>
+<li>더이상 어떻게 프로그램을 복구해야 할지 알 수 없다.</li>
+<li>프로그램의 문제를 해겷하여 해결</li>
+</ul>
+<h3 id="예외-Exceptions"><a href="#예외-Exceptions" class="headerlink" title="예외 (Exceptions)"></a>예외 (Exceptions)</h3><ul>
+<li>오류(Error)에 비해서 심각도가 낮고, 프로그램의 정상적인 흐름만 방해<ul>
+<li>파일을 읽으려 했으나 해당 파일이 없는경우</li>
+<li>네트워크 연결 유실</li>
+</ul>
+</li>
+<li>문제 상황을 처리하는 로직을 구현하여, 런타임에서 자연스럽게 해결 가능</li>
+</ul>
+<h3 id="예외-처리-Excpetion-handling"><a href="#예외-처리-Excpetion-handling" class="headerlink" title="예외 처리 (Excpetion handling)"></a>예외 처리 (Excpetion handling)</h3><ul>
+<li>예외가 발생 했을 경우, 이 상황을 ‘감지’하고 ‘처리’하는 코드</li>
+<li><code>try</code> ~ <code>catch</code>, <code>throws</code>, <code>throw</code>, <code>finally</code> 키워드들을 이용</li>
+<li><code>Throwable</code> 클래스를 상속하는 자식클래스들로 이러한 문제를 해결</li>
+</ul>
+<h3 id="Throwable-Class"><a href="#Throwable-Class" class="headerlink" title="Throwable Class"></a><code>Throwable</code> Class</h3><ul>
+<li><p><code>Throwable</code> 클래스는 <code>Exception</code> 과 <code>Error</code> 클래스에 의해 상속</p>
+<ul>
+<li><p><code>Exception</code></p>
+<ul>
+<li><p><em>Checked Exceptions</em>: 예외 처리되지 않으면 컴파일이 되지 않은 예외 (file I/O)</p>
+<ul>
+<li><code>Exception</code> Class를 상속하고 있으면 Checked Exception</li>
+<li><code>try</code> ~ <code>catch</code>를 통해 예외를 꼭 처리해 주어야 컴파일이 된다.</li>
+</ul>
+</li>
+<li><p><em>Unchecked Exceptions</em>: 예외 처리되지 않아도 컴파일이 되는 예외</p>
+<ul>
+<li><code>RuntimeException</code> 클래스를 상속하고 있으면 Unchecked Exception</li>
+<li><code>try</code> ~ <code>catch</code>를 작성하지 않더라도 빌드/실행 가능</li>
+<li><code>ArrayIndexOutOfBoundsExceptions</code></li>
+<li><code>ArithmeticException</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Error</code>: 프로그램이 복구 불가능한 상황</p>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">메소드</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>public String getMessage()</code></td>
+<td align="left">발생한 예외에 대한 메세지를 반환</td>
+</tr>
+<tr>
+<td align="left"><code>public String getLocalizedMessage()</code></td>
+<td align="left">오버라이드하여 추가 메세지 제공 (오버라이드하지 않으면 getMessage()와 동일)</td>
+</tr>
+<tr>
+<td align="left"><code>public Throwable getCause()</code></td>
+<td align="left">예외의 원인이 되는 Throwable 객체 반환</td>
+</tr>
+<tr>
+<td align="left"><code>public void printStackTrace()</code></td>
+<td align="left">예외가 발생된 메소드가 호출될 때의 Method call stack을 출력</td>
+</tr>
+</tbody></table>
+<h4 id="try-catch-statement"><a href="#try-catch-statement" class="headerlink" title="try ~ catch statement"></a><code>try</code> ~ <code>catch</code> statement</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 예외가 발생할 수 있는 코드</span></span><br><span class="line">  <span class="comment">// 예외가 발생할 경우 예외 객체를 던짐 (throw)</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; <span class="comment">// 던져진 예외를 받음 (catch)</span></span><br><span class="line">          <span class="comment">// Exception class 및 그 자식 클래스를 사용</span></span><br><span class="line">  <span class="comment">// 예외 상황을 처리해야 하는 코드</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>example</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">int</span>[] integers = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">  integers[<span class="number">20</span>] = <span class="number">5</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span> (ArrayIndexOutOfBoundsException e) &#123;</span><br><span class="line">  System.out.println(e.getMessage());</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Multiple-Exception-Handling"><a href="#Multiple-Exception-Handling" class="headerlink" title="Multiple Exception Handling"></a>Multiple Exception Handling</h4><ul>
+<li>여러 개의 <code>catch</code> 구문을 사용하면 다중 예외를 처리할 수 있음</li>
+<li>순차적으로 검사하면서 적용가능한 예외를 처리</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 아주 예민한 내용이 실행되는 부분</span></span><br><span class="line">  <span class="comment">// 특정 catch 구문에 선택되는 조건문</span></span><br><span class="line">  <span class="comment">// 다형성에 의해서 결정 된다.</span></span><br><span class="line">  <span class="comment">// 즉, catch 하고 있는 클래스의 자식 클래스의 객체면 catch 가능</span></span><br><span class="line">  <span class="comment">// catch 하는 순서가 중요 -&gt; 위에서 부터 자식 객체인 것이 좋다.</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (FileAlreadyExistsException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (EOFException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; <span class="comment">// 나머지 모든 Exception 모두 catch</span></span><br><span class="line">                        <span class="comment">// 모든 Exception 객체의 조상</span></span><br><span class="line">                        <span class="comment">// 권장하지 않음, 무책임한 catch 이다.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try ~ catch ~ finally"></a><code>try</code> ~ <code>catch</code> ~ <code>finally</code></h4><ul>
+<li><code>try</code> 구문 실행 중에 어떤 일이 발생해도 반드시 실행되어야 하는 구문은 finally block에 작성</li>
+<li><code>try</code> 구문 내에 <code>return</code> 문이 있는 경우에도 finally 블록은 실행됨</li>
+<li><code>try</code> 구문 내에서 접근한 System 자원을 안전하게 복구하기 위해 사용</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  file = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">  file.read();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;파일 처리 실패&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;파이널리&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (file != <span class="keyword">null</span>) &#123; <span class="comment">// file 읽기에 실패한 경우 파일을 닫아준다.</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      file.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;앗!... 아아...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-with-resource-statement"><a href="#try-with-resource-statement" class="headerlink" title="try ~ with ~ resource statement"></a><code>try</code> ~ with ~ resource statement</h4><ul>
+<li>Java1.7에서 추가된 기능</li>
+<li>AutoClosable interface를 구현하는 리소스에만 사용가능</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (FileInputStream file1 = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>)) &#123;</span><br><span class="line">  file1.read();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;파일 처리 실패&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specifying-the-Exceptions-Thrown-by-a-Method"><a href="#Specifying-the-Exceptions-Thrown-by-a-Method" class="headerlink" title="Specifying the Exceptions Thrown by a Method"></a>Specifying the Exceptions Thrown by a Method</h3><ul>
+<li>Checked Exception의 경우</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheckedExceptionThrow</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> IOEception </span>&#123;</span><br><span class="line">    FileInputStream file1 = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">    file1.read();</span><br><span class="line">    file1.close();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> <span class="comment">/*throws*/</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      methodA();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;메소드에실패&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Unchecked Exception: <code>throws</code> 키워드 사용하지 않아도 가능</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UncheckedExceptionThrows</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">10</span> / <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    methodA();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">new</span> UncheckedExceptionThrow().methodB();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">      e.getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>method를 override할경우 부모 class 의 method exception 보다 저 조상인 exception은 던질 수 없다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;&#125; <span class="comment">// Checked Exception</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarOne</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;&#125; <span class="comment">// possible</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarTwo</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> FileNotFoundEception </span>&#123;&#125; <span class="comment">// 자식 Exception은 pass 가능</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="throw"><a href="#throw" class="headerlink" title="throw"></a><code>throw</code></h3><ul>
+<li>예외를 발생 시키는 키워드</li>
+<li><code>new</code> 키워드로 새 Exception 객체를 생성하여 예외 내용을 작성</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exceptMethod</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">if</span> (Err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Some Error&quot;</span>); <span class="comment">// 예외 발생 및 Message 전달</span></span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Custom-Exceptions"><a href="#Custom-Exceptions" class="headerlink" title="Custom Exceptions"></a>Custom Exceptions</h3><ul>
+<li><p><code>Exception</code> 또는 <code>RuntimeException</code> Class를 상속하여 작성</p>
+<ul>
+<li><code>Exception</code>을 상속한경우 Checked Exception이 되어 반드시 예외를 처리해야 한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">  <span class="keyword">enum</span> ErrorCode &#123;</span><br><span class="line">    ERROR_A, ERROR_B;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> ErrorCode errorCode;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(ErrorCode errorCode, String message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(message)</span><br><span class="line">    <span class="keyword">this</span>.erroCode = errorCode;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getLocalizedMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String message = getMessage();</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> localizedMessage;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/14/200814-TIL/" data-id="ckdudzv090007wqni90wegl30" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-200813-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/13/200813-TIL/" class="article-date">
@@ -171,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/13/200813-TIL/" data-id="ckdsyuctf0005cdni5tofgxv3" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/13/200813-TIL/" data-id="ckdudzv070004wqni27w8aa3z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
@@ -249,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/10/200810-TIL/" data-id="ckdsyuctf0004cdni189o6kio" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/10/200810-TIL/" data-id="ckdudzv080005wqni8pija2pl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li></ul>
@@ -596,7 +809,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/09/200809-TIL/" data-id="ckdsyucta0001cdnif1vhc9xx" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/09/200809-TIL/" data-id="ckdudzv060003wqnibpwmbaff" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
@@ -732,7 +945,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/08/200808-TIL/" data-id="ckdsyuctd0003cdni7cr00o2v" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/08/200808-TIL/" data-id="ckdudzv020001wqni41737la7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Table/" rel="tag">Table</a></li></ul>
@@ -824,7 +1037,7 @@ $ hexo deploy</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/200807-TIL/" data-id="ckdsyuct50000cdni9ry2cy36" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/07/200807-TIL/" data-id="ckdudzuzx0000wqnibhpkcf0r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vi/" rel="tag">vi</a></li></ul>
@@ -864,7 +1077,7 @@ $ hexo deploy</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/My-new-hexo-post/" data-id="ckdsyucth0007cdni3a1q5a9c" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/07/My-new-hexo-post/" data-id="ckdudzv0a0008wqni3xj6fvhf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -913,7 +1126,7 @@ $ hexo deploy</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/hello-world/" data-id="ckdsyucti0008cdni0ms26rt2" class="article-share-link">Share</a>
+      <a data-url="https://namhogim.github.io/2020/08/07/hello-world/" data-id="ckdudzv0c000awqni54srdlu4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -936,7 +1149,7 @@ $ hexo deploy</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
     </div>
   </div>
 
@@ -946,7 +1159,7 @@ $ hexo deploy</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
+      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
     </div>
   </div>
 
@@ -968,6 +1181,10 @@ $ hexo deploy</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/08/14/200814-TIL/">200814 TIL</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/13/200813-TIL/">200813 TIL</a>
           </li>
         
@@ -981,10 +1198,6 @@ $ hexo deploy</code></pre>
         
           <li>
             <a href="/2020/08/08/200808-TIL/">200808 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/07/200807-TIL/">200807-TIL</a>
           </li>
         
       </ul>
