@@ -64,6 +64,106 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-200825-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/25/200825-TIL/" class="article-date">
+  <time datetime="2020-08-25T07:12:06.000Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/25/200825-TIL/">200825 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h2><ul>
+<li><p>Pivot을 기준으로 왼쪽에는 작은 숫자 오른 쪽에 큰 숫자가 오도록 하고, Pivot을 기준으로 좌우를 분할하여 subarray에 대해서도 이어서 진행한다.</p>
+</li>
+<li><p>Hoare Parition: 리스트에서 첫 번째 데이터를 피벗으로 정한다.</p>
+</li>
+<li><p>시간 복잡도: O(NlogN)</p>
+</li>
+<li><p>가장 왼쪽 데이터를 pivot으로 정할 경우, 이미 데이터가 정렬되어 있는 경우에 O(N^2)의 시간 복잡도가 걸린다.</p>
+</li>
+<li><p>Example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Implementation of quick sort</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span>(<span class="params">array, start, end</span>):</span></span><br><span class="line">  <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  pivot = start <span class="comment"># pick a pivot according to the Hoare Partition</span></span><br><span class="line">  left = start + <span class="number">1</span></span><br><span class="line">  right = end</span><br><span class="line">  <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">    <span class="comment"># Loop until find element which is greater than pivot value.</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= end <span class="keyword">and</span> array[left] &lt;= array[pivot]:</span><br><span class="line">      left += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Loop until find element which is less than pivot value.</span></span><br><span class="line">    <span class="keyword">while</span> right &gt; start <span class="keyword">and</span> array[right] &gt;= array[pivot]:</span><br><span class="line">      right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># partition completed</span></span><br><span class="line">    <span class="keyword">if</span> left &gt; right:</span><br><span class="line">      array[right], array[pivot] = array[pivot], array[right]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      array[left], array[right] = array[right], array[left]</span><br><span class="line"></span><br><span class="line">  quick_sort(array, start, right - <span class="number">1</span>)</span><br><span class="line">  quick_sort(array, right + <span class="number">1</span>, end)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a>Merge Sort</h2><ul>
+<li>대표적인 Divide-and-Conquer algorithm</li>
+<li>array를 반으로 나누면서 진행, 더이상 나눠질 수 없을 때까지 나눈 뒤  병합(merge)하는 과정을 거친다.</li>
+<li>병합하는 과정에서 두개의 배열 원소들을 비교 하는 과정을 거친다.</li>
+<li>Example:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Implementation of MergeSort</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span>(<span class="params">arr</span>):</span></span><br><span class="line">  <span class="keyword">if</span> len(arr) &gt; <span class="number">1</span>:</span><br><span class="line">    mid = len(arr) // <span class="number">2</span></span><br><span class="line">    left = arr[:mid]</span><br><span class="line">    right = arr[mid:]</span><br><span class="line"></span><br><span class="line">    merge_sort(left)</span><br><span class="line">    merge_sort(right)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Merge</span></span><br><span class="line">    i = j = k = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">or</span> j &lt; len(right):</span><br><span class="line">      <span class="keyword">if</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</span><br><span class="line">        <span class="keyword">if</span> left[i] &lt; right[j]:</span><br><span class="line">          arr[k] = left[i]</span><br><span class="line">          i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">          arr[k] = right[j]</span><br><span class="line">          j += <span class="number">1</span></span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> i &lt; len(left):</span><br><span class="line">          arr[k] = left[i]</span><br><span class="line">          i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; len(right):</span><br><span class="line">          arr[k] = right[j]</span><br><span class="line">          j += <span class="number">1</span></span><br><span class="line">      k += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Count-Sort"><a href="#Count-Sort" class="headerlink" title="Count Sort"></a>Count Sort</h2><ul>
+<li><p>특정 조건에서 선형 시간에 O(N + K)에서 정렬할 수 있는 알고리즘 이다.</p>
+</li>
+<li><p>최악의 경우에도 수행시간 O(N + K)를 보장 한다.</p>
+</li>
+<li><p>일반적으로 가장 큰 데이터와 가장 작은 데이터의 차이가 1,000,000을 넘지 않을 경우 효과적이다.</p>
+<ul>
+<li>데이터 크기가 한정되어 있고, 데이터의 크기가 많이 중복되어 있을수록 유리하며 항상 사용 할 수는 없다.</li>
+</ul>
+</li>
+<li><p>Count Sort는 앞에서 소개 했던 비교 기반의 정렬 알고리즘이 아니다.</p>
+</li>
+<li><p>Example</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Implementation of Count sort</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_sort</span>(<span class="params">array</span>):</span></span><br><span class="line">  count = [<span class="number">0</span>] * (max(array) + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> e <span class="keyword">in</span> array:</span><br><span class="line">    count[e] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  j = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(len(count)):</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(count[i]):</span><br><span class="line">      array[j] = i</span><br><span class="line">      j += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h2><ul>
+<li><strong>IMPORTANT</strong></li>
+<li>내부의 데이터가 정렬되어 있다는 것을 전제 하고 탐색을 O(logN) 시간에 수행 할 수 있는 알고리즘 이다.</li>
+<li>탐색하고자 하는 데이터의 시작점, 끝점, 중간점을 가지고 찾으려고 하는 데이터와 중간점의 데이터를 비교 하면서 탐색 범위를 반으로 나누면서 탐색을 수행한다.</li>
+<li>탐색 범위가 계속 반으로 줄기 때문에 O(logN) 시간 복잡도가 나올 수 있다.</li>
+<li>Example:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search_recursive</span>(<span class="params">array, target, start, end</span>):</span></span><br><span class="line">  <span class="keyword">if</span> start &gt; end:</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">  mid = (start + end) // <span class="number">2</span></span><br><span class="line">  <span class="keyword">if</span> array[mid] == target:</span><br><span class="line">    <span class="keyword">return</span> mid</span><br><span class="line"></span><br><span class="line">  <span class="keyword">elif</span> array[mid] &gt; target:</span><br><span class="line">    <span class="keyword">return</span> binary_search_recursive(array, target, start, mid - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> binary_search_recursive(array, target, mid + <span class="number">1</span>, end)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search_iterative</span>(<span class="params">array, target, start, end</span>):</span></span><br><span class="line">  <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">    mid = (start + end) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> array[mid] == target:</span><br><span class="line">      <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">elif</span> array[mid] &gt; target:</span><br><span class="line">      end = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      start = end + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>lower bound</p>
+<ul>
+<li>정렬 되어 있을때 해당 값 이상 인 점이 처음 나오는 지점을 찾아 준다.</li>
+<li>Python에서는 bisect를 import 하여 사용할 수 있다.</li>
+<li>Example</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lower_bound</span>(<span class="params">array, target, start, end</span>):</span></span><br><span class="line">  <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">    mid = (start + end) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> array[mid] &gt;= target:</span><br><span class="line">      end = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="The-try-with-resource-Statement"><a href="#The-try-with-resource-Statement" class="headerlink" title="The try-with-resource Statement"></a>The try-with-resource Statement</h2><blockquote>
+<p>The <code>try</code>-with-resource statement is <code>try</code> statement that declares one or more resources.<br>A <em>resource</em> is an object that must be closed after the program is finished with it.<br>The <code>try</code>-with-resources statement ensures that each resource is closed at the end of the statement.<br>Any object that implements <code>java.lang.AutoCloseable</code>, which includes all objects which implement <code>java.io.Closeable</code>, can be used as resource.</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/25/200825-TIL/" data-id="cke9p25cr00009fni0upqfmfn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Binary-Search/" rel="tag">Binary Search</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Count-Sort/" rel="tag">Count Sort</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Merge-Sort/" rel="tag">Merge Sort</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quick-Sort/" rel="tag">Quick Sort</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-200824-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/24/200824-TIL/" class="article-date">
@@ -1322,56 +1422,12 @@ $ hexo deploy</code></pre>
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/hello-world/" class="article-date">
-  <time datetime="2020-08-07T07:11:27.768Z" itemprop="datePublished">2020-08-07</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/hello-world/" data-id="cke871n70000cjtni1r05fi0a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
 
 </section>
         
@@ -1384,7 +1440,7 @@ $ hexo deploy</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/" rel="tag">Insertion Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selection-Sort/" rel="tag">Selection Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try-catch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/" rel="tag">Binary Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Count-Sort/" rel="tag">Count Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/" rel="tag">Insertion Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-Sort/" rel="tag">Merge Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quick-Sort/" rel="tag">Quick Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selection-Sort/" rel="tag">Selection Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try-catch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
     </div>
   </div>
 
@@ -1394,7 +1450,7 @@ $ hexo deploy</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/Selection-Sort/" style="font-size: 10px;">Selection Sort</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/try-catch/" style="font-size: 10px;">try-catch</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
+      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Count-Sort/" style="font-size: 10px;">Count Sort</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/Quick-Sort/" style="font-size: 10px;">Quick Sort</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/Selection-Sort/" style="font-size: 10px;">Selection Sort</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/try-catch/" style="font-size: 10px;">try-catch</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
     </div>
   </div>
 
@@ -1416,6 +1472,10 @@ $ hexo deploy</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/08/25/200825-TIL/">200825 TIL</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/24/200824-TIL/">200824 TIL</a>
           </li>
         
@@ -1429,10 +1489,6 @@ $ hexo deploy</code></pre>
         
           <li>
             <a href="/2020/08/13/200813-TIL/">200813 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/10/200810-TIL/">200810 TIL</a>
           </li>
         
       </ul>
