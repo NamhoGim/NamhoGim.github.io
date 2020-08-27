@@ -64,6 +64,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-200807-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/200807-TIL/" class="article-date">
+  <time datetime="2020-08-07T09:07:20.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/200807-TIL/">200807-TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Git-Summary"><a href="#Git-Summary" class="headerlink" title="Git Summary"></a>Git Summary</h1><h2 id="git-Process-and-command"><a href="#git-Process-and-command" class="headerlink" title="git Process and command"></a>git Process and command</h2><p><img src="/images/1.png" alt="git diagram"></p>
+<h2 id="Set-configuration"><a href="#Set-configuration" class="headerlink" title="Set configuration"></a>Set configuration</h2><pre><code>$ git config --global user.name &quot;&#123;github username&#125;&quot;
+$ git config --global user.email &quot;&#123;github email address&#125;&quot;
+$ git config --global core.editor &quot;vim&quot;
+$ git config --global core.pager &quot;cat&quot;
+$ git config --list</code></pre>
+<ul>
+<li>optional: <code>$ git config --global alias.lg &quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></li>
+</ul>
+<h2 id="First-Repo"><a href="#First-Repo" class="headerlink" title="First Repo"></a>First Repo</h2><pre><code>$ mkdir first-repo &amp;&amp; cd first-repo
+$ git init
+$ git remote add origin https://github.com/&#123;username&#125;/&#123;reponame&#125;.git
+$ touch README.md
+$ git add README.md
+$ git commit -m &quot;docs: Create README.md&quot;
+$ git push -u origin master # setting up stream</code></pre>
+<h2 id="Basic-workflow-of-git"><a href="#Basic-workflow-of-git" class="headerlink" title="Basic workflow of git"></a>Basic workflow of git</h2><pre><code>$ git status
+$ git add .
+$ git commit
+$ git push origin master</code></pre>
+<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><ul>
+<li>커밋 제목은 50자 이내</li>
+<li>제목과 내용사이 한칸</li>
+<li>prefix를 사용하여 한눈에 커밋의 용도를 알기 쉽게 한다<ul>
+<li>feat: features</li>
+<li>docs: documentations</li>
+<li>conf:  configurations</li>
+<li>test: test</li>
+<li>fix: bug-fix</li>
+<li>refactor: refactoring</li>
+<li>perf: Performance</li>
+</ul>
+</li>
+</ul>
+<h2 id="vim-key"><a href="#vim-key" class="headerlink" title="vim key"></a>vim key</h2><ul>
+<li>A: append text at the end of the string</li>
+<li>o: add line below</li>
+<li>O: insert line above</li>
+</ul>
+<h2 id="Using-Hexo-Blog-posting"><a href="#Using-Hexo-Blog-posting" class="headerlink" title="Using Hexo: Blog posting"></a>Using Hexo: Blog posting</h2><h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><ol>
+<li>git</li>
+<li>node.js<br><code>npm install -g hexo-cli</code></li>
+</ol>
+<h3 id="Init-Blog"><a href="#Init-Blog" class="headerlink" title="Init Blog"></a>Init Blog</h3><pre><code>$ npm install hexo-cli -g
+$ hexo init blog
+$ cd blog
+$ npm install
+$ hexo server</code></pre>
+<h3 id="New-Post"><a href="#New-Post" class="headerlink" title="New Post"></a>New Post</h3><pre><code>$ hexo new post &quot;&#123;file name&#125;&quot;
+$ vi source/_posts/&#123;file name&#125;
+$ `jot something`</code></pre>
+<h3 id="Generate-test-and-deploy"><a href="#Generate-test-and-deploy" class="headerlink" title="Generate, test and deploy"></a>Generate, test and deploy</h3><pre><code>$ hexo clean &amp;&amp; hexo generate
+$ hexo server // local run and check whether the article is generated and displayed well.
+$ hexo deploy</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/07/200807-TIL/" data-id="cke871n6l0000jtni7r552y40" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vi/" rel="tag">vi</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-My-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/07/My-new-hexo-post/" class="article-date">
@@ -201,6 +293,10 @@
       <ul>
         
           <li>
+            <a href="/2020/08/27/200827-TIL/">200827 TIL</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/26/200826-TIL/">200826 TIL</a>
           </li>
         
@@ -214,10 +310,6 @@
         
           <li>
             <a href="/2020/08/17/200817-TIL/">200817 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/14/200814-TIL/">200814 TIL</a>
           </li>
         
       </ul>

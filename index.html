@@ -64,6 +64,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-200827-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/27/200827-TIL/" class="article-date">
+  <time datetime="2020-08-27T06:07:53.000Z" itemprop="datePublished">2020-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/27/200827-TIL/">200827 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java-Web-Application"><a href="#Java-Web-Application" class="headerlink" title="Java Web Application"></a>Java Web Application</h2><ul>
+<li>WAS에 deploy 되어 동작하는 어플리케이션.</li>
+<li>자바 웹 어플리케이션에는 HTML, CSS, 이미지, 자바로 작성된 클래스(Servlet도 포함됨, package, interface 등), 각종 설정 파일들이 포함 된다.</li>
+</ul>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
+<li>Java Web Application의 구성요소 중 동적인 처리를 하는 프로그램의 역할</li>
+<li>WAS에서 동작하는 JAVA class이다.</li>
+<li>Servlet은 HttpServlet에서 클래스를 상속 받아야 한다.</li>
+<li>Servlet과 JSP로부터 최상의 결과를 얻으려면, 웹 페이지를 개발할 때 이 두가지(JSP, Servlet) 을 조화롭게 사용해야 한다. (ex. Web page를 구성하는 화면 HTML은 JSP로 표현하고, 복잡한 프로그래밍은 Servlet으로 구현)</li>
+</ul>
+<h2 id="Servlet의-작성-방법"><a href="#Servlet의-작성-방법" class="headerlink" title="Servlet의 작성 방법"></a>Servlet의 작성 방법</h2><p>3.x 버전과 그 아래 버전이 다르다는 점 유의</p>
+<ol>
+<li>Servlet 3.0 spec이상에서 사용하는 방법</li>
+</ol>
+<ul>
+<li>web.xml 파일을 사용 X</li>
+<li>Java annotation을 사용</li>
+</ul>
+<ol start="2">
+<li>Servlet 3.0 spec 미만에서 사용하는 방법</li>
+</ol>
+<ul>
+<li>Servlet을 등록할 때 web.xml파일에 등록</li>
+</ul>
+<h2 id="Servlet의-Life-Cycle"><a href="#Servlet의-Life-Cycle" class="headerlink" title="Servlet의 Life Cycle"></a>Servlet의 Life Cycle</h2><p><img src="/images/2.png" alt="Servlet Life Cycle"></p>
+<ul>
+<li><p>WAS는 서블릿 요청을 받으면 해당 서블릿이 메모리에 있는지 확인 합니다.</p>
+</li>
+<li><p>if (메모리에 없음) {<br>해당 Servlet class를 memory에 올림<br>init() 메소드를 실행<br>}</p>
+</li>
+<li><p>service() 메소드를 실행</p>
+</li>
+<li><p>was가 종료되거나, 웹 어플리케이션이 새롭게 갱신될 경우 destroy() 메소드가 실행 된다.</p>
+</li>
+<li><p>HttpServlet의 3가지 method를 override 해서 확인</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> examples;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/LifecycleServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifecycleServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LifecycleServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;LifecycleServlet 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;init 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Destroy 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Service 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="service-request-response-메소드"><a href="#service-request-response-메소드" class="headerlink" title="service(request, response) 메소드"></a>service(request, response) 메소드</h2><ul>
+<li>HttpServlet의 service method는 template method 패턴으로 구현</li>
+<li>클라이언트 요청이 GET일경우 자신이 가지고 있는 doGET(request, response) 메소드를 호출</li>
+<li>클라이언트 요청이 Post일경우 자신이 가지고 있는 doPost(request, response)를 호출</li>
+<li>override 된 method만 정리</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = resp.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;form&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;form method=&#x27;post&#x27; action=&#x27;/firstweb/LifecycleServlet&#x27;&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;name : &lt;input type=&#x27;text&#x27; name=&#x27;name&#x27;&gt;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;input type=&#x27;submit&#x27; value=&#x27;ok&#x27;&gt;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/form&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">  out.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = resp.getWriter();</span><br><span class="line">  String name = req.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;h1&gt; hello &quot;</span> + name + <span class="string">&quot;&lt;/h1&gt;&quot;</span>);</span><br><span class="line">  out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/27/200827-TIL/" data-id="ckecffhuf00000knihr87aj9m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-200826-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/26/200826-TIL/" class="article-date">
@@ -1402,98 +1484,6 @@
 
 
   
-    <article id="post-200807-TIL" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/200807-TIL/" class="article-date">
-  <time datetime="2020-08-07T09:07:20.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/200807-TIL/">200807-TIL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Git-Summary"><a href="#Git-Summary" class="headerlink" title="Git Summary"></a>Git Summary</h1><h2 id="git-Process-and-command"><a href="#git-Process-and-command" class="headerlink" title="git Process and command"></a>git Process and command</h2><p><img src="/images/1.png" alt="git diagram"></p>
-<h2 id="Set-configuration"><a href="#Set-configuration" class="headerlink" title="Set configuration"></a>Set configuration</h2><pre><code>$ git config --global user.name &quot;&#123;github username&#125;&quot;
-$ git config --global user.email &quot;&#123;github email address&#125;&quot;
-$ git config --global core.editor &quot;vim&quot;
-$ git config --global core.pager &quot;cat&quot;
-$ git config --list</code></pre>
-<ul>
-<li>optional: <code>$ git config --global alias.lg &quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></li>
-</ul>
-<h2 id="First-Repo"><a href="#First-Repo" class="headerlink" title="First Repo"></a>First Repo</h2><pre><code>$ mkdir first-repo &amp;&amp; cd first-repo
-$ git init
-$ git remote add origin https://github.com/&#123;username&#125;/&#123;reponame&#125;.git
-$ touch README.md
-$ git add README.md
-$ git commit -m &quot;docs: Create README.md&quot;
-$ git push -u origin master # setting up stream</code></pre>
-<h2 id="Basic-workflow-of-git"><a href="#Basic-workflow-of-git" class="headerlink" title="Basic workflow of git"></a>Basic workflow of git</h2><pre><code>$ git status
-$ git add .
-$ git commit
-$ git push origin master</code></pre>
-<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><ul>
-<li>커밋 제목은 50자 이내</li>
-<li>제목과 내용사이 한칸</li>
-<li>prefix를 사용하여 한눈에 커밋의 용도를 알기 쉽게 한다<ul>
-<li>feat: features</li>
-<li>docs: documentations</li>
-<li>conf:  configurations</li>
-<li>test: test</li>
-<li>fix: bug-fix</li>
-<li>refactor: refactoring</li>
-<li>perf: Performance</li>
-</ul>
-</li>
-</ul>
-<h2 id="vim-key"><a href="#vim-key" class="headerlink" title="vim key"></a>vim key</h2><ul>
-<li>A: append text at the end of the string</li>
-<li>o: add line below</li>
-<li>O: insert line above</li>
-</ul>
-<h2 id="Using-Hexo-Blog-posting"><a href="#Using-Hexo-Blog-posting" class="headerlink" title="Using Hexo: Blog posting"></a>Using Hexo: Blog posting</h2><h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><ol>
-<li>git</li>
-<li>node.js<br><code>npm install -g hexo-cli</code></li>
-</ol>
-<h3 id="Init-Blog"><a href="#Init-Blog" class="headerlink" title="Init Blog"></a>Init Blog</h3><pre><code>$ npm install hexo-cli -g
-$ hexo init blog
-$ cd blog
-$ npm install
-$ hexo server</code></pre>
-<h3 id="New-Post"><a href="#New-Post" class="headerlink" title="New Post"></a>New Post</h3><pre><code>$ hexo new post &quot;&#123;file name&#125;&quot;
-$ vi source/_posts/&#123;file name&#125;
-$ `jot something`</code></pre>
-<h3 id="Generate-test-and-deploy"><a href="#Generate-test-and-deploy" class="headerlink" title="Generate, test and deploy"></a>Generate, test and deploy</h3><pre><code>$ hexo clean &amp;&amp; hexo generate
-$ hexo server // local run and check whether the article is generated and displayed well.
-$ hexo deploy</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/07/200807-TIL/" data-id="cke871n6l0000jtni7r552y40" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vi/" rel="tag">vi</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1544,6 +1534,10 @@ $ hexo deploy</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/08/27/200827-TIL/">200827 TIL</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/26/200826-TIL/">200826 TIL</a>
           </li>
         
@@ -1557,10 +1551,6 @@ $ hexo deploy</code></pre>
         
           <li>
             <a href="/2020/08/17/200817-TIL/">200817 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/14/200814-TIL/">200814 TIL</a>
           </li>
         
       </ul>
