@@ -64,6 +64,172 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java-Generics" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/28/Java-Generics/" class="article-date">
+  <time datetime="2020-08-28T13:22:14.000Z" itemprop="datePublished">2020-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/Java-Generics/">Java Generics</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h2><blockquote>
+<p>Generics add stability to your code by making more of your bugs detectable at complie time.</p>
+</blockquote>
+<h3 id="Benefits-of-using-generics"><a href="#Benefits-of-using-generics" class="headerlink" title="Benefits of using generics"></a>Benefits of using generics</h3><ul>
+<li><p>Stronger type checks at complie time.</p>
+<ul>
+<li>A Java complier applies string type ckecking to generic code and issues errors if the code violates type safety. Fixing complie-time erros is easier than fixing runtime errors, which can be difficult to find.</li>
+</ul>
+</li>
+<li><p>Elimination of casts.</p>
+<ul>
+<li>The following code snippet without generics requires casting:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.add(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">String s = (String) list.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>When re-written to use generics, the code does not require casting:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">list.add(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">String s = list.get(<span class="number">0</span>);   <span class="comment">// no cast</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Enabling programmers to implement generic algorithms.<ul>
+<li>By using generics, programmers can implement generic algorithms that work on collections of different types, can be customized, and are type safe and easier to read.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Generic-Types"><a href="#Generic-Types" class="headerlink" title="Generic Types"></a>Generic Types</h2><ul>
+<li>Definition: A <em>generic type</em> is generic <code>class</code> or <code>interface</code> that is parameterized over types.</li>
+</ul>
+<h3 id="Generic-Class"><a href="#Generic-Class" class="headerlink" title="Generic Class"></a>Generic Class</h3><ul>
+<li><p>A <em>generic</em> class is defined with the following format:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">name</span>&lt;<span class="title">T1</span>, <span class="title">T2</span>, ..., <span class="title">Tn</span>&gt; </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Type-Prameter-Naming-Conventions"><a href="#Type-Prameter-Naming-Conventions" class="headerlink" title="Type Prameter Naming Conventions"></a>Type Prameter Naming Conventions</h3><ul>
+<li>E: Element(used extensively by the Java Collections Framework)</li>
+<li>K: Key</li>
+<li>N: Number</li>
+<li>T: Type</li>
+<li>V: Value</li>
+<li>S, U, V etc.: 2nd, 3rd, 4th types</li>
+</ul>
+<h3 id="Invoking-and-Instantiating-a-Generic-Type"><a href="#Invoking-and-Instantiating-a-Generic-Type" class="headerlink" title="Invoking and Instantiating a Generic Type"></a>Invoking and Instantiating a Generic Type</h3><ul>
+<li>By performing <em>generic type invocation</em> which replaces <code>T</code> with some concrerate value, such as <code>Integer</code>:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;Integer&gt; intergerBox;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>To instantiate this class, us the <code>new</code> keyword, as usual, but place <code>Integer</code> between the class name and the parenthesis:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;Integer&gt; integerBox = <span class="keyword">new</span> Box&lt;Integer&gt;();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Or, In Java SE 7 and later, you can replace the type argument required to<br>invoke the constructor of a gneeric class with an empty set of type argument (&lt;&gt;) as long as the complier can determin, or infer, the type argument from the context.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box&lt;Integer&gt; integerBox = <span class="keyword">new</span> Box&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Multiple-Type-Parameters"><a href="#Multiple-Type-Parameters" class="headerlink" title="Multiple Type Parameters"></a>Multiple Type Parameters</h3><ul>
+<li>A generic class cana have multiple type parameters. For example, the generic <code>OrderedPair</code> class, which implements the generic <code>Pair</code> interface:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderedPair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> K key;</span><br><span class="line">  <span class="keyword">private</span> V value;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">OrderedPair</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.key = key;</span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> key; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The following statements create two instantiations of the <code>OrderdPair</code> class:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;String, Integer&gt; p1 = <span class="keyword">new</span> OrderedPair&lt;String, Integer&gt;(<span class="string">&quot;Even&quot;</span>, <span class="number">8</span>);</span><br><span class="line">Pair&lt;String, String&gt;  p2 = <span class="keyword">new</span> OrderedPair&lt;String, String&gt;(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameterized-Types"><a href="#Parameterized-Types" class="headerlink" title="Parameterized Types"></a>Parameterized Types</h3><ul>
+<li>You can also substitute a type paramter (i.e. K or V) with a parametrized(i.e. <code>List&lt;String&gt;</code>). For example, using the <code>OrderedPair&lt;K, V&gt;</code> example:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OrderedPair&lt;String, Box&lt;Integer&gt;&gt; p = <span class="keyword">new</span> OrderedPair&lt;&gt;(<span class="string">&quot;primes&quot;</span>, <span class="keyword">new</span> Box&lt;Integer&gt;(...));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Raw-Types"><a href="#Raw-Types" class="headerlink" title="Raw Types"></a>Raw Types</h3><ul>
+<li>A <em>raw type</em> is the name of a generic <code>class</code> or interface without any type arguments. For example, given the generic <code>Box</code> classes:</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Box</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T t)</span> </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Generic-Methods"><a href="#Generic-Methods" class="headerlink" title="Generic Methods"></a>Generic Methods</h3><p>TBD</p>
+<h3 id="Bounded-Type-Parameters"><a href="#Bounded-Type-Parameters" class="headerlink" title="Bounded Type Parameters"></a>Bounded Type Parameters</h3><p>TBD</p>
+<h3 id="Wildcards"><a href="#Wildcards" class="headerlink" title="Wildcards"></a>Wildcards</h3><p>TBD</p>
+<h4 id="Upperbounded-Wildcards"><a href="#Upperbounded-Wildcards" class="headerlink" title="Upperbounded Wildcards"></a>Upperbounded Wildcards</h4><p>TBD</p>
+<h4 id="LowerBounded-Wildcards"><a href="#LowerBounded-Wildcards" class="headerlink" title="LowerBounded Wildcards"></a>LowerBounded Wildcards</h4><p>TBD</p>
+<h4 id="Multiple-Bounds"><a href="#Multiple-Bounds" class="headerlink" title="Multiple Bounds"></a>Multiple Bounds</h4><p>TBD</p>
+<h3 id="Restrictions-on-Generics"><a href="#Restrictions-on-Generics" class="headerlink" title="Restrictions on Generics"></a>Restrictions on Generics</h3><p>TBD</p>
+<ul>
+<li><p>Cannot instantiate generic types with primitypes</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt; p = <span class="keyword">new</span> Pair&lt;&gt;(<span class="number">8</span>, <span class="string">&#x27;a&#x27;</span>); <span class="comment">// compile-time error </span></span><br><span class="line">Pair&lt;Integer, Character&gt; p = <span class="keyword">new</span> Pair&lt;&gt;(<span class="number">8</span>, <span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cannot create instance of type parameters</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">append</span><span class="params">(List&lt;E&gt; list)</span> </span>&#123;</span><br><span class="line">  E elem = <span class="keyword">new</span> E(); <span class="comment">// complie-time error</span></span><br><span class="line">  list.add(elem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cannot declare static fields whose types are type parameters</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MobileDevice</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> T os;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cananot use cast or <code>instanceof</code> with parameterized types</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;E&gt; <span class="function"><span class="keyword">void</span> <span class="title">rtti</span><span class="params">(List&lt;E&gt; list)</span> </span>&#123;</span><br><span class="line">  Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">  <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> E) &#123; <span class="comment">// not possible</span></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (list <span class="keyword">instanceof</span> ArrayList&lt;Integer&gt;) &#123; <span class="comment">// compile-time error</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Cannot create arrays of parameterized types</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt;[] arrayOfLists = <span class="keyword">new</span> List&lt;Integer&gt;[<span class="number">2</span>]; <span class="comment">// compile-time error</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Cannot create, catch, or throw object of parameterized types<ul>
+<li>A gneneric class connot extend the <code>Throwable</code> class directly or indirectly. For example, the following classes will not complie.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Extends Throwable indirectly</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MathException</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123; <span class="comment">/* ... */</span> &#125; <span class="comment">// compile-time error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Extends Throwable directly</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QueueFullException</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123; <span class="comment">/* ... */</span> &#125; <span class="comment">// compile-time error</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Cannot overload a method where the format parameter types of each overloads erase to the same raw type.</p>
+<ul>
+<li>A class cannot have two overloaded methods that will have the same signature after type erasure.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Set&lt;String&gt; strSet)</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Set&lt;Integer&gt; intSet)</span> </span>&#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The overloads would all share the same classfile representation and will generate a compile-time error.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/28/Java-Generics/" data-id="ckee9peta0000aqnid2dx7r2v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Generics/" rel="tag">Generics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-200828-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/28/200828-TIL/" class="article-date">
@@ -278,7 +444,7 @@
       <a data-url="https://namhogim.github.io/2020/08/28/200828-TIL/" data-id="ckedzvh5w00002oni9uyt9vym" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Generics/" rel="tag">Generics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Response/" rel="tag">Response</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Response/" rel="tag">Response</a></li></ul>
 
     </footer>
   </div>
@@ -1221,353 +1387,6 @@
 
 
   
-    <article id="post-200809-TIL" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/09/200809-TIL/" class="article-date">
-  <time datetime="2020-08-09T01:15:49.000Z" itemprop="datePublished">2020-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/09/200809-TIL/">200809 TIL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Data-Manipulation-Language-DML"><a href="#Data-Manipulation-Language-DML" class="headerlink" title="Data Manipulation Language, DML"></a>Data Manipulation Language, DML</h2><ul>
-<li>SELECT - 검색</li>
-<li>INSERT - 등록</li>
-<li>UPDATE - 수정</li>
-<li>DELETE - 삭제</li>
-</ul>
-<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">DISTINCT</span>) &#123;column_name&#125; (<span class="keyword">ALIAS</span>) <span class="keyword">FROM</span> &#123;table_name&#125;;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">SELECT</th>
-<th align="left">검색하고자 하는 데이터(column)를 나열</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">DISTINCT</td>
-<td align="left">중복행을 제거</td>
-</tr>
-<tr>
-<td align="left">ALIAS</td>
-<td align="left">나타날 컬럼에 대한 다른 이름 부여</td>
-</tr>
-<tr>
-<td align="left">FROM</td>
-<td align="left">선택한 컬럼이 있는 테이블을 명시한다</td>
-</tr>
-</tbody></table>
-<h4 id="Select-Examples"><a href="#Select-Examples" class="headerlink" title="Select Examples"></a>Select Examples</h4><ul>
-<li>Search whole data</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> DEPARTMENT;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Search certain column</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> empno, <span class="keyword">name</span>, job <span class="keyword">from</span> employee;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Put alias to column</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> empno <span class="keyword">as</span> 사번, <span class="keyword">name</span> <span class="keyword">as</span> 이름, job <span class="keyword">as</span> 직업 <span class="keyword">from</span> employee;</span><br></pre></td></tr></table></figure>
-
-<p>or</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> empno 사번, <span class="keyword">name</span> 이름, job 직업 <span class="keyword">from</span> employee;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Column concatenation<ul>
-<li>using concat func</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">concat</span>(empno, <span class="string">&#x27;-&#x27;</span>, deptno) <span class="keyword">AS</span> <span class="string">&#x27;사번-부서번호&#x27;</span> <span class="keyword">FROM</span> employee;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Removing redundant row</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> deptno <span class="keyword">FROM</span> employee;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Using <code>ORDER BY</code></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">DISTINCT</span>) &#123;column_name&#125; ((<span class="keyword">as</span>) <span class="keyword">ALIAS</span>) <span class="keyword">FROM</span> &#123;table_name&#125; <span class="keyword">ORDER</span> <span class="keyword">BY</span> &#123;column_name&#125; (<span class="keyword">ASC</span>, <span class="keyword">DESC</span>)</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ASC</td>
-<td>by asending order (default)</td>
-</tr>
-<tr>
-<td>DESC</td>
-<td>by desending order</td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> empno, <span class="keyword">name</span>, job <span class="keyword">FROM</span> employee <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Using <code>WHERE</code></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>(<span class="keyword">DISTINCT</span>) &#123;column_name&#125; <span class="keyword">FROM</span> &#123;table_name&#125; <span class="keyword">WHERE</span> &#123;contidion&#125;</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> &#123;column_name <span class="keyword">or</span> <span class="keyword">statement</span>&#125; (<span class="keyword">ASC</span>, <span class="keyword">DESC</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, hiredate, <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> hiredate &lt; <span class="string">&#x27;1981-01-01&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, deptno <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> deptno <span class="keyword">in</span> (<span class="number">10</span>, <span class="number">30</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, deptno <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> deptno = <span class="number">10</span> <span class="keyword">or</span> deptno = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> employee <span class="keyword">WHERE</span> deptno = <span class="number">10</span> <span class="keyword">and</span> salary &lt; <span class="number">1500</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">from</span> employee <span class="keyword">WHERE</span> deptno = <span class="number">30</span> <span class="keyword">and</span> salary &lt; <span class="number">1500</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>LIKE</code> keyword</p>
-<ul>
-<li>using wildcard to select pattern string<ul>
-<li><code>%</code>: 0-9a-zA-Z several charactor</li>
-<li><code>_</code>: single charactor</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">LIKE</span> <span class="string">&#x27;A%&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">&#x27;_A%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">like</span> <span class="string">&#x27;%A%&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Using SQL function</p>
-<ul>
-<li><code>UCASE</code>, <code>UPPER</code></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">UPPER</span>(<span class="string">&#x27;SEoul&#x27;</span>), <span class="keyword">UCASE</span>(<span class="string">&#x27;seOUL`);</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>LCASE</code>, <code>LOWER</code></li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">lower</span>(<span class="keyword">name</span>) <span class="keyword">FROM</span> employee;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>SUBSTRING</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUBSTRING</span>(<span class="string">&#x27;Happy Day&#x27;</span>, <span class="number">3</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>LPAD</code>, <code>RPAD</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LPAD</span>(<span class="string">&#x27;hi&#x27;</span>, <span class="number">5</span>, <span class="string">&#x27;?&#x27;</span>), <span class="keyword">LPAD</span>(<span class="string">&#x27;joe&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>TRIM</code>, <code>LTRIM</code>, <code>RTRIM</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LTRIM</span>(<span class="string">&#x27; hello &#x27;</span>), <span class="keyword">RTRIM</span>(<span class="string">&#x27; hello &#x27;</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>ABS(x)</code></p>
-</li>
-<li><p><code>MOD(n, m)</code></p>
-</li>
-</ul>
-</li>
-<li><p><code>CAST</code>: type casting CAST(expression AS type)</p>
-</li>
-<li><p>Group function</p>
-<ul>
-<li><code>COUNT()</code></li>
-<li><code>COUNT(DISTINCT)</code></li>
-<li><code>AVG()</code></li>
-<li><code>MIN()</code></li>
-<li><code>MAX()</code></li>
-<li><code>SUM()</code></li>
-<li><code>GROUP_CONCAT()</code></li>
-<li><code>VARIANCE()</code></li>
-<li><code>STDEV()</code></li>
-</ul>
-</li>
-<li><p>Using group function with <code>group by</code> clause</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> deptno, <span class="keyword">avg</span>(salary), <span class="keyword">sum</span>(salary) <span class="keyword">FROM</span> employee <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="INSERT"><a href="#INSERT" class="headerlink" title="INSERT"></a>INSERT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> &#123;table_name&#125; (field1, field2, field3, ...)</span><br><span class="line">  <span class="keyword">VALUES</span> (value_field1, value_field2, value_field3, ...)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>The primary key must have value, since primary key cannot be set NULL value.</li>
-</ul>
-<h3 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> &#123;table_name&#125;</span><br><span class="line">    <span class="keyword">SET</span> field1 = value_field1, field2 = value_field2, field3 = value_field3 ...</span><br><span class="line">  <span class="keyword">WHERE</span> &#123;condition&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>When <code>WHERE</code> condition is omitted, every row is affected by <code>UPDATE</code> statement.</li>
-</ul>
-<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span></span><br><span class="line">  <span class="keyword">FROM</span> &#123;table_name&#125;</span><br><span class="line"><span class="keyword">WHERE</span> &#123;condition&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Keep in mind that <code>WHERE</code> condition must be included unless you intend to delete all data.</li>
-</ul>
-<h3 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> employee.name, department.name <span class="keyword">FROM</span> employee</span><br><span class="line"><span class="keyword">JOIN</span> department <span class="keyword">ON</span> employee.deptno = department.deptno;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Data-Definition-Language-DDL"><a href="#Data-Definition-Language-DDL" class="headerlink" title="Data Definition Language, DDL"></a>Data Definition Language, DDL</h2><h3 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> &#123;table_name&#125;(</span><br><span class="line">  field_name1 <span class="keyword">type</span> [<span class="literal">NULL</span> | <span class="keyword">NOT</span> <span class="literal">NULL</span>][<span class="keyword">DEFAULT</span>][AUTO_ENCREMENT],</span><br><span class="line">  field_name2 <span class="keyword">type</span> [<span class="literal">NULL</span> | <span class="keyword">NOT</span> <span class="literal">NULL</span>][<span class="keyword">DEFAULT</span>][AUTO_ENCREMENT],</span><br><span class="line">  field_name2 <span class="keyword">type</span> [<span class="literal">NULL</span> | <span class="keyword">NOT</span> <span class="literal">NULL</span>][<span class="keyword">DEFAULT</span>][AUTO_ENCREMENT],</span><br><span class="line">  ...</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (field_name)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Creating another employ table</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC EMPLOYEE</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Null</th>
-<th align="left">Key</th>
-<th align="left">Default</th>
-<th align="left">Extra</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">empno</td>
-<td align="left">int</td>
-<td align="left">NO</td>
-<td align="left">PRI</td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">name</td>
-<td align="left">varchar(10)</td>
-<td align="left">YES</td>
-<td align="left"></td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">job</td>
-<td align="left">varchar(9)</td>
-<td align="left">YES</td>
-<td align="left"></td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">boss</td>
-<td align="left">int</td>
-<td align="left">YES</td>
-<td align="left">MUL</td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">hiredate</td>
-<td align="left">varchar(12)</td>
-<td align="left">YES</td>
-<td align="left"></td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">salary</td>
-<td align="left">decimal(7,2)</td>
-<td align="left">YES</td>
-<td align="left"></td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">comm</td>
-<td align="left">decimal(7,2)</td>
-<td align="left">YES</td>
-<td align="left"></td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">deptno</td>
-<td align="left">int</td>
-<td align="left">YES</td>
-<td align="left">MUL</td>
-<td align="left">NULL</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> employee2 (</span><br><span class="line">  empno <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span> primary <span class="keyword">key</span>,</span><br><span class="line">  <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  job <span class="built_in">varchar</span>(<span class="number">9</span>),</span><br><span class="line">  boss <span class="built_in">integer</span>,</span><br><span class="line">  hiredate <span class="built_in">varchar</span>(<span class="number">12</span>),</span><br><span class="line">  salary <span class="built_in">decimal</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="built_in">decimal</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="built_in">integer</span>);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Creating book table</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> book(</span><br><span class="line">  isbn <span class="built_in">varchar</span>(<span class="number">10</span>) primary <span class="keyword">key</span>,</span><br><span class="line">  title <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">  price <span class="built_in">integer</span> <span class="keyword">not</span> <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Alter-Table"><a href="#Alter-Table" class="headerlink" title="Alter Table"></a>Alter Table</h3><ul>
-<li>Add column field to table</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &#123;table_name&#125;</span><br><span class="line">  <span class="keyword">ADD</span> &#123;field_name&#125; <span class="keyword">type</span> [<span class="literal">NULL</span> | <span class="keyword">NOT</span> <span class="literal">NULL</span>][<span class="keyword">DEFAULT</span>][AUTO_INCREMENT];</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>example</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> book</span><br><span class="line">  <span class="keyword">add</span> author <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>Delete column field on table</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &#123;table_name&#125;</span><br><span class="line">  <span class="keyword">drop</span> &#123;field_name&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>example</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">table</span> book</span><br><span class="line">  <span class="keyword">DROP</span> price;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>Update column field (both its name and property)</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &#123;table_name&#125;</span><br><span class="line">  <span class="keyword">CHANGE</span> &#123;old_field_name&#125; &#123;new_field_name&#125; [<span class="literal">NULL</span> | <span class="keyword">NOT</span> <span class="literal">NULL</span>][<span class="keyword">DEFAULT</span>][AUTO_INCREMENT];</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>example</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Alter</span> <span class="keyword">table</span> employee2</span><br><span class="line">  <span class="keyword">CHANGE</span> deptno dept_no <span class="built_in">int</span>(<span class="number">11</span>);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>Renaming Table</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> &#123;old_table_name&#125; <span class="keyword">rename</span> &#123;new_table_name&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>example</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> employee2 <span class="keyword">rename</span> employee3;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="Drop-Table"><a href="#Drop-Table" class="headerlink" title="Drop Table"></a>Drop Table</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> &#123;table_name&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>If there is some relational dependencies between tables, it should be deleted in reverse order of creation.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/09/200809-TIL/" data-id="cke871n6q0001jtnihe2yfe5j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1618,6 +1437,10 @@
       <ul>
         
           <li>
+            <a href="/2020/08/28/Java-Generics/">Java Generics</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/28/200828-TIL/">200828-TIL</a>
           </li>
         
@@ -1631,10 +1454,6 @@
         
           <li>
             <a href="/2020/08/25/200825-TIL/">200825 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/24/200824-TIL/">200824 TIL</a>
           </li>
         
       </ul>
