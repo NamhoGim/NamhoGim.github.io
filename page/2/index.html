@@ -64,6 +64,203 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-200813-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/13/200813-TIL/" class="article-date">
+  <time datetime="2020-08-13T11:26:06.000Z" itemprop="datePublished">2020-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/200813-TIL/">200813 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h2><ul>
+<li>대상 객체의 타입을 입력 받아서 사용하는 방식</li>
+<li>미리 사용할 수 있는 타입을 명시해서 컴파일 타임에 체크 가능<ul>
+<li>입력을 Object로 할 수도 있으나, runtime에 <code>instanceof</code> 로 객체를 체크 해야 함</li>
+<li>제네릭을 사용할 경우 이러한 과정 없이 간결하게 코드 작성을 할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Generic-Class"><a href="#Generic-Class" class="headerlink" title="Generic Class"></a>Generic Class</h3><ul>
+<li>클래스를 선언 할때는 설정되지 않은 타입이 있으며 이것을 타입 파라미터로 표현</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="comment">// T: type parameter</span></span><br><span class="line">  String name;</span><br><span class="line">  T memberVar;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">GenericFoo</span><span class="params">(String name, T memberVar)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.memberVar = memberVar;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>여러개의 타입 파라미터 또한 가능</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>인터페이스도 generic이 가능하다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GenericInterface</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Geneirc type 사용시 유의점</p>
+<ul>
+<li><p>문법적으로 문제가 있는 경우</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> T classVar; <span class="comment">// -&gt; T는 객체를 생성할 때 결정 되기 때문에 complie time에 T를 알 수 없다.</span></span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mehtod</span><span class="params">(T varl)</span> </span>&#123; &#125; <span class="comment">// 마찬가지 이유로 complie time에 T를 알 수 없음</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>문법적으로는 문제가 없을 것 같으나, 안정성 문제로 금지됨 -&gt; 암기 요소</p>
+<ol>
+<li>Type parameter 의 instance를 생성하는 것은 불가능하다.</li>
+<li>Generic type parameter 에 대한 instance checking은 불가능하다.</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  T memberVar = <span class="keyword">new</span> T(); <span class="comment">// -&gt; 안정성 문제 때문에 불가능</span></span><br><span class="line">  &#123;</span><br><span class="line">    Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> T) &#123; <span class="comment">// not possible instance 체크 불가능</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Inheritance-of-Generic-Type"><a href="#Inheritance-of-Generic-Type" class="headerlink" title="Inheritance of Generic Type"></a>Inheritance of Generic Type</h3><ul>
+<li>타입 파라미터는 부모 제네릭 타입 파라미터를 모두 채워줘야 함</li>
+<li>추가적인 타입 파라미터도 사용할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IGIFooTwo</span>&lt;<span class="title">K</span>, <span class="title">T</span>, <span class="title">D</span>&gt; <span class="title">extents</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>부모 클래스 / 인터페이스들에 동일한 타입 파라미터를 넘겨줄 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IGIFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>타입 제한을 하지 않으면 <code>extends Object</code>와 동일하다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNoTypeLimit</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Object</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>extends</code>를 이용해서 부모 클래스를 제한 할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">                                                <span class="comment">// interface upper limit</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericTypeLimitation</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span> &amp; <span class="title">Clonable</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Generic-Method"><a href="#Generic-Method" class="headerlink" title="Generic Method"></a>Generic Method</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">staticMethod</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Wild-Card"><a href="#Wild-Card" class="headerlink" title="Wild Card"></a>Wild Card</h3><ul>
+<li>Wild Card <code>?</code> 는 method 의 입력 타입에 Generic 이 쓰일 경우, Generic 의 타입 변수를 제한 할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildFoo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildBar</span> <span class="keyword">extends</span> <span class="title">WildFoo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildGeneric</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildCard</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(WildGeneric&lt;T&gt; x)</span> </span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mehtod1</span><span class="params">(WildGeneric&lt;?&gt; x)</span> </span>&#123;&#125; <span class="comment">// T, ?의 차이점: super 키워드를 사용하여 상한을 정할 수 있다.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1_eq</span><span class="params">(WildGeneric&lt;? extends Object&gt; x)</span> </span>&#123;&#125; <span class="comment">// Object가 상한</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">(WildGeneric&lt;? extends WildFoo&gt; x)</span> </span>&#123;&#125; <span class="comment">// WildFoo, WildBar 상한</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">(WildGeneric&lt;? <span class="keyword">super</span> WildBar&gt; x)</span> </span>&#123;&#125; <span class="comment">// Object, WildFoo, WildBar, 하한</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Dynamic-Binding-JIT-Complie"><a href="#Dynamic-Binding-JIT-Complie" class="headerlink" title="Dynamic Binding: JIT Complie"></a>Dynamic Binding: JIT Complie</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">staticMethod</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Dynamic binding: behavior of method defined on runtim with JIT complication</span></span><br><span class="line">    GenericMethod.staticMethod(<span class="string">&quot;abcde&quot;</span>);</span><br><span class="line">    GenericMethod.staticMethod(<span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Wrapper-Class"><a href="#Wrapper-Class" class="headerlink" title="Wrapper Class"></a>Wrapper Class</h2><ul>
+<li>기본형 타입을 객체로 쓰기 위해 있는 클래스</li>
+<li>기본형 타입이 허용되지 않는 문법에 기본형 타입을 쓰기 위해서 제공</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">add</span><span class="params">(Integer x, Integer y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">  <span class="comment">// 자동으로 기본 자료형으로 변형 및 계산</span></span><br><span class="line">  <span class="comment">// 반환시 다시 Autoboxing이 이루어짐</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>여러가지 선언 방법들</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br><span class="line">Interger integer1 = Integer.valueOf(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">Charactor character = <span class="keyword">new</span> Character(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">Charactor character1 = Character.value(<span class="string">&#x27;f&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Autoboxing</span></span><br><span class="line">Integer integer2 = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 문자열 &lt;-&gt; 기본자료형</span></span><br><span class="line"><span class="keyword">int</span> x = Integer.parseInt(<span class="string">&quot;100&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> y = <span class="keyword">new</span> Integer(<span class="string">&quot;100&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> z = Integer.valueOf(<span class="string">&quot;200&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m = <span class="keyword">new</span> Integer(<span class="number">10</span>); <span class="comment">// 기본 자료형이 필요한 자리에 Wrapper class가 있을 경우 unboxing이 일어난다</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/13/200813-TIL/" data-id="cke871n6w0005jtniaehmeinf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-200810-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/10/200810-TIL/" class="article-date">
+  <time datetime="2020-08-10T12:03:47.000Z" itemprop="datePublished">2020-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/10/200810-TIL/">200810 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="다형성-Polymorphism"><a href="#다형성-Polymorphism" class="headerlink" title="다형성 (Polymorphism)"></a>다형성 (Polymorphism)</h2><h3 id="다형성의-특징"><a href="#다형성의-특징" class="headerlink" title="다형성의 특징"></a>다형성의 특징</h3><ul>
+<li><em>부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징</em></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>부모 클래스로 자식 클래스를 참조한 경우, 자식 클래스의 메소드는 사용할 수 없다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">    Foo foo = (foo)bar;</span><br><span class="line"></span><br><span class="line">    foo.methodA(); <span class="comment">// works</span></span><br><span class="line">    <span class="comment">// foo.methodB(); // error</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>자식 클래스로 부모 클래스를 참조하려 하면 <code>java.lan.ClassException</code> 오류 발생</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">    Bar bar;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// bar = (Bar)foo;</span></span><br><span class="line">    <span class="keyword">if</span> (foo <span class="keyword">instanceof</span> Bar) &#123; <span class="comment">// false</span></span><br><span class="line">      bar = (Bar)foo;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Method overriding은 메모리상의 객체의 타입을 따른다. (Virtual method call)</li>
+<li>멤버 변수의 재정의는 선언된 객체의 타입을 따른다. (문법적으로 본다)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> String x = <span class="string">&quot;Super&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Super&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> String x = <span class="string">&quot;Sub&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Sub&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">    Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">    Foo foo = (Foo)bar;</span><br><span class="line"></span><br><span class="line">    System.out.println(bar.x); <span class="comment">// Sub</span></span><br><span class="line">    bar.methodA(); <span class="comment">// &quot;Sub&quot;</span></span><br><span class="line"></span><br><span class="line">    System.out.println(foo.x); <span class="comment">// Super</span></span><br><span class="line">    foo.methodA(); <span class="comment">// Virtual method call</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Covariant return type</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> Foo <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> Bar <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="comment">// Foo 대신 Bar로 리턴 가능</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="추상-클래스-Abstract-Class"><a href="#추상-클래스-Abstract-Class" class="headerlink" title="추상 클래스 (Abstract Class)"></a>추상 클래스 (Abstract Class)</h2><ul>
+<li>일부 메소드가 구현되지 않고 선언만 되어 있는 클래스<ul>
+<li>자식 클래스에서 반드시 구현해야 하는 메소드를 <code>abstract</code>로 선언</li>
+<li>필요한 클래스가 모두 구현될 수 있도록 강제</li>
+</ul>
+</li>
+</ul>
+<h3 id="추상-클래스의-선언"><a href="#추상-클래스의-선언" class="headerlink" title="추상 클래스의 선언"></a>추상 클래스의 선언</h3><ul>
+<li><code>abstract</code> 키워드를 이용해 class를 선언</li>
+<li><code>abstract</code> 키워드를 이용해 abtract 키워드를 이용해 method를 선언</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/10/200810-TIL/" data-id="cke871n6v0004jtni26d97atb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-200809-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/09/200809-TIL/" class="article-date">
@@ -744,7 +941,7 @@ $ hexo deploy</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/" rel="tag">Binary Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Count-Sort/" rel="tag">Count Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generics/" rel="tag">Generics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/" rel="tag">Insertion Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-Sort/" rel="tag">Merge Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quick-Sort/" rel="tag">Quick Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/" rel="tag">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selection-Sort/" rel="tag">Selection Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAS/" rel="tag">WAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Server/" rel="tag">Web Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try-catch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/" rel="tag">Binary Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Count-Sort/" rel="tag">Count Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generics/" rel="tag">Generics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/" rel="tag">Insertion Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP-Syntax/" rel="tag">JSP Syntax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-Sort/" rel="tag">Merge Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quick-Sort/" rel="tag">Quick Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/" rel="tag">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scope/" rel="tag">Scope</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selection-Sort/" rel="tag">Selection Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAS/" rel="tag">WAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Server/" rel="tag">Web Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try-catch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
     </div>
   </div>
 
@@ -754,7 +951,7 @@ $ hexo deploy</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Count-Sort/" style="font-size: 10px;">Count Sort</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Generics/" style="font-size: 10px;">Generics</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/Quick-Sort/" style="font-size: 10px;">Quick Sort</a> <a href="/tags/Request/" style="font-size: 10px;">Request</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/Selection-Sort/" style="font-size: 10px;">Selection Sort</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/WAS/" style="font-size: 10px;">WAS</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/try-catch/" style="font-size: 10px;">try-catch</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
+      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Count-Sort/" style="font-size: 10px;">Count Sort</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Generics/" style="font-size: 10px;">Generics</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JSP-Syntax/" style="font-size: 10px;">JSP Syntax</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/Quick-Sort/" style="font-size: 10px;">Quick Sort</a> <a href="/tags/Request/" style="font-size: 10px;">Request</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/Scope/" style="font-size: 10px;">Scope</a> <a href="/tags/Selection-Sort/" style="font-size: 10px;">Selection Sort</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/WAS/" style="font-size: 10px;">WAS</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/try-catch/" style="font-size: 10px;">try-catch</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
     </div>
   </div>
 
@@ -776,6 +973,14 @@ $ hexo deploy</code></pre>
       <ul>
         
           <li>
+            <a href="/2020/08/29/200829-TIL/">200829 TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/28/tmp/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/28/Java-Generics/">Java Generics</a>
           </li>
         
@@ -785,14 +990,6 @@ $ hexo deploy</code></pre>
         
           <li>
             <a href="/2020/08/27/200827-TIL/">200827 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/26/200826-TIL/">200826 TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/25/200825-TIL/">200825 TIL</a>
           </li>
         
       </ul>
