@@ -64,6 +64,245 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-200831-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/31/200831-TIL/" class="article-date">
+  <time datetime="2020-08-31T11:42:23.000Z" itemprop="datePublished">2020-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/31/200831-TIL/">200831 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><ul>
+<li>JSTL(JSP Standard Tag Library)은 JSP page에서 조건문 처리, 반복문 처리 등을 html tag 형태로 작성할 수 있게 도와준다.</li>
+</ul>
+<h3 id="set-remove"><a href="#set-remove" class="headerlink" title="set, remove"></a>set, remove</h3><ul>
+<li><p>set</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;varName&quot;</span> scope=<span class="string">&quot;session&quot;</span> value=<span class="string">&quot;someValue&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;varName&quot;</span> scope=<span class="string">&quot;request&quot;</span>&gt;</span><br><span class="line">someValue</span><br><span class="line">&lt;/c:set&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>remove</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:remove <span class="keyword">var</span>=<span class="string">&quot;varName&quot;</span> scope=<span class="string">&quot;request&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">  pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span>%&gt;</span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;value1&quot;</span> scope=<span class="string">&quot;request&quot;</span> value=<span class="string">&quot;kim&quot;</span>/&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  성: $&#123;value1 &#125;&lt;br&gt;</span><br><span class="line">  &lt;c:remove <span class="keyword">var</span>=<span class="string">&quot;value1&quot;</span> scope=<span class="string">&quot;request&quot;</span>/&gt;</span><br><span class="line">  성: $&#123;value1 &#125;&lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Property-Map"><a href="#Property-Map" class="headerlink" title="Property, Map"></a>Property, Map</h3>  <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set target=<span class="string">&quot;$&#123;some&#125;&quot;</span> property=<span class="string">&quot;propertyName&quot;</span> value=<span class="string">&quot;anyValue&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>some 객체가 Java bin일 경우</li>
+<li>some 객체가 map일 경우: some.put(propertyName, anyValue);</li>
+</ul>
+<h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;조건&quot;</span>&gt;</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="choose"><a href="#choose" class="headerlink" title="choose"></a>choose</h3><ul>
+<li><code>if</code> - <code>else</code> 혹은 <code>switch</code> <code>case</code> statement 처럼 조건에 맞게 사용 될 수 있다.</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">&quot;$&#123;score &gt;= 90&#125;&quot;</span>&gt;</span><br><span class="line">    A학점 입니다.</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">&quot;$&#123;score &gt;=80 &#125;&quot;</span>&gt;</span><br><span class="line">      B학점입니다.</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;$&#123;score &gt;=70 &#125;&quot;</span>&gt;</span><br><span class="line">      C학점입니다.</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;$&#123;score &gt;=60 &#125;&quot;</span>&gt;</span><br><span class="line">      D학점입니다.</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">      F학점 입니다.</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><ul>
+<li>배열 및 Collection에 저장된 요소를 차례대로 처리한다.</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach <span class="keyword">var</span>=<span class="string">&quot;변수&quot;</span> items=<span class="string">&quot;아이템&quot;</span> [begin=<span class="string">&quot;시작번호&quot;</span>] [end=<span class="string">&quot;끝번호&quot;</span>]&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><ul>
+<li>지정한 URL에 연결하여 결과를 지정한 변수에 저장한다.</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">import</span> url=<span class="string">&quot;URL&quot;</span> charEncoding=<span class="string">&quot;캐릭터 인코딩&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;변수명&quot;</span> scope=<span class="string">&quot;scope&quot;</span>&gt;</span><br><span class="line">  &lt;c:param name=<span class="string">&quot;파라미터 이름&quot;</span>, value=<span class="string">&quot;파라미터값&quot;</span>/&gt;</span><br><span class="line">&lt;/c:import&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>url: 결과를 읽어올 URL</li>
+<li>charEncoding: 읽어온 결과를 저장할 때 사용할 character encoding</li>
+<li>var: 읽어온 결과를 저장할 영역</li>
+<li>scope: 변수를 저장할 영역</li>
+<li>&lt;c:param&gt; 태그는 url 속성에 지정한 사이트에 연결할 때 전송할 파라미터를 입력한다.</li>
+</ul>
+<h3 id="redirect"><a href="#redirect" class="headerlink" title="redirect"></a>redirect</h3><p><code>response.sendRedirect()</code> 와 비슷</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:redirect url=<span class="string">&quot;리다이렉트할URL&quot;</span>&gt;</span><br><span class="line">  &lt;c:param name=<span class="string">&quot;파라미터이름&quot;</span> value=<span class="string">&quot;파라미터값&quot;</span>/&gt;</span><br><span class="line">&lt;/c:redirect&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>url: 리다이렉트 URL</li>
+<li>&lt;c:param&gt;은 리다이렉트 할 페이지에 전달할 파라미터 지정</li>
+</ul>
+<h3 id="out"><a href="#out" class="headerlink" title="out"></a>out</h3><ul>
+<li>JspWriter에 데이터를 출력한다</li>
+</ul>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:out value=<span class="string">&quot;value&quot;</span> escapeXml=<span class="string">&quot;&#123;true|false&#125;&quot;</span> <span class="keyword">default</span>=<span class="string">&quot;defaultValue&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>excapeXml 값이 true 일경우 아래와 같이 문자를 변경한다. 생략할 수 있으며, 생략할 경우 기본 값은 true이다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">문자</th>
+<th align="left">변환된 형태</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>&lt;</code></td>
+<td align="left"><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td align="left"><code>&gt;</code></td>
+<td align="left"><code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td align="left"><code>&amp;</code></td>
+<td align="left"><code>&amp;amp;</code></td>
+</tr>
+<tr>
+<td align="left"><code>&#39;</code></td>
+<td align="left"><code>&amp;#039;</code></td>
+</tr>
+<tr>
+<td align="left"><code>&quot;</code></td>
+<td align="left"><code>&amp;#034;</code></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/31/200831-TIL/" data-id="ckejvvtsy0000xqnigsrn2wzk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSTL/" rel="tag">JSTL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-200830-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/30/200830-TIL/" class="article-date">
+  <time datetime="2020-08-30T11:39:15.000Z" itemprop="datePublished">2020-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/30/200830-TIL/">200830 TIL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Expression-Language"><a href="#Expression-Language" class="headerlink" title="Expression Language"></a>Expression Language</h2><ul>
+<li><p>표현 언어가 제공하는 기능</p>
+<ul>
+<li>JSP의 scope에 맞는 속성 사용</li>
+<li>집합 객체에 대한 접근 방법 제공</li>
+<li>수치 연산, 관계 연산, 논리 연산자 제공</li>
+<li>Java class method 호출 기능 제공</li>
+<li>표현 언어만의 기본 객체 제공</li>
+<li>Java 코드보다 조금 깔끔하게 JSP 파일을 작성 할 수 있다.</li>
+</ul>
+</li>
+<li><p>표현언어의 표현 방법</p>
+<ul>
+<li>${expr}</li>
+<li>example</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">&quot;/module/$&#123;skin.id&#125;/header.jsp&quot;</span> flush=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">&lt;b&gt;$&#123;sessionScope.member.id&#125;&lt;/b&gt;님 환영합니다.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="표현-언어의-데이터-타입"><a href="#표현-언어의-데이터-타입" class="headerlink" title="표현 언어의 데이터 타입"></a>표현 언어의 데이터 타입</h3><ul>
+<li>boolean type: true, false</li>
+<li>integer type: 0-9</li>
+<li>floating point type</li>
+<li>string type: 따옴포 (‘ or “)로 둘러싼 문자열<ul>
+<li>작은 따옴표를 사용해서 표현할 경우 값에 표현된 작은 따옴표는 &#39;와 같이 \기호와 함께 사용해야 한다.</li>
+<li>\ 기호 자체는 \ \로 표시한다.</li>
+</ul>
+</li>
+<li>null type: null</li>
+</ul>
+<h4 id="객체-접근-규칙"><a href="#객체-접근-규칙" class="headerlink" title="객체 접근 규칙"></a>객체 접근 규칙</h4>  <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;&lt;expr1&gt;.&lt;expr2&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>expr1이 expr2가 null이면 null을 반환한다.</li>
+<li>expr1이 Map일 경우 expr2를 key로한 값을 반환한다.</li>
+<li>expr1이 List나 Array이면, expr2가 정수일 경우 해당 정수번째 index에 해당하는 값을 반환한다.<ul>
+<li>만약 정수가 아닐 경우 오류가 발생한다.</li>
+</ul>
+</li>
+<li>expr1이 객체일 경우는 expr2에 해당하는 getter method에 해당하는 method를 호출한 결과를 반환한다.</li>
+</ul>
+<h3 id="수치-연산자"><a href="#수치-연산자" class="headerlink" title="수치 연산자"></a>수치 연산자</h3><ul>
+<li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> or <code>div</code></li>
+<li>숫자가 아닌 객체와 수치 연산자를 사용할 경우 객체를 숫자 값으로 변환 후 연산자를 수행 : ${“10”+1} → ${10+1}</li>
+<li>숫자로 변환할 수 없는 객체와 수치 연산자를 함께 사용하면 에러를 발생 : ${“열”+1} → 에러</li>
+<li>수치 연산자에서 사용되는 객체가 null이면 0으로 처리 : ${null + 1} → ${0+1}</li>
+</ul>
+<h3 id="비교-연산자"><a href="#비교-연산자" class="headerlink" title="비교 연산자"></a>비교 연산자</h3><ul>
+<li><code>==</code> 또는 <code>eq</code></li>
+<li><code>!=</code> 또는 <code>ne</code></li>
+<li><code>&lt;</code> 또는 <code>lt</code></li>
+<li><code>&gt;</code> 또는 <code>gt</code></li>
+<li><code>&lt;=</code> 또는 <code>le</code></li>
+<li><code>&gt;=</code> 또는 <code>ge</code></li>
+<li>문자열 비교: <code>$&#123;str == &#39;값&#39;&#125;</code> <code>str.compareTo(&quot;값&quot;) == 0</code> 과 동일</li>
+</ul>
+<h3 id="논리-연산자"><a href="#논리-연산자" class="headerlink" title="논리 연산자"></a>논리 연산자</h3><ul>
+<li><code>&amp;&amp;</code> 또는 <code>and</code></li>
+<li><code>||</code> 또는 <code>or</code></li>
+<li><code>!</code> 또는 <code>not</code></li>
+</ul>
+<h3 id="표현-언어-비활성화"><a href="#표현-언어-비활성화" class="headerlink" title="표현 언어 비활성화"></a>표현 언어 비활성화</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page isELIgnored = <span class="string">&quot;true&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="empty-연산자"><a href="#empty-연산자" class="headerlink" title="empty 연산자"></a><code>empty</code> 연산자</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">empty&lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>값이 비어 있거나 zero 값인 경우 <code>true</code>를 리턴 그외의 경우 <code>false</code>를 리턴</li>
+</ul>
+<h3 id="비교-선택-연산자"><a href="#비교-선택-연산자" class="headerlink" title="비교 선택 연산자"></a>비교 선택 연산자</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;expr&gt; ? &lt;value1&gt; : &lt;value2&gt;</span><br><span class="line"></span><br><span class="line">- `&lt;expr&gt;`의 값이 `<span class="keyword">true</span>`이면 value1을 리턴하고, `<span class="keyword">false</span>`이면 value2를 리턴</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scope별-EL의-사용"><a href="#Scope별-EL의-사용" class="headerlink" title="Scope별 EL의 사용"></a>Scope별 EL의 사용</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  pageContext.setAttribute(<span class="string">&quot;p1&quot;</span>, <span class="string">&quot;page scope value&quot;</span>);</span><br><span class="line">  request.setAttribute(<span class="string">&quot;r1&quot;</span>, <span class="string">&quot;request scope value&quot;</span>);</span><br><span class="line">  session.setAttribute(<span class="string">&quot;s1&quot;</span>, <span class="string">&quot;session scope value&quot;</span>);</span><br><span class="line">  application.setAttribute(<span class="string">&quot;a1&quot;</span>, <span class="string">&quot;application scope value&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>) : &lt;%=pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>) %&gt;</span><br><span class="line">pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>) : $&#123;pageScope.p1&#125;&lt;br&gt;</span><br><span class="line">request.getAttribute(<span class="string">&quot;r1&quot;</span>) : $&#123;requestScope.r1&#125;&lt;br&gt;</span><br><span class="line">session.getAttribute(<span class="string">&quot;s1&quot;</span>) : $&#123;sessionScope.s1&#125;&lt;br&gt;</span><br><span class="line">application.getAttribute(<span class="string">&quot;a1&quot;</span>) : $&#123;applicationScope.a1&#125;&lt;br&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>): $&#123;p1&#125;&lt;br&gt;</span><br><span class="line">request.getAttribute(<span class="string">&quot;r1&quot;</span>): $&#123;r1&#125;&lt;br&gt;</span><br><span class="line">session.getAttribute(<span class="string">&quot;s1&quot;</span>): $&#123;s1&#125;&lt;br&gt;</span><br><span class="line">application.getAttribute(<span class="string">&quot;a1&quot;</span>): $&#123;a1&#125;&lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="EL-연산"><a href="#EL-연산" class="headerlink" title="EL 연산"></a>EL 연산</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">  pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  request.setAttribute(<span class="string">&quot;k&quot;</span>, <span class="number">10</span>);</span><br><span class="line">  request.setAttribute(<span class="string">&quot;m&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">k: $&#123;k &#125;&lt;br&gt;</span><br><span class="line">k + <span class="number">5</span>: $&#123; k + <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k - <span class="number">5</span>: $&#123; k - <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k * <span class="number">5</span>: $&#123; k * <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k / <span class="number">5</span>: $&#123; k div <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">k: $&#123;k &#125;&lt;br&gt;</span><br><span class="line">m: $&#123;m &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">k &gt; <span class="number">5</span>: $&#123; k &gt; <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k &lt; <span class="number">5</span>: $&#123; k &lt; <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k &lt;= <span class="number">10</span>: $&#123;k &lt;= <span class="number">10</span> &#125;&lt;br&gt;</span><br><span class="line">k &gt;= <span class="number">10</span>: $&#123;k &gt;= <span class="number">10</span> &#125;&lt;br&gt;</span><br><span class="line">m: $&#123;m &#125;&lt;br&gt;</span><br><span class="line">!m: $&#123;!m &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://namhogim.github.io/2020/08/30/200830-TIL/" data-id="ckejvs0f80000ugniciq8fzej" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Expression-Language/" rel="tag">Expression Language</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-200829-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/29/200829-TIL/" class="article-date">
@@ -202,139 +441,6 @@
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP-Syntax/" rel="tag">JSP Syntax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scope/" rel="tag">Scope</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tmp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/28/tmp/" class="article-date">
-  <time datetime="2020-08-28T13:27:45.084Z" itemprop="datePublished">2020-08-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JSP-Syntax"><a href="#JSP-Syntax" class="headerlink" title="JSP Syntax"></a>JSP Syntax</h2><ul>
-<li>Declaration – &lt;%! %&gt;: 전역변수 선언 및 메소드 선언에 사용</li>
-<li>Scriptlet – &lt;% %&gt;: 프로그래밍 코드 기술에 사용</li>
-<li>Expression – &lt;%=%&gt;: 화면에 출력할 내용 기술에 사용</li>
-</ul>
-<h3 id="Declaration-선언문"><a href="#Declaration-선언문" class="headerlink" title="Declaration (선언문)"></a>Declaration (선언문)</h3><ul>
-<li>&lt;%! %&gt;</li>
-<li>JSP 내에서 변수 및 메소드 선언</li>
-</ul>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%!</span><br><span class="line">  String id = <span class="string">&quot;u001&quot;</span>; <span class="comment">// 멤버변수 선언</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> id;</span><br><span class="line">  &#125;</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Scriptlet"><a href="#Scriptlet" class="headerlink" title="Scriptlet"></a>Scriptlet</h3><ul>
-<li>&lt;% %&gt;</li>
-<li>가장 일반적으로 많이 쓰이는 스크립트 요소</li>
-<li>주로 프로그램이의 로직을 기술할 때 사용.</li>
-<li>스크립트릿에서 선언된 변수는 지역변수</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;h&lt;%=i %&gt;&gt;아름다운 한글 &lt;/h&lt;%=i %&gt;&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  &#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Comment"><a href="#Comment" class="headerlink" title="Comment"></a>Comment</h3><ul>
-<li>JSP에서 사용할 수 있는 주석<ul>
-<li>HTML 주석, JAVA 주석, JSP 주석</li>
-</ul>
-</li>
-<li>HTML 주석 <!--  --> browser에서는 안보인다.</li>
-<li>JSP 주석 &lt;%– –%&gt;<ul>
-<li>JSP 주석은 해당 페이지를, web browser를 통해 출력 결과로서 표시하거나, 웹 브라우저 상에서<br>소스 보기를 해도 표시 되지 않음, 또한 JSP주석 내에 실행 코드를 넣어도 그 코드는 실행되지 않는다.</li>
-</ul>
-</li>
-<li>JAVA 주석<ul>
-<li>//, /* */ 변환은 되는데 servlet에서 실행될때 안된다.</li>
-</ul>
-</li>
-<li>Comment example code</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">&quot;Content-Type&quot;</span> content=<span class="string">&quot;text/html; charset=UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%--jsp 주석문입니다.</span><br><span class="line">여러줄을 입력할 수 있습니다. --%&gt;</span><br><span class="line">&lt;!-- html 주석문입니다. --&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  자바 여러줄 주석문입니다.</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123; <span class="comment">// java 한줄 주석문입니다.</span></span><br><span class="line">%&gt;</span><br><span class="line">  &lt;H&lt;%=i %&gt;&gt; 아름다운 한글 &lt;/H&lt;%=i %&gt;&gt;</span><br><span class="line">&lt;%</span><br><span class="line">&#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="JSP-내장-객체"><a href="#JSP-내장-객체" class="headerlink" title="JSP 내장 객체"></a>JSP 내장 객체</h4><ul>
-<li>JSP를 실행하면 서블릿 소스가 생성되고 실행된다.</li>
-<li>JSP에 입력한 대부분의 코드는 생성되는 Servlet source의 _jspService() method 안에 삽입 되는 코드로 생성된다.</li>
-<li>_jspService()에 삽입된 코드의 윗부분에 미리 선언된 객체들이 있는데, 해당 객체들은 jsp에서도 사용 가능하다.</li>
-<li>response, request, application, session, out과 같은 변수를 내장객체라고 한다.</li>
-<li>미리 선언이 되어 있으므로 바로 가져다가 쓸 수 있다.</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  StringBuffer url = request.getRequestURL();</span><br><span class="line">  out.print(<span class="string">&quot;url: &quot;</span> + url.toString());</span><br><span class="line">  out.print(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><ul>
-<li>Application: Web Application이 시작되고 종료될 때까지 변수가 유지되는 경우 사용</li>
-<li>Session: Web Browser 별로 변수가 관리되는 경우 사용</li>
-<li>Request: http요청을 WAS가 받아서 Web Browser에게 응답할 때까지 변수가 유지되는 경우 사용</li>
-<li>Page: 페이지 내에서 지역변수처럼 사용, 가장 작은 단위</li>
-</ul>
-<h3 id="Page-Scope"><a href="#Page-Scope" class="headerlink" title="Page Scope"></a>Page Scope</h3><ul>
-<li>PageContext 추상 클래스를 사용한다</li>
-<li>JSP 페이지에서 pageContext라는 내장 객체로 사용 가능 하다.</li>
-<li>forwar가 될 경우 해당 Page scope에 지정된 변수는 사용할 수 없다.</li>
-<li>사용방법은 Application scope나 Session scope, request scope와 같다.</li>
-<li>지역 변수 처럼 사용된다는 것이 다른 Scope들과 다르다.</li>
-<li>jsp에서 pageScope에 값을 저장 한 후 해당 값을 EL표기법등에서 사용할 때 사용됩니다.<br>지역 변수 처럼 해당 jsp나 서블릿이 실행되는 동안에만 정보를 유지하고자 할 때 사용됩니다.</li>
-</ul>
-<h3 id="Request-Scope"><a href="#Request-Scope" class="headerlink" title="Request Scope"></a>Request Scope</h3><ul>
-<li>http요청을 WAS가 받아서 Web browser에게 응답할 때까지 변수 값을 유지하고자 할 경우 사용 된다.</li>
-<li>HttpServletRequest 객체를 사용한다.</li>
-<li>JSP에서는 request내장 변수를 사용한다.</li>
-<li>Servlet에서는 HttpServletRequest객체를 사용한다.</li>
-<li>값을 저장할 때는 request객체의 setAttribute() 메소드를 사용한다.</li>
-<li>값을 읽어들일 때는 request객체의 getAttribute() 메소드를 사용한다.</li>
-<li>forward시 값을 유지하고자 사용한다.<ul>
-<li>forward 하기 전에 request 객체의 setAttribute() 메소드로 값을 설정한 후, Servlet이나 jsp에게 결과를 전달하여 값을 출력하도록 하였슨데 이렇게 forward 되는 동안 값이 유지되는 것이 Request scope를 이용했다고 한다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Session-Scope"><a href="#Session-Scope" class="headerlink" title="Session Scope"></a>Session Scope</h3><ul>
-<li>Web browser 별로 변수를 관리하고자 할 경우 사용한다.</li>
-<li>Web browser간의 탭 간에는 세션정보가 공유되기 때문에, 각각의 탭에서는 같은 세션 정보를 사용할 수 있다.</li>
-<li>HttpSession interface를 구현한 객체를 사용한다.</li>
-<li>JSP session 내장 변수를 사용한다.</li>
-<li>Servlet에서는 HttpServletRequest의 getSession() 메소드를 이용하여 seesion 객체를 얻는다.</li>
-<li>값을 저장할 때는 session객체의 setAttribute()메소드를 사용한다.</li>
-<li>값을 읽어 들일 때는 session 객체의 getAttribute()메소드를 사용한다.</li>
-<li>장바구니처럼 사용자 별로 유지가 되어야 할 정보가 있을 때 사용한다.</li>
-<li>client 마다 유지를 해야하는 정보들을 session scope 에서 저장 및 관리</li>
-</ul>
-<h3 id="Application-Scope"><a href="#Application-Scope" class="headerlink" title="Application Scope"></a>Application Scope</h3><ul>
-<li>Web Application이 시작되고 종료될 때까지 변수를 사용할 수 있다.</li>
-<li>ServletContext interface를 구현한 객체를 사용한다.</li>
-<li>JSP에서는 application 내장 객체를 이용한다.</li>
-<li>Servlet의 경우는 getServletContext() method를 이용하여 application 객체를 이용한다.</li>
-<li>Web application 하나당 하나의 application객체가 사용된다.</li>
-<li>값을 저장할 때는 application객체의 setAttribute() method를 사용한다.</li>
-<li>값을 읽어들일 때는 application객체의 getAttribute() method를 사용한다.</li>
-<li>모든 Client가 공통으로 사용해야할 값들이 있을 때 사용한다.</li>
-</ul>
-<h4 id="Application-Scope-examples"><a href="#Application-Scope-examples" class="headerlink" title="Application Scope examples"></a>Application Scope examples</h4><ul>
-<li>ApplicationScope01.java</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html; charset=UTF-8&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  ServletContext application = getServletContext();</span><br><span class="line">  <span class="keyword">int</span> value = <span class="number">1</span>;</span><br><span class="line">  application.setAttribute(<span class="string">&quot;value&quot;</span>, value);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;&lt;h1&gt;value:&quot;</span> + value + <span class="string">&quot;&lt;/h1&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>ApplicationScope02.java</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html; charset=UTF-8&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  </span><br><span class="line">  ServletContext application = getServletContext();</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> value = (<span class="keyword">int</span>) application.getAttribute(<span class="string">&quot;value&quot;</span>);</span><br><span class="line">    value++;</span><br><span class="line">    application.setAttribute(<span class="string">&quot;value&quot;</span>, value);</span><br><span class="line"></span><br><span class="line">    out.println(<span class="string">&quot;&lt;h1&gt;value : &quot;</span> + value + <span class="string">&quot;&lt;/h1&gt;&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (NullPointerException e )&#123;</span><br><span class="line">    out.print(<span class="string">&quot;the value was not set.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>ApplicationScope01.jsp</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> value = (<span class="keyword">int</span>) application.getAttribute(<span class="string">&quot;value&quot;</span>);</span><br><span class="line">    value = value + <span class="number">2</span>;</span><br><span class="line">    application.setAttribute(<span class="string">&quot;value&quot;</span>, value);</span><br><span class="line">%&gt;</span><br><span class="line">    &lt;h1&gt;&lt;%=value %&gt;&lt;/h1&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">%&gt;</span><br><span class="line">  &lt;h1&gt; 설정된 값이 없습니다. &lt;/h1&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/28/tmp/" data-id="ckefh7vow0001zxnihn90femw" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -1133,219 +1239,6 @@
 
 
   
-    <article id="post-200814-TIL" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/14/200814-TIL/" class="article-date">
-  <time datetime="2020-08-14T13:21:33.000Z" itemprop="datePublished">2020-08-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/14/200814-TIL/">200814 TIL</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Wrapper-Class"><a href="#Wrapper-Class" class="headerlink" title="Wrapper Class"></a>Wrapper Class</h2><ul>
-<li>기본형 타입을 객체로 쓰기 위해 있는 클래스</li>
-<li>기본형 타입이 허용되지 않는 문법에 기본형 타입을 쓰기 위해서 사용</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th align="left">Wrapper Class</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">byte</td>
-<td align="left">Byte</td>
-</tr>
-<tr>
-<td align="left">char</td>
-<td align="left">Character</td>
-</tr>
-<tr>
-<td align="left">short</td>
-<td align="left">Short</td>
-</tr>
-<tr>
-<td align="left">int</td>
-<td align="left">Integer</td>
-</tr>
-<tr>
-<td align="left">long</td>
-<td align="left">Long</td>
-</tr>
-<tr>
-<td align="left">float</td>
-<td align="left">Float</td>
-</tr>
-<tr>
-<td align="left">double</td>
-<td align="left">Double</td>
-</tr>
-<tr>
-<td align="left">boolean</td>
-<td align="left">Boolean</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Examples</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">add</span><span class="params">(Integer x, Integer y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y; <span class="comment">// Unboxing</span></span><br><span class="line">    <span class="comment">// 자동으로 기본자료형으로 변형되어서 계산</span></span><br><span class="line">    <span class="comment">// 반환시 다시 Autoboxing 이루어짐</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WrapperClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">bypass</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Integer integer = <span class="keyword">new</span> Integer(<span class="number">10</span>); <span class="comment">// Deprecated.., not recomended</span></span><br><span class="line">    Integer integer1 = Integer.valueOf(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    Character character = <span class="keyword">new</span> Character(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">    Character character1 = Character.valueOf(<span class="string">&#x27;f&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Autoboxing</span></span><br><span class="line">    Integer integer2 = <span class="number">4</span>;</span><br><span class="line">    System.out.println(add(<span class="number">4</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    bypass(<span class="number">5</span>); <span class="comment">// autoboxing</span></span><br><span class="line">    <span class="comment">// T: Wrapper class인 Integer로 결정됨</span></span><br><span class="line">    <span class="comment">// 5 -&gt; new Integer(5), Autoboxing</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 문자열 &lt;-&gt; 기본 자료형</span></span><br><span class="line">    <span class="keyword">int</span> x = Integer.parseInt(<span class="string">&quot;100&quot;</span>); <span class="comment">// recommended, parse+자료형, 정적 메소드, 리턴 타입이 int임</span></span><br><span class="line">    <span class="keyword">int</span> z = Integer.valueOf(<span class="string">&quot;200&quot;</span>); <span class="comment">// return type Integer unboxing</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="Errors-Exceptions"><a href="#Errors-Exceptions" class="headerlink" title="Errors / Exceptions"></a>Errors / Exceptions</h2><h3 id="오류-Errors"><a href="#오류-Errors" class="headerlink" title="오류 (Errors)"></a>오류 (Errors)</h3><ul>
-<li>메모리 부족 또는 프로그램 실행이 꼬이는 경우.</li>
-<li>더이상 어떻게 프로그램을 복구해야 할지 알 수 없다.</li>
-<li>프로그램의 문제를 해겷하여 해결</li>
-</ul>
-<h3 id="예외-Exceptions"><a href="#예외-Exceptions" class="headerlink" title="예외 (Exceptions)"></a>예외 (Exceptions)</h3><ul>
-<li>오류(Error)에 비해서 심각도가 낮고, 프로그램의 정상적인 흐름만 방해<ul>
-<li>파일을 읽으려 했으나 해당 파일이 없는경우</li>
-<li>네트워크 연결 유실</li>
-</ul>
-</li>
-<li>문제 상황을 처리하는 로직을 구현하여, 런타임에서 자연스럽게 해결 가능</li>
-</ul>
-<h3 id="예외-처리-Excpetion-handling"><a href="#예외-처리-Excpetion-handling" class="headerlink" title="예외 처리 (Excpetion handling)"></a>예외 처리 (Excpetion handling)</h3><ul>
-<li>예외가 발생 했을 경우, 이 상황을 ‘감지’하고 ‘처리’하는 코드</li>
-<li><code>try</code> ~ <code>catch</code>, <code>throws</code>, <code>throw</code>, <code>finally</code> 키워드들을 이용</li>
-<li><code>Throwable</code> 클래스를 상속하는 자식클래스들로 이러한 문제를 해결</li>
-</ul>
-<h3 id="Throwable-Class"><a href="#Throwable-Class" class="headerlink" title="Throwable Class"></a><code>Throwable</code> Class</h3><ul>
-<li><p><code>Throwable</code> 클래스는 <code>Exception</code> 과 <code>Error</code> 클래스에 의해 상속</p>
-<ul>
-<li><p><code>Exception</code></p>
-<ul>
-<li><p><em>Checked Exceptions</em>: 예외 처리되지 않으면 컴파일이 되지 않은 예외 (file I/O)</p>
-<ul>
-<li><code>Exception</code> Class를 상속하고 있으면 Checked Exception</li>
-<li><code>try</code> ~ <code>catch</code>를 통해 예외를 꼭 처리해 주어야 컴파일이 된다.</li>
-</ul>
-</li>
-<li><p><em>Unchecked Exceptions</em>: 예외 처리되지 않아도 컴파일이 되는 예외</p>
-<ul>
-<li><code>RuntimeException</code> 클래스를 상속하고 있으면 Unchecked Exception</li>
-<li><code>try</code> ~ <code>catch</code>를 작성하지 않더라도 빌드/실행 가능</li>
-<li><code>ArrayIndexOutOfBoundsExceptions</code></li>
-<li><code>ArithmeticException</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>Error</code>: 프로그램이 복구 불가능한 상황</p>
-</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">메소드</th>
-<th align="left">설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>public String getMessage()</code></td>
-<td align="left">발생한 예외에 대한 메세지를 반환</td>
-</tr>
-<tr>
-<td align="left"><code>public String getLocalizedMessage()</code></td>
-<td align="left">오버라이드하여 추가 메세지 제공 (오버라이드하지 않으면 getMessage()와 동일)</td>
-</tr>
-<tr>
-<td align="left"><code>public Throwable getCause()</code></td>
-<td align="left">예외의 원인이 되는 Throwable 객체 반환</td>
-</tr>
-<tr>
-<td align="left"><code>public void printStackTrace()</code></td>
-<td align="left">예외가 발생된 메소드가 호출될 때의 Method call stack을 출력</td>
-</tr>
-</tbody></table>
-<h4 id="try-catch-statement"><a href="#try-catch-statement" class="headerlink" title="try ~ catch statement"></a><code>try</code> ~ <code>catch</code> statement</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 예외가 발생할 수 있는 코드</span></span><br><span class="line">  <span class="comment">// 예외가 발생할 경우 예외 객체를 던짐 (throw)</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; <span class="comment">// 던져진 예외를 받음 (catch)</span></span><br><span class="line">          <span class="comment">// Exception class 및 그 자식 클래스를 사용</span></span><br><span class="line">  <span class="comment">// 예외 상황을 처리해야 하는 코드</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>example</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">int</span>[] integers = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">  integers[<span class="number">20</span>] = <span class="number">5</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span> (ArrayIndexOutOfBoundsException e) &#123;</span><br><span class="line">  System.out.println(e.getMessage());</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Multiple-Exception-Handling"><a href="#Multiple-Exception-Handling" class="headerlink" title="Multiple Exception Handling"></a>Multiple Exception Handling</h4><ul>
-<li>여러 개의 <code>catch</code> 구문을 사용하면 다중 예외를 처리할 수 있음</li>
-<li>순차적으로 검사하면서 적용가능한 예외를 처리</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 아주 예민한 내용이 실행되는 부분</span></span><br><span class="line">  <span class="comment">// 특정 catch 구문에 선택되는 조건문</span></span><br><span class="line">  <span class="comment">// 다형성에 의해서 결정 된다.</span></span><br><span class="line">  <span class="comment">// 즉, catch 하고 있는 클래스의 자식 클래스의 객체면 catch 가능</span></span><br><span class="line">  <span class="comment">// catch 하는 순서가 중요 -&gt; 위에서 부터 자식 객체인 것이 좋다.</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (FileAlreadyExistsException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (EOFException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; <span class="comment">// 나머지 모든 Exception 모두 catch</span></span><br><span class="line">                        <span class="comment">// 모든 Exception 객체의 조상</span></span><br><span class="line">                        <span class="comment">// 권장하지 않음, 무책임한 catch 이다.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try ~ catch ~ finally"></a><code>try</code> ~ <code>catch</code> ~ <code>finally</code></h4><ul>
-<li><code>try</code> 구문 실행 중에 어떤 일이 발생해도 반드시 실행되어야 하는 구문은 finally block에 작성</li>
-<li><code>try</code> 구문 내에 <code>return</code> 문이 있는 경우에도 finally 블록은 실행됨</li>
-<li><code>try</code> 구문 내에서 접근한 System 자원을 안전하게 복구하기 위해 사용</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  file = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">  file.read();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;파일 처리 실패&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;파이널리&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (file != <span class="keyword">null</span>) &#123; <span class="comment">// file 읽기에 실패한 경우 파일을 닫아준다.</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      file.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;앗!... 아아...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="try-with-resource-statement"><a href="#try-with-resource-statement" class="headerlink" title="try ~ with ~ resource statement"></a><code>try</code> ~ with ~ resource statement</h4><ul>
-<li>Java1.7에서 추가된 기능</li>
-<li>AutoClosable interface를 구현하는 리소스에만 사용가능</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (FileInputStream file1 = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>)) &#123;</span><br><span class="line">  file1.read();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;파일 처리 실패&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Specifying-the-Exceptions-Thrown-by-a-Method"><a href="#Specifying-the-Exceptions-Thrown-by-a-Method" class="headerlink" title="Specifying the Exceptions Thrown by a Method"></a>Specifying the Exceptions Thrown by a Method</h3><ul>
-<li>Checked Exception의 경우</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheckedExceptionThrow</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> IOEception </span>&#123;</span><br><span class="line">    FileInputStream file1 = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;a.txt&quot;</span>);</span><br><span class="line">    file1.read();</span><br><span class="line">    file1.close();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> <span class="comment">/*throws*/</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      methodA();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;메소드에실패&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Unchecked Exception: <code>throws</code> 키워드 사용하지 않아도 가능</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UncheckedExceptionThrows</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">10</span> / <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    methodA();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">new</span> UncheckedExceptionThrow().methodB();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">      e.getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>method를 override할경우 부모 class 의 method exception 보다 저 조상인 exception은 던질 수 없다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;&#125; <span class="comment">// Checked Exception</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarOne</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;&#125; <span class="comment">// possible</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarTwo</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> <span class="keyword">throws</span> FileNotFoundEception </span>&#123;&#125; <span class="comment">// 자식 Exception은 pass 가능</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="throw"><a href="#throw" class="headerlink" title="throw"></a><code>throw</code></h3><ul>
-<li>예외를 발생 시키는 키워드</li>
-<li><code>new</code> 키워드로 새 Exception 객체를 생성하여 예외 내용을 작성</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exceptMethod</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">if</span> (Err) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Some Error&quot;</span>); <span class="comment">// 예외 발생 및 Message 전달</span></span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Custom-Exceptions"><a href="#Custom-Exceptions" class="headerlink" title="Custom Exceptions"></a>Custom Exceptions</h3><ul>
-<li><p><code>Exception</code> 또는 <code>RuntimeException</code> Class를 상속하여 작성</p>
-<ul>
-<li><code>Exception</code>을 상속한경우 Checked Exception이 되어 반드시 예외를 처리해야 한다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">  <span class="keyword">enum</span> ErrorCode &#123;</span><br><span class="line">    ERROR_A, ERROR_B;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> ErrorCode errorCode;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(ErrorCode errorCode, String message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(message)</span><br><span class="line">    <span class="keyword">this</span>.erroCode = errorCode;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getLocalizedMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String message = getMessage();</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> localizedMessage;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://namhogim.github.io/2020/08/14/200814-TIL/" data-id="cke871n6x0007jtni65ea4bdf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1364,7 +1257,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/" rel="tag">Binary Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Count-Sort/" rel="tag">Count Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generics/" rel="tag">Generics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/" rel="tag">Insertion Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP-Syntax/" rel="tag">JSP Syntax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-Sort/" rel="tag">Merge Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quick-Sort/" rel="tag">Quick Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/" rel="tag">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scope/" rel="tag">Scope</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selection-Sort/" rel="tag">Selection Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAS/" rel="tag">WAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Server/" rel="tag">Web Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try-catch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Abtract-Class/" rel="tag">Abtract Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/" rel="tag">Binary Search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Count-Sort/" rel="tag">Count Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DBMS/" rel="tag">DBMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDL/" rel="tag">DDL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DML/" rel="tag">DML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Errors/" rel="tag">Errors</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Exceptions/" rel="tag">Exceptions</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expression-Language/" rel="tag">Expression Language</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Generics/" rel="tag">Generics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/" rel="tag">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/" rel="tag">Insertion Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDBC/" rel="tag">JDBC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP-Syntax/" rel="tag">JSP Syntax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSTL/" rel="tag">JSTL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-Sort/" rel="tag">Merge Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Polymorphism/" rel="tag">Polymorphism</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quick-Sort/" rel="tag">Quick Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Request/" rel="tag">Request</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Response/" rel="tag">Response</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scope/" rel="tag">Scope</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Selection-Sort/" rel="tag">Selection Sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sorting/" rel="tag">Sorting</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Table/" rel="tag">Table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAS/" rel="tag">WAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web-Server/" rel="tag">Web Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wrapper-Class/" rel="tag">Wrapper Class</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/generic/" rel="tag">generic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/try-catch/" rel="tag">try-catch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vi/" rel="tag">vi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wrapper-class/" rel="tag">wrapper class</a></li></ul>
     </div>
   </div>
 
@@ -1374,7 +1267,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Count-Sort/" style="font-size: 10px;">Count Sort</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Generics/" style="font-size: 10px;">Generics</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JSP-Syntax/" style="font-size: 10px;">JSP Syntax</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/Quick-Sort/" style="font-size: 10px;">Quick Sort</a> <a href="/tags/Request/" style="font-size: 10px;">Request</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/Scope/" style="font-size: 10px;">Scope</a> <a href="/tags/Selection-Sort/" style="font-size: 10px;">Selection Sort</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/WAS/" style="font-size: 10px;">WAS</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/try-catch/" style="font-size: 10px;">try-catch</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
+      <a href="/tags/Abtract-Class/" style="font-size: 10px;">Abtract Class</a> <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/Count-Sort/" style="font-size: 10px;">Count Sort</a> <a href="/tags/DBMS/" style="font-size: 10px;">DBMS</a> <a href="/tags/DDL/" style="font-size: 10px;">DDL</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DML/" style="font-size: 10px;">DML</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/Expression-Language/" style="font-size: 10px;">Expression Language</a> <a href="/tags/Generics/" style="font-size: 10px;">Generics</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JSP-Syntax/" style="font-size: 10px;">JSP Syntax</a> <a href="/tags/JSTL/" style="font-size: 10px;">JSTL</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Polymorphism/" style="font-size: 10px;">Polymorphism</a> <a href="/tags/Quick-Sort/" style="font-size: 10px;">Quick Sort</a> <a href="/tags/Request/" style="font-size: 10px;">Request</a> <a href="/tags/Response/" style="font-size: 10px;">Response</a> <a href="/tags/SQL/" style="font-size: 15px;">SQL</a> <a href="/tags/Scope/" style="font-size: 10px;">Scope</a> <a href="/tags/Selection-Sort/" style="font-size: 10px;">Selection Sort</a> <a href="/tags/Servlet/" style="font-size: 10px;">Servlet</a> <a href="/tags/Sorting/" style="font-size: 10px;">Sorting</a> <a href="/tags/Table/" style="font-size: 10px;">Table</a> <a href="/tags/WAS/" style="font-size: 10px;">WAS</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/Wrapper-Class/" style="font-size: 10px;">Wrapper Class</a> <a href="/tags/generic/" style="font-size: 10px;">generic</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/try-catch/" style="font-size: 10px;">try-catch</a> <a href="/tags/vi/" style="font-size: 10px;">vi</a> <a href="/tags/wrapper-class/" style="font-size: 10px;">wrapper class</a>
     </div>
   </div>
 
@@ -1396,11 +1289,15 @@
       <ul>
         
           <li>
-            <a href="/2020/08/29/200829-TIL/">200829 TIL</a>
+            <a href="/2020/08/31/200831-TIL/">200831 TIL</a>
           </li>
         
           <li>
-            <a href="/2020/08/28/tmp/">(no title)</a>
+            <a href="/2020/08/30/200830-TIL/">200830 TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/29/200829-TIL/">200829 TIL</a>
           </li>
         
           <li>
@@ -1409,10 +1306,6 @@
         
           <li>
             <a href="/2020/08/28/200828-TIL/">200828-TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/27/200827-TIL/">200827 TIL</a>
           </li>
         
       </ul>
