@@ -220,7 +220,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -233,7 +233,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -274,6 +274,148 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/09/06/Dependency-Injection-in-Spring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/06/Dependency-Injection-in-Spring/" class="post-title-link" itemprop="url">Dependency Injection in Spring</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-06 23:31:52" itemprop="dateCreated datePublished" datetime="2020-09-06T23:31:52+09:00">2020-09-06</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><p>Application 코드를 작성할때, 특정 기능이 필요하면 Library를 호출하여 사용한다. 프로그램의 흐름을 제어아하는 주체가 Application code이다. Framework 기반의 개발에서는 Framework 자신이 흐름을 제어하는 주체가 되어, 필요할 때마다 Application 코드를 호출하여 사용한다.</p>
+<p>컨테이너는 instance의 생명주기를 관리하며, 생성된 instance에게 추가적인 기능을 제공합니다.<br>예를 들어, Servlet을 실행해주는 WAS는 Servlet Contatiner를 가지고 있다고 말합니다.<br>WAS는 Web browser로부터 Servlet URL에 해당하는 요청을 받으면, Servlet을 메모리에 올린 후 실행 합니다.<br>개발자가 Servlet Class를 작성했지만 실제로 메모리에 올리고 실행하는 것은 WAS가 가지고 있는 Servlet Container 입니다.<br>Servlet Container는 동일한 Servlet에 해당하는 요청을 받으면, 또 메모리에 올리지 않고 기존에 메모리에 올라간 Servlet을 실행하여 그 결과를 Web browser에게 전달 합니다.<br>Container는 보통 instance의 생명 주기를 관리하며, 생성된 instance들에게 추가적인 기능을 제공하는 것을 말합니다.</p>
+<h2 id="DI-Dependency-Injection"><a href="#DI-Dependency-Injection" class="headerlink" title="DI(Dependency Injection)"></a>DI(Dependency Injection)</h2><p>DI는 의존성 주입이라는 뜻을 가지고 있다. Class사이의 의존 관계를 Bean 설정 정보를 바탕으로 Container가 자동으로 연결 해 주는 것을 말한다.<br>개발자들은 제어를 담당할 필요 없이 Bean 설정 파일에 의존관계가 필요하다는 정보만 추가해주면 된다.<br>Object reference를 Container로부터 주입 받아서, 실행 시에 동적으로 의존 관계가 생성된다.<br>Container가 흐름의 주체가 되어서 Application code에 의존관계를 주입해주는 것이 된다.<br>이것을 *eInversion of Control** 이라 부른다.</p>
+<h2 id="Spring-Framework에서-DI-적용-예-2가지"><a href="#Spring-Framework에서-DI-적용-예-2가지" class="headerlink" title="Spring Framework에서 DI 적용 예 2가지"></a>Spring Framework에서 DI 적용 예 2가지</h2><h3 id="xml-파일을-이용한-설정"><a href="#xml-파일을-이용한-설정" class="headerlink" title="xml 파일을 이용한 설정"></a>xml 파일을 이용한 설정</h3><ul>
+<li>src/main 아래에 UserBean class 작성</li>
+</ul>
+<p>Bean class의 몇가지 특성</p>
+<ol>
+<li>기본 생성자를 가지고 있다.</li>
+<li>필드는 private하게 선언한다.</li>
+<li>getter, setter method를 가진다. getName(), setName() method를 name property라고 한다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="comment">//빈클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//필드는 private한다.</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">boolean</span> male;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//기본생성자를 반드시 가지고 있어야 한다.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">UserBean</span><span class="params">(String name, <span class="keyword">int</span> age, <span class="keyword">boolean</span> male)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.male = male;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// setter, getter메소드는 프로퍼티라고 한다.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMale</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> male;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMale</span><span class="params">(<span class="keyword">boolean</span> male)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.male = male;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>src/main/reource folder에 applicationContext.xml을 생성</li>
+</ul>
+<p>UserBean class 의 instance 를 userBean이라는 이름으로 생성 할 수 있도록 xml을 작성 합니다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userBean&quot;</span> <span class="attr">class</span>=<span class="string">&quot;kr.or.connect.diexam01.UserBean&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ApplicationContext를 이용해서 설정파일을 읽어들여서 실행</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam01</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(</span><br><span class="line">        <span class="string">&quot;classpath:applicationContext.xml&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;초기화 완료.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    UserBean userBean = (UserBean)ac.getBean(<span class="string">&quot;userBean&quot;</span>);</span><br><span class="line">    userBean.setName(<span class="string">&quot;kim&quot;</span>);</span><br><span class="line">    System.out.println(userBean.getName());</span><br><span class="line"></span><br><span class="line">    UserBean userBean2 = (UserBean)ac.getBean(<span class="string">&quot;userBean&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(userBean == userBean2) &#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;같은 인스턴스이다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="xml을-이용한-설정으로-DI-확인"><a href="#xml을-이용한-설정으로-DI-확인" class="headerlink" title="xml을 이용한 설정으로 DI 확인"></a>xml을 이용한 설정으로 DI 확인</h4><p>Car의 Engine class 작성</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Engine 생성자&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;엔진이 동작합니다.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Car class 작성</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">  Engine v8;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Car 생성자&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEngine</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.v8 = e;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;엔진을 이용하여 달립니다.&quot;</span>);</span><br><span class="line">    v8.exec();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Spring container에게 engine 객체의 injection을 맡기기 위해 다음과 같이 xml에 작성합니다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;e&quot;</span> <span class="attr">class</span>=<span class="string">&quot;kr.or.connect.diexam01.Engine&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;car&quot;</span> <span class="attr">class</span>=<span class="string">&quot;kr.or.connect.diexam01.Car&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;engine&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;e&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>위의 xml파일을 읽어들여서 작동하게끔 작성하면 다음과 같습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam02</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ApplicationContext ac = <span class="keyword">new</span> ClassPathXmlApplicationContext(</span><br><span class="line">        <span class="string">&quot;classpath:applicationContext.xml&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Car car = (Car)ac.getBean(<span class="string">&quot;car&quot;</span>);</span><br><span class="line">    car.run();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java-config를-이용한-설정"><a href="#Java-config를-이용한-설정" class="headerlink" title="Java config를 이용한 설정"></a>Java config를 이용한 설정</h3><ul>
+<li>Annotaions<ul>
+<li>@Configuration<ul>
+<li>스프링 설정 클래스를 선언하는 어노테이션</li>
+</ul>
+</li>
+<li>@Bean<ul>
+<li>bean을 정의하는 어노테이션</li>
+</ul>
+</li>
+<li>@ComponentScan<ul>
+<li>@Controller, @Service, @Repository, @Component 어노테이션이 붙은 클래스를 찾아 컨테이너에 등록</li>
+</ul>
+</li>
+<li>@Component<ul>
+<li>컴포넌트 스캔의 대상이 되는 애노테이션 중 하나로써 주로 유틸, 기타 지원 클래스에 붙이는 어노테이션</li>
+</ul>
+</li>
+<li>@Autowired<ul>
+<li>주입 대상이되는 bean을 컨테이너에 찾아 주입하는 어노테이션</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Java Config 설정</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Car <span class="title">car</span><span class="params">(Engine e)</span> </span>&#123;</span><br><span class="line">    Car c = <span class="keyword">new</span> Car();</span><br><span class="line">    c.setEngine(e);</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Engine <span class="title">engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Engine();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Configuration 은 스프링 설정 클래스라는 의미를 가집니다.<br>JavaConfig로 설정을 할 클래스 위에는 @Configuration가 붙어 있어야 합니다.<br>ApplicationContext중에서 AnnotationConfigApplicationContext는 JavaConfig클래스를 읽어들여 IoC와 DI를 적용하게 됩니다.<br>이때 설정파일 중에 @Bean이 붙어 있는 메소드들을 AnnotationConfigApplicationContext는 자동으로 실행하여 그 결과로 리턴하는 객체들을 기본적으로 싱글턴으로 관리를 하게 됩니다.</p>
+<p>DI 적용 확인</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam03</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig.class);</span><br><span class="line"></span><br><span class="line">    Car car = (Car)ac.getBean(<span class="string">&quot;car&quot;</span>); <span class="comment">// Car.class로도 가능</span></span><br><span class="line">    car.run();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Annotation만을-활용한-ApplicationConfig-설정"><a href="#Annotation만을-활용한-ApplicationConfig-설정" class="headerlink" title="Annotation만을 활용한 ApplicationConfig 설정"></a>Annotation만을 활용한 ApplicationConfig 설정</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;kr.or.connect.diexam01&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationConfig2</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@ComponentScan이라는 annotation 추가<br>@ComponentScan annotation은 parameter로 들어온 package 이하에서 @Controller, @service, @Repository, @Component annotation이 붙어있는 class를 찾아서 메모리에 몽따 올린다.</p>
+<p>기존에 작성한 Car class에 @Component annotation 추가</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Engine</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Engine</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Engine 생성자&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exec</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;엔진이 동작합니다.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DI 가 필요한 부분에는 @Autowired annotation 적용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> Engine v8;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Car 생성자&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;엔진을 이용하여 달립니다.&quot;</span>);</span><br><span class="line">    v8.exec();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DI 확인</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> kr.or.connect.diexam01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextExam04</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(ApplicationConfig2.class);</span><br><span class="line"></span><br><span class="line">    Car car = ac.getBean(Car.class);</span><br><span class="line">    car.run();</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1647,166 +1789,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/26/200826-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/26/200826-TIL/" class="post-title-link" itemprop="url">200826 TIL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-08-26 17:09:49" itemprop="dateCreated datePublished" datetime="2020-08-26T17:09:49+09:00">2020-08-26</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-03 10:36:33" itemprop="dateModified" datetime="2020-09-03T10:36:33+09:00">2020-09-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="HTTP-Hypertext-Transfer-Protocol"><a href="#HTTP-Hypertext-Transfer-Protocol" class="headerlink" title="HTTP(Hypertext Transfer Protocol)"></a>HTTP(Hypertext Transfer Protocol)</h2><ul>
-<li>Tim Berners-Lee와 그가 속한 팀은 CERN에서 HTML뿐만 아니라 웹 브라우저 및 웹 브라우저 관련 기술과 HTTP를 발명하였다.</li>
-<li>문서화된 최초의 HTTP버전은 HTTP v0.9(1991년)이다.</li>
-<li>HTTP는 서버와 클라이언트가 인터넷 상에서 데이터를 주고받기 위한 protocol이다.</li>
-<li>HTTP는 계속 발전하여 HTTP/2까지 버전이 등장했다.</li>
-</ul>
-<h3 id="HTTP-작동방식"><a href="#HTTP-작동방식" class="headerlink" title="HTTP 작동방식"></a>HTTP 작동방식</h3><ul>
-<li>HTTP는 Server/Client model을 따른다.</li>
-<li>장점<ul>
-<li>불특정 다수를 대상으로 하는 서비스에는 적합하다.</li>
-<li>클라이언트와 서버가 계속 연결된 형태가 아니기 때문에 클라이언트와 서버 간의 최대 연결 수 보다 훨신 더 많은 요청과 응답을 처리할 수 있다.</li>
-</ul>
-</li>
-<li>단점<ul>
-<li>연결을 끊어버리기 때문에, 클라이언트의 이전 상황을 알 수 없다.</li>
-<li>이러한 특징을 무상태(Stateless)라고 한다.</li>
-<li>이러한 특징 때문에 정보를 유지하기 위해서 Cookie와 같은 기술이 등장하게 되었다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="HTTP-요청-Method의-구조"><a href="#HTTP-요청-Method의-구조" class="headerlink" title="HTTP 요청 Method의 구조"></a>HTTP 요청 Method의 구조</h3><ul>
-<li>요청 Method: GET, PUT, POST, PUSH, OPTIONS등의 요청 방식이 온다.<ul>
-<li>GET: 정보를 요청하기 위해서 사용 (SELECT)</li>
-<li>POST: 정보를 밀어 넣기 위해서 사용 (INSERT)</li>
-<li>PUT: 정보를 업데이트하기 위해서 사용 (UPDATE)</li>
-<li>DELETE: 정보를 삭제하기 위해서 사용 (DELETE)</li>
-<li>HEAD: (HTTP)헤더 정보만 요청한다. 해당 자원이 존재하는지 혹은 서버에 문제가 없는지를 확인하기 위해서 사용한다.</li>
-<li>OPTIONS: 웹서버가 지원하는 메서드의 종류를 요청한다.</li>
-<li>TRACE: 클라이언트의 요청을 그대로 반환한다. 예컨데 echo 서비스로 서버 상태를 확인하기 위한 목적으로 주로 사용한다.</li>
-</ul>
-</li>
-<li>요청 URI: 요청하는 자원의 위치를 명시한다.</li>
-<li>HTTP 프로토콜 버전: 웹 브라우저가 사용하는 프로토콜 버전이다.</li>
-</ul>
-<h2 id="URL-Uniform-Resource-Locator"><a href="#URL-Uniform-Resource-Locator" class="headerlink" title="URL(Uniform Resource Locator)"></a>URL(Uniform Resource Locator)</h2><ul>
-<li>인터넷 상의 자원의 위치</li>
-<li>특정 웹 서버의 특정 파일에 접근 하기위한 경로 혹은 주소</li>
-</ul>
-<h2 id="Web-Server"><a href="#Web-Server" class="headerlink" title="Web Server"></a>Web Server</h2><ul>
-<li>Web Server는 Web Server Software 가 동작하는 컴퓨터를 말한다.</li>
-<li>Web Server의 가장 중요한 기능은 Client가 요청하는 HTML문서나 각종 Resource를 전달하는 것이다.</li>
-<li>Web brower나 web crawler가 요청하는 Resource는 컴퓨터에 저장된 정적 데이터 이거나 동적인 결과가 될 수 있다.</li>
-</ul>
-<h2 id="Web-Server-Software의-종류"><a href="#Web-Server-Software의-종류" class="headerlink" title="Web Server Software의 종류"></a>Web Server Software의 종류</h2><ul>
-<li>가장 많이 사용하는 웹 서버는 Aphache, Nginx, Microsoft IIS</li>
-<li>Apache 웹 서버는 Apache Software Foundation에서 개발한 웹서버로 오픈소스 소프트웨어(Open-source Software)이며, 거의 대부분 운영체제에서 설치 및 사용을 할 수 있다.</li>
-<li>Nginx는 차세대 웹서버로 불리며 더 적은 자원으로 더 빠르게 데이터를 서비스하는 것을 목적으로 만들어진 서버이며 Apache웹 서버와 마찬가지로 오픈소스 소프트웨어입니다.</li>
-</ul>
-<h2 id="WAS-Web-Application-Server"><a href="#WAS-Web-Application-Server" class="headerlink" title="WAS(Web Application Server)"></a>WAS(Web Application Server)</h2><ul>
-<li>WAS는 일종의 MiddleWare로 Web Client(보통 web browser)의 요청 중 보통 web application이 동작하도록 지원하는 목적을 가진다.</li>
-<li>초창기 Web Server는 정적인 content를 주로 제공하였으나 동적인 컨텐츠의 수요가 증가 함에 따라서 WAS가 대두 되게 되었다.</li>
-<li>WAS가 보통 웹 서버 기능을 내장하고 있다.</li>
-<li>현재는 WAS가 가지고 있는 웹 서버도 정적인 contents를 처리하는데 있어서 성능상 큰 차이가 없다.</li>
-<li>규모가 커질수록 웹 서버와 WAS를 분리한다.<ul>
-<li>자원 이용의 효율성 및 장애 극복 기능(failover), 유지 보수의 편의성을 위해 분리</li>
-</ul>
-</li>
-<li>보통 Web Server가 WAS 앞단에서 동작하도록 한다.</li>
-</ul>
-<h3 id="Client-Server-구조"><a href="#Client-Server-구조" class="headerlink" title="Client/Server 구조"></a>Client/Server 구조</h3><ul>
-<li>Client는 Service를 제공하는 Server에게 정보를 요청하며 응답 받은 결과를 사용합니다.</li>
-</ul>
-<h3 id="DBMS-Database-Management-System"><a href="#DBMS-Database-Management-System" class="headerlink" title="DBMS(Database Management System)"></a>DBMS(Database Management System)</h3><ul>
-<li>다수의 사용자들이 데이터베이스 내의 데이터를 접근할 수 있도록 해주는 소프트웨어</li>
-</ul>
-<h3 id="MiddleWare"><a href="#MiddleWare" class="headerlink" title="MiddleWare"></a>MiddleWare</h3><ul>
-<li>Client쪽에 비즈니스 로직이 많을 경우, Client 관리(배포 등)로 인해 비용이 많이 발생하는 문제가 발생</li>
-<li>비즈니스 로직을 Client와 DBMS사이의 middleware server에서 동작하도록 함으로써 client는 입력과 출력을 담당하도록 함</li>
-</ul>
-<h2 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h2><p>Apache Tomcat is an open-source implementation of the Java servlet, JavaServer Pages, Java Expression Language and WebSocket technologogies.<br>Tomcat provies a “pure Java” HTTP web server environment in which Java code can run.</p>
-<ul>
-<li>Apache Tomcat: The most widley used WAS developed from Apache Software Foundation.</li>
-<li>Web Application can run on top of the WAS that is analogous to relation between application and Operating System.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
