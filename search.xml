@@ -34,6 +34,8 @@
       
       <categories>
           
+          <category> TIL </category>
+          
           <category> Testing </category>
           
       </categories>
@@ -41,7 +43,9 @@
       
         <tags>
             
-            <tag> TIL,Testing </tag>
+            <tag> TIL </tag>
+            
+            <tag> Testing </tag>
             
         </tags>
       
