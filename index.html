@@ -227,7 +227,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -271,6 +271,183 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/09/09/Java-collection-type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/Java-collection-type/" class="post-title-link" itemprop="url">Java Collections Framework</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-09 21:46:14" itemprop="dateCreated datePublished" datetime="2020-09-09T21:46:14+09:00">2020-09-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/collections/" itemprop="url" rel="index"><span itemprop="name">collections</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Java-Collections-Framework"><a href="#Java-Collections-Framework" class="headerlink" title="Java Collections Framework"></a>Java Collections Framework</h2><ul>
+<li><code>java.utils</code>에 속한 일련의 클래스로, 자료구조를 담당</li>
+<li>잘 짜여진 <code>interface</code>를 기반으로 다양한 자료구조를 구현</li>
+<li>Generic class로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</li>
+</ul>
+<blockquote>
+<p>some are excerpted from <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html">Java collections overview</a></p>
+</blockquote>
+<h2 id="Advantages-of-a-collections-framework"><a href="#Advantages-of-a-collections-framework" class="headerlink" title="Advantages of a collections framework"></a>Advantages of a collections framework</h2><ul>
+<li>Reduces programming effort</li>
+<li>Increase performance</li>
+<li>Provide interoperability between unrelated APIs</li>
+<li>Reduces the effort required to learn APIs</li>
+<li>Reduces the effort required to design and implement APIs</li>
+<li>Fosters software reuse</li>
+</ul>
+<h2 id="Collection-Interfaces"><a href="#Collection-Interfaces" class="headerlink" title="Collection Interfaces"></a>Collection Interfaces</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html">Collection</a><ul>
+<li>A group of objects. No assumptions are made about the order of the collection (if any) or whether it can contain duplicate elements.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a><ul>
+<li>The familiar set abstraction. No duplicate elements permitted. May or may not be ordered. Extends the Collection interface.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">List</a><ul>
+<li>Ordered collection, also known as a sequence. Duplicates are generally permitted. Allows positional access. Extends the Collection interface.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html">Queue</a><ul>
+<li>A collection designed for holding elements before processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html">Deque</a><ul>
+<li>A double ended queue, supporting element insertion and removal at both ends. Extends the Queue interface.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a><ul>
+<li>A mapping from keys to values. Each key can map to one value.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Method-of-Collection-Interfaces"><a href="#Method-of-Collection-Interfaces" class="headerlink" title="Method of Collection Interfaces"></a>Method of Collection Interfaces</h2><table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>boolean add(E e)</code></td>
+<td align="left">Ensures that collection contains the specified element.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean addAll(Collection&lt;? exteionds E&gt; c)</code></td>
+<td align="left">Adds all of the elements in the specified collection to this collection.</td>
+</tr>
+<tr>
+<td align="left"><code>void clear()</code></td>
+<td align="left">Removes all of the elements from this collection.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean contains(Object o)</code></td>
+<td align="left">Returns <code>true</code> if this collection contains the specified element.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean containsAll(Collection&lt;?&gt; c)</code></td>
+<td align="left">Returns <code>true</code> if this collection contains all of the elements in the specified collection.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean equals(Object o)</code></td>
+<td align="left">Compares the specified object with this collection for equality.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean isEmpty()</code></td>
+<td align="left">Returns <code>true</code> if this collection contains no elements.</td>
+</tr>
+<tr>
+<td align="left"><code>Iterator&lt;E&gt; iterator()</code></td>
+<td align="left">Returns <code>true</code> if this collection contains on elements.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean remove(Object o)</code></td>
+<td align="left">Remove a single instance of the specified elemtns from this collection, if it is present.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean removeAll(Collection&lt;?&gt; c)</code></td>
+<td align="left">Removes all of this collection’s elements that are also contained in the specified collection.</td>
+</tr>
+<tr>
+<td align="left"><code>boolean retainAll(Collection&lt;?&gt; c)</code></td>
+<td align="left">Retains only the elements in this collection that are contained in the specified collection.</td>
+</tr>
+<tr>
+<td align="left"><code>int size()</code></td>
+<td align="left">Returns the number of elements in this collection.</td>
+</tr>
+<tr>
+<td align="left"><code>T[] toArray(T[] a)</code></td>
+<td align="left">Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified array.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -337,170 +514,6 @@
 <p>Because they are constants, the name of an enum type’s field are in uppercase letters.</p>
 <p>Java programming languague enum types are much more powerful than theirs conunterparts in other languages. The enum declaration defines a <em>class</em> (called and <em>enum type</em> which implicitly extends <code>java.lang.Enum</code>). The enum class body can include method and other fields.</p>
 <p>The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/09/09/Java-collection-type/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/Java-collection-type/" class="post-title-link" itemprop="url">Java Collections Framework</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-09-09 21:39:33" itemprop="dateCreated datePublished" datetime="2020-09-09T21:39:33+09:00">2020-09-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Java-Collections-Framework"><a href="#Java-Collections-Framework" class="headerlink" title="Java Collections Framework"></a>Java Collections Framework</h2><ul>
-<li><code>java.utils</code>에 속한 일련의 클래스로, 자료구조를 담당</li>
-<li>잘 짜여진 <code>interface</code>를 기반으로 다양한 자료구조를 구현</li>
-<li>Generic class로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</li>
-</ul>
-<blockquote>
-<p>some are excerpted from <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html">Java collections overview</a></p>
-</blockquote>
-<h2 id="Advantages-of-a-collections-framework"><a href="#Advantages-of-a-collections-framework" class="headerlink" title="Advantages of a collections framework"></a>Advantages of a collections framework</h2><ul>
-<li>Reduces programming effort</li>
-<li>Increase performance</li>
-<li>Provide interoperability between unrelated APIs</li>
-<li>Reduces the effort required to learn APIs</li>
-<li>Reduces the effort required to design and implement APIs</li>
-<li>Fosters software reuse</li>
-</ul>
-<h2 id="Collection-Interfaces"><a href="#Collection-Interfaces" class="headerlink" title="Collection Interfaces"></a>Collection Interfaces</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html">Collection</a><ul>
-<li>A group of objects. No assumptions are made about the order of the collection (if any) or whether it can contain duplicate elements.</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a><ul>
-<li>The familiar set abstraction. No duplicate elements permitted. May or may not be ordered. Extends the Collection interface.</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">List</a><ul>
-<li>Ordered collection, also known as a sequence. Duplicates are generally permitted. Allows positional access. Extends the Collection interface.</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html">Queue</a><ul>
-<li>A collection designed for holding elements before processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html">Deque</a><ul>
-<li>A double ended queue, supporting element insertion and removal at both ends. Extends the Queue interface.</li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a><ul>
-<li>A mapping from keys to values. Each key can map to one value.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Method-of-Collection-Interfaces"><a href="#Method-of-Collection-Interfaces" class="headerlink" title="Method of Collection Interfaces"></a>Method of Collection Interfaces</h2><table>
-<thead>
-<tr>
-<th>메소드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>boolean add(E e)</code></td>
-<td>Ensures that collection contains the specified element.</td>
-</tr>
-<tr>
-<td><code>boolean addAll(Collection&lt;? exteionds E&gt; c)</code></td>
-<td>Adds all of the elements in the specified collection to this collection.</td>
-</tr>
-<tr>
-<td><code>void clear()</code></td>
-<td>Removes all of the elements from this collection.</td>
-</tr>
-<tr>
-<td><code>boolean contains(Object o)</code></td>
-<td>컬렉션에 요소 o가 존재하는지 확인한다.</td>
-</tr>
-<tr>
-<td><code>boolean containsAll(Collection&lt;?&gt; c)</code></td>
-<td>Returns <code>true</code> if this collection contains all of the elements in the specified collection.</td>
-</tr>
-<tr>
-<td><code>boolean equals(Object o)</code></td>
-<td>Compares the specified object with this collection for equality.</td>
-</tr>
-<tr>
-<td><code>boolean isEmpty()</code></td>
-<td>Returns <code>true</code> if this collection contains no elements.</td>
-</tr>
-<tr>
-<td><code>Iterator&lt;E&gt; iterator()</code></td>
-<td>Returns <code>true</code> if this collection contains on elements.</td>
-</tr>
-<tr>
-<td><code>boolean remove(Object o)</code></td>
-<td>Remove a single instance of the specified elemtns from this collection, if it is present.</td>
-</tr>
-<tr>
-<td><code>boolean removeAll(Collection&lt;?&gt; c)</code></td>
-<td>Removes all of this collection’s elements that are also contained in the specified collection.</td>
-</tr>
-<tr>
-<td><code>boolean retainAll(Collection&lt;?&gt; c)</code></td>
-<td>Retains only the elements in this collection that are contained in the specified collection.</td>
-</tr>
-<tr>
-<td><code>int size()</code></td>
-<td>Returns the number of elements in this collection.</td>
-</tr>
-<tr>
-<td><code>T[] toArray(T[] a)</code></td>
-<td>Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified array.</td>
-</tr>
-</tbody></table>
 
       
     </div>
