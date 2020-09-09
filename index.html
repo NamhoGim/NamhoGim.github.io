@@ -220,20 +220,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -271,6 +271,253 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/09/09/Java-Enum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/Java-Enum/" class="post-title-link" itemprop="url">Java Enum Types</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-09 21:39:58" itemprop="dateCreated datePublished" datetime="2020-09-09T21:39:58+09:00">2020-09-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Enum/" itemprop="url" rel="index"><span itemprop="name">Enum</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Excerpts from <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html">Enum Types</a></p>
+<blockquote>
+<p>An <em>enum type</em> is a special data type that enables for a variable to  be a set of predefined constants. The variable must be equal to one of the values that have been predefined for it.</p>
+</blockquote>
+<p>Common examples: Compass directions(NORTH, SOUTH, EAST, and WEST) and the days of the week.</p>
+<p>Because they are constants, the name of an enum type’s field are in uppercase letters.</p>
+<p>Java programming languague enum types are much more powerful than theirs conunterparts in other languages. The enum declaration defines a <em>class</em> (called and <em>enum type</em> which implicitly extends <code>java.lang.Enum</code>). The enum class body can include method and other fields.</p>
+<p>The constructor for an enum type must be package-private or private access. It automatically creates the constants that are defined at the beginning of the enum body. You cannot invoke an enum constructor yourself.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/09/09/Java-collection-type/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/09/Java-collection-type/" class="post-title-link" itemprop="url">Java Collections Framework</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-09 21:39:33" itemprop="dateCreated datePublished" datetime="2020-09-09T21:39:33+09:00">2020-09-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Java-Collections-Framework"><a href="#Java-Collections-Framework" class="headerlink" title="Java Collections Framework"></a>Java Collections Framework</h2><ul>
+<li><code>java.utils</code>에 속한 일련의 클래스로, 자료구조를 담당</li>
+<li>잘 짜여진 <code>interface</code>를 기반으로 다양한 자료구조를 구현</li>
+<li>Generic class로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</li>
+</ul>
+<blockquote>
+<p>some are excerpted from <a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html">Java collections overview</a></p>
+</blockquote>
+<h2 id="Advantages-of-a-collections-framework"><a href="#Advantages-of-a-collections-framework" class="headerlink" title="Advantages of a collections framework"></a>Advantages of a collections framework</h2><ul>
+<li>Reduces programming effort</li>
+<li>Increase performance</li>
+<li>Provide interoperability between unrelated APIs</li>
+<li>Reduces the effort required to learn APIs</li>
+<li>Reduces the effort required to design and implement APIs</li>
+<li>Fosters software reuse</li>
+</ul>
+<h2 id="Collection-Interfaces"><a href="#Collection-Interfaces" class="headerlink" title="Collection Interfaces"></a>Collection Interfaces</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html">Collection</a><ul>
+<li>A group of objects. No assumptions are made about the order of the collection (if any) or whether it can contain duplicate elements.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a><ul>
+<li>The familiar set abstraction. No duplicate elements permitted. May or may not be ordered. Extends the Collection interface.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html">List</a><ul>
+<li>Ordered collection, also known as a sequence. Duplicates are generally permitted. Allows positional access. Extends the Collection interface.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html">Queue</a><ul>
+<li>A collection designed for holding elements before processing. Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html">Deque</a><ul>
+<li>A double ended queue, supporting element insertion and removal at both ends. Extends the Queue interface.</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a><ul>
+<li>A mapping from keys to values. Each key can map to one value.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Method-of-Collection-Interfaces"><a href="#Method-of-Collection-Interfaces" class="headerlink" title="Method of Collection Interfaces"></a>Method of Collection Interfaces</h2><table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>boolean add(E e)</code></td>
+<td>Ensures that collection contains the specified element.</td>
+</tr>
+<tr>
+<td><code>boolean addAll(Collection&lt;? exteionds E&gt; c)</code></td>
+<td>Adds all of the elements in the specified collection to this collection.</td>
+</tr>
+<tr>
+<td><code>void clear()</code></td>
+<td>Removes all of the elements from this collection.</td>
+</tr>
+<tr>
+<td><code>boolean contains(Object o)</code></td>
+<td>컬렉션에 요소 o가 존재하는지 확인한다.</td>
+</tr>
+<tr>
+<td><code>boolean containsAll(Collection&lt;?&gt; c)</code></td>
+<td>Returns <code>true</code> if this collection contains all of the elements in the specified collection.</td>
+</tr>
+<tr>
+<td><code>boolean equals(Object o)</code></td>
+<td>Compares the specified object with this collection for equality.</td>
+</tr>
+<tr>
+<td><code>boolean isEmpty()</code></td>
+<td>Returns <code>true</code> if this collection contains no elements.</td>
+</tr>
+<tr>
+<td><code>Iterator&lt;E&gt; iterator()</code></td>
+<td>Returns <code>true</code> if this collection contains on elements.</td>
+</tr>
+<tr>
+<td><code>boolean remove(Object o)</code></td>
+<td>Remove a single instance of the specified elemtns from this collection, if it is present.</td>
+</tr>
+<tr>
+<td><code>boolean removeAll(Collection&lt;?&gt; c)</code></td>
+<td>Removes all of this collection’s elements that are also contained in the specified collection.</td>
+</tr>
+<tr>
+<td><code>boolean retainAll(Collection&lt;?&gt; c)</code></td>
+<td>Retains only the elements in this collection that are contained in the specified collection.</td>
+</tr>
+<tr>
+<td><code>int size()</code></td>
+<td>Returns the number of elements in this collection.</td>
+</tr>
+<tr>
+<td><code>T[] toArray(T[] a)</code></td>
+<td>Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified array.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1339,7 +1586,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-06 21:30:46" itemprop="dateModified" datetime="2020-09-06T21:30:46+09:00">2020-09-06</time>
+        <time title="Modified: 2020-09-09 19:53:52" itemprop="dateModified" datetime="2020-09-09T19:53:52+09:00">2020-09-09</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1371,7 +1618,7 @@
 <h3 id="Benefits-of-using-generics"><a href="#Benefits-of-using-generics" class="headerlink" title="Benefits of using generics"></a>Benefits of using generics</h3><ul>
 <li><p>Stronger type checks at complie time.</p>
 <ul>
-<li>A Java complier applies string type ckecking to generic code and issues errors if the code violates type safety. Fixing complie-time erros is easier than fixing runtime errors, which can be difficult to find.</li>
+<li>A Java complier applies strong type ckecking to generic code and issues errors if the code violates type safety. Fixing complie-time erros is easier than fixing runtime errors, which can be difficult to find.</li>
 </ul>
 </li>
 <li><p>Elimination of casts.</p>
@@ -1427,7 +1674,7 @@
 </li>
 </ul>
 <h3 id="Multiple-Type-Parameters"><a href="#Multiple-Type-Parameters" class="headerlink" title="Multiple Type Parameters"></a>Multiple Type Parameters</h3><ul>
-<li>A generic class cana have multiple type parameters. For example, the generic <code>OrderedPair</code> class, which implements the generic <code>Pair</code> interface:</li>
+<li>A generic class can have multiple type parameters. For example, the generic <code>OrderedPair</code> class, which implements the generic <code>Pair</code> interface:</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderedPair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Pair</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> K key;</span><br><span class="line">  <span class="keyword">private</span> V value;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">OrderedPair</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.key = key;</span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> K <span class="title">getKey</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> key; &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> V <span class="title">getValue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1509,270 +1756,6 @@
 </ul>
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/28/200828-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/28/200828-TIL/" class="post-title-link" itemprop="url">200828-TIL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-08-28 15:28:17" itemprop="dateCreated datePublished" datetime="2020-08-28T15:28:17+09:00">2020-08-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-03 10:44:41" itemprop="dateModified" datetime="2020-09-03T10:44:41+09:00">2020-09-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="요청과-응답"><a href="#요청과-응답" class="headerlink" title="요청과 응답"></a>요청과 응답</h2><p><img src="/images/3.png" alt="request and response"></p>
-<p>Was는 웹 브라우저로부터 Servlet요청을 받으면,</p>
-<ul>
-<li>요청할 때 가지고 있는 정보를 HttpServletRequest객체를 생성하여 저장합니다.</li>
-<li>웹 브라우저에게 응답을 보낼 때 사용하기 위해 HttpServletResponse객체를 생성합니다.</li>
-<li>생성된 HttpServletRequest, HttpServletResponse 객체를 서블릿에게 전달 합니다.</li>
-</ul>
-<h3 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h3><ul>
-<li>http 프로토콜의 request 정보를 서블릿에게 전달하기 위한 목적으로 사용</li>
-<li>헤더정보, 파라미터, 쿠기, URI, URL등의 정보를 읽어 들이는 메소드를 가지고 있다.</li>
-<li>Body의 Stream을 읽어 들이는 메소드를 가지고 있다.</li>
-</ul>
-<h3 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h3><ul>
-<li>WAS는 어떤 클라이언트가 요청을 보냈는지 알고 있고, 해당 클라이언트에게 응답을 보내기 위한 HttpServletResponse객체를 생성하여 Servlet에게 전달</li>
-<li>Servlet은 해당 객체를 이용하여 content type, 응답 코드, 응답 메시지 등을 전송</li>
-</ul>
-<h3 id="Header정보-읽어-들이기"><a href="#Header정보-읽어-들이기" class="headerlink" title="Header정보 읽어 들이기"></a>Header정보 읽어 들이기</h3><ul>
-<li>Web browser가 요청정보에 담아서 보내는 header값을 읽어 들여 브라우저 화면에 출력한다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;form&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">  Enumeration&lt;String&gt; headerNames = request.getHeaderNames();</span><br><span class="line">  <span class="keyword">while</span>(headerNames.hasMoreElements()) &#123;</span><br><span class="line">    String headerName = headerNames.nextElement();</span><br><span class="line">    String headerValue = request.getHeader(headerName);</span><br><span class="line">    out.println(headerName + <span class="string">&quot;:&quot;</span> + headerValue + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>parameter를 읽어서 browser에 출력</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;from&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  String name = request.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  String age = request.getParameter(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;name:&quot;</span> + name + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;age:&quot;</span> + age + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>그 외 오쳥정보 출력(URI, URL, PATH, Remote host 등에 대한 정보 출력)<ul>
-<li>URI: port번호 이하의 내용을 보여 준다.</li>
-<li>URL: 요청 주소 전체가 보여진다.</li>
-<li>contentPath: web application 과 mapping 된 path</li>
-<li>remoteAddr: client의 주소</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;info&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  String uri = request.getRequestURI();</span><br><span class="line">  StringBuffer url = request.getRequestURL();</span><br><span class="line">  String contentPath = request.getContextPath();</span><br><span class="line">  String remoteAddr = request.getRemoteAddr();</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;uri: &quot;</span> + uri + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;url: &quot;</span> + url + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;contentPath: &quot;</span> + contentPath + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;remoteAddr: &quot;</span> + remoteAddr + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="JSP-JavaServer-Pages"><a href="#JSP-JavaServer-Pages" class="headerlink" title="JSP(JavaServer Pages)"></a>JSP(JavaServer Pages)</h2><ul>
-<li>JSP의 위치는 기본적으로 WebContent 안에 들어간다.</li>
-<li>JSP는 근본적으로 Servlet으로 변환되어 실행 된다.</li>
-</ul>
-<h3 id="JSP-등장-배경"><a href="#JSP-등장-배경" class="headerlink" title="JSP 등장 배경"></a>JSP 등장 배경</h3><ul>
-<li>MS에서 ASP(Active Server Page) 라는 쉽게 웹을 개발 할 수 있는 스크립트(script) 엔진을 발표함(1998년)</li>
-<li>1997년에 발표된 Servlet은 ASP에 비하여 상대적으로 개발 방식이 불편함 -&gt; HTML 코드를 많이 넣어 주어야 했음</li>
-<li>ASP에 대항하기 위해서 1999sus SUN에서 JSP를 발표</li>
-<li>JSP는 실제로 Servlet기술을 사용</li>
-</ul>
-<h3 id="JSP-Example"><a href="#JSP-Example" class="headerlink" title="JSP Example"></a>JSP Example</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">  <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">    total = total + i;</span><br><span class="line">  &#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>부터 <span class="number">10</span> 까지의 합: &lt;%=total %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="JSP-Life-Cycle"><a href="#JSP-Life-Cycle" class="headerlink" title="JSP Life Cycle"></a>JSP Life Cycle</h3><ol>
-<li>Browser가 Web server에 JSP에 대한 요청 정보를 전달 한다.</li>
-<li>Browser가 요청한 JSP가 최초로 요청했을 경우만<ol>
-<li>JSP로 작성된 코드가 Servlet 코드로 변환 된다. (Java file 생성)</li>
-<li>Servlet 코드를 컴파일해서 실행가능한 bytecode로 변환한다. (class file 생성)</li>
-<li>Servlet class를 로딩하고 인스턴스를 생성한다.</li>
-</ol>
-</li>
-<li>Servlet이 실행되어 요청을 처리하고 응답 정보를 생성한다.</li>
-</ol>
-<ul>
-<li>JSP life cycle 확인 Example</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">hello~~</span><br><span class="line">&lt;%</span><br><span class="line">  System.out.println(<span class="string">&quot;_jspService()&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line"><span class="comment">// 메소드를 추가할 수 있다</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;jspInit()!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;jspDestory()&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/27/200827-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/27/200827-TIL/" class="post-title-link" itemprop="url">200827 TIL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-08-27 15:07:53" itemprop="dateCreated datePublished" datetime="2020-08-27T15:07:53+09:00">2020-08-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-03 10:36:57" itemprop="dateModified" datetime="2020-09-03T10:36:57+09:00">2020-09-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/Servlet/" itemprop="url" rel="index"><span itemprop="name">Servlet</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Java-Web-Application"><a href="#Java-Web-Application" class="headerlink" title="Java Web Application"></a>Java Web Application</h2><ul>
-<li>WAS에 deploy 되어 동작하는 어플리케이션.</li>
-<li>자바 웹 어플리케이션에는 HTML, CSS, 이미지, 자바로 작성된 클래스(Servlet도 포함됨, package, interface 등), 각종 설정 파일들이 포함 된다.</li>
-</ul>
-<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
-<li>Java Web Application의 구성요소 중 동적인 처리를 하는 프로그램의 역할</li>
-<li>WAS에서 동작하는 JAVA class이다.</li>
-<li>Servlet은 HttpServlet에서 클래스를 상속 받아야 한다.</li>
-<li>Servlet과 JSP로부터 최상의 결과를 얻으려면, 웹 페이지를 개발할 때 이 두가지(JSP, Servlet) 을 조화롭게 사용해야 한다. (ex. Web page를 구성하는 화면 HTML은 JSP로 표현하고, 복잡한 프로그래밍은 Servlet으로 구현)</li>
-</ul>
-<h2 id="Servlet의-작성-방법"><a href="#Servlet의-작성-방법" class="headerlink" title="Servlet의 작성 방법"></a>Servlet의 작성 방법</h2><p>3.x 버전과 그 아래 버전이 다르다는 점 유의</p>
-<ol>
-<li>Servlet 3.0 spec이상에서 사용하는 방법</li>
-</ol>
-<ul>
-<li>web.xml 파일을 사용 X</li>
-<li>Java annotation을 사용</li>
-</ul>
-<ol start="2">
-<li>Servlet 3.0 spec 미만에서 사용하는 방법</li>
-</ol>
-<ul>
-<li>Servlet을 등록할 때 web.xml파일에 등록</li>
-</ul>
-<h2 id="Servlet의-Life-Cycle"><a href="#Servlet의-Life-Cycle" class="headerlink" title="Servlet의 Life Cycle"></a>Servlet의 Life Cycle</h2><p><img src="/images/2.png" alt="Servlet Life Cycle"></p>
-<ul>
-<li>WAS는 서블릿 요청을 받으면 해당 서블릿이 메모리에 있는지 확인 합니다.</li>
-<li>if (메모리에 없음) {<br>해당 Servlet class를 memory에 올림<br>init() 메소드를 실행<br>}</li>
-<li>service() 메소드를 실행</li>
-<li>was가 종료되거나, 웹 어플리케이션이 새롭게 갱신될 경우 destroy() 메소드가 실행 된다.</li>
-<li>HttpServlet의 3가지 method를 override 해서 확인</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> examples;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/LifecycleServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifecycleServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LifecycleServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;LifecycleServlet 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;init 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Destroy 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Service 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="service-request-response-메소드"><a href="#service-request-response-메소드" class="headerlink" title="service(request, response) 메소드"></a>service(request, response) 메소드</h2><ul>
-<li>HttpServlet의 service method는 template method 패턴으로 구현</li>
-<li>클라이언트 요청이 GET일경우 자신이 가지고 있는 doGET(request, response) 메소드를 호출</li>
-<li>클라이언트 요청이 Post일경우 자신이 가지고 있는 doPost(request, response)를 호출</li>
-<li>override 된 method만 정리</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = resp.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;form&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;form method=&#x27;post&#x27; action=&#x27;/firstweb/LifecycleServlet&#x27;&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;name : &lt;input type=&#x27;text&#x27; name=&#x27;name&#x27;&gt;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;input type=&#x27;submit&#x27; value=&#x27;ok&#x27;&gt;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/form&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">  out.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = resp.getWriter();</span><br><span class="line">  String name = req.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;h1&gt; hello &quot;</span> + name + <span class="string">&quot;&lt;/h1&gt;&quot;</span>);</span><br><span class="line">  out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

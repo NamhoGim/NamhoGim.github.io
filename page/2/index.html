@@ -220,20 +220,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -271,6 +271,270 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/28/200828-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/28/200828-TIL/" class="post-title-link" itemprop="url">200828-TIL</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-08-28 15:28:17" itemprop="dateCreated datePublished" datetime="2020-08-28T15:28:17+09:00">2020-08-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-09-03 10:44:41" itemprop="dateModified" datetime="2020-09-03T10:44:41+09:00">2020-09-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="요청과-응답"><a href="#요청과-응답" class="headerlink" title="요청과 응답"></a>요청과 응답</h2><p><img src="/images/3.png" alt="request and response"></p>
+<p>Was는 웹 브라우저로부터 Servlet요청을 받으면,</p>
+<ul>
+<li>요청할 때 가지고 있는 정보를 HttpServletRequest객체를 생성하여 저장합니다.</li>
+<li>웹 브라우저에게 응답을 보낼 때 사용하기 위해 HttpServletResponse객체를 생성합니다.</li>
+<li>생성된 HttpServletRequest, HttpServletResponse 객체를 서블릿에게 전달 합니다.</li>
+</ul>
+<h3 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h3><ul>
+<li>http 프로토콜의 request 정보를 서블릿에게 전달하기 위한 목적으로 사용</li>
+<li>헤더정보, 파라미터, 쿠기, URI, URL등의 정보를 읽어 들이는 메소드를 가지고 있다.</li>
+<li>Body의 Stream을 읽어 들이는 메소드를 가지고 있다.</li>
+</ul>
+<h3 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h3><ul>
+<li>WAS는 어떤 클라이언트가 요청을 보냈는지 알고 있고, 해당 클라이언트에게 응답을 보내기 위한 HttpServletResponse객체를 생성하여 Servlet에게 전달</li>
+<li>Servlet은 해당 객체를 이용하여 content type, 응답 코드, 응답 메시지 등을 전송</li>
+</ul>
+<h3 id="Header정보-읽어-들이기"><a href="#Header정보-읽어-들이기" class="headerlink" title="Header정보 읽어 들이기"></a>Header정보 읽어 들이기</h3><ul>
+<li>Web browser가 요청정보에 담아서 보내는 header값을 읽어 들여 브라우저 화면에 출력한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;form&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">  Enumeration&lt;String&gt; headerNames = request.getHeaderNames();</span><br><span class="line">  <span class="keyword">while</span>(headerNames.hasMoreElements()) &#123;</span><br><span class="line">    String headerName = headerNames.nextElement();</span><br><span class="line">    String headerValue = request.getHeader(headerName);</span><br><span class="line">    out.println(headerName + <span class="string">&quot;:&quot;</span> + headerValue + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>parameter를 읽어서 browser에 출력</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;from&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  String name = request.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  String age = request.getParameter(<span class="string">&quot;age&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;name:&quot;</span> + name + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;age:&quot;</span> + age + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>그 외 오쳥정보 출력(URI, URL, PATH, Remote host 등에 대한 정보 출력)<ul>
+<li>URI: port번호 이하의 내용을 보여 준다.</li>
+<li>URL: 요청 주소 전체가 보여진다.</li>
+<li>contentPath: web application 과 mapping 된 path</li>
+<li>remoteAddr: client의 주소</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = response.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;info&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  String uri = request.getRequestURI();</span><br><span class="line">  StringBuffer url = request.getRequestURL();</span><br><span class="line">  String contentPath = request.getContextPath();</span><br><span class="line">  String remoteAddr = request.getRemoteAddr();</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;uri: &quot;</span> + uri + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;url: &quot;</span> + url + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;contentPath: &quot;</span> + contentPath + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;remoteAddr: &quot;</span> + remoteAddr + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP-JavaServer-Pages"><a href="#JSP-JavaServer-Pages" class="headerlink" title="JSP(JavaServer Pages)"></a>JSP(JavaServer Pages)</h2><ul>
+<li>JSP의 위치는 기본적으로 WebContent 안에 들어간다.</li>
+<li>JSP는 근본적으로 Servlet으로 변환되어 실행 된다.</li>
+</ul>
+<h3 id="JSP-등장-배경"><a href="#JSP-등장-배경" class="headerlink" title="JSP 등장 배경"></a>JSP 등장 배경</h3><ul>
+<li>MS에서 ASP(Active Server Page) 라는 쉽게 웹을 개발 할 수 있는 스크립트(script) 엔진을 발표함(1998년)</li>
+<li>1997년에 발표된 Servlet은 ASP에 비하여 상대적으로 개발 방식이 불편함 -&gt; HTML 코드를 많이 넣어 주어야 했음</li>
+<li>ASP에 대항하기 위해서 1999sus SUN에서 JSP를 발표</li>
+<li>JSP는 실제로 Servlet기술을 사용</li>
+</ul>
+<h3 id="JSP-Example"><a href="#JSP-Example" class="headerlink" title="JSP Example"></a>JSP Example</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;%</span><br><span class="line">  <span class="keyword">int</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">    total = total + i;</span><br><span class="line">  &#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>부터 <span class="number">10</span> 까지의 합: &lt;%=total %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSP-Life-Cycle"><a href="#JSP-Life-Cycle" class="headerlink" title="JSP Life Cycle"></a>JSP Life Cycle</h3><ol>
+<li>Browser가 Web server에 JSP에 대한 요청 정보를 전달 한다.</li>
+<li>Browser가 요청한 JSP가 최초로 요청했을 경우만<ol>
+<li>JSP로 작성된 코드가 Servlet 코드로 변환 된다. (Java file 생성)</li>
+<li>Servlet 코드를 컴파일해서 실행가능한 bytecode로 변환한다. (class file 생성)</li>
+<li>Servlet class를 로딩하고 인스턴스를 생성한다.</li>
+</ol>
+</li>
+<li>Servlet이 실행되어 요청을 처리하고 응답 정보를 생성한다.</li>
+</ol>
+<ul>
+<li>JSP life cycle 확인 Example</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">hello~~</span><br><span class="line">&lt;%</span><br><span class="line">  System.out.println(<span class="string">&quot;_jspService()&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line"><span class="comment">// 메소드를 추가할 수 있다</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;jspInit()!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;jspDestory()&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/27/200827-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/27/200827-TIL/" class="post-title-link" itemprop="url">200827 TIL</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-08-27 15:07:53" itemprop="dateCreated datePublished" datetime="2020-08-27T15:07:53+09:00">2020-08-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-09-03 10:36:57" itemprop="dateModified" datetime="2020-09-03T10:36:57+09:00">2020-09-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/Servlet/" itemprop="url" rel="index"><span itemprop="name">Servlet</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Java-Web-Application"><a href="#Java-Web-Application" class="headerlink" title="Java Web Application"></a>Java Web Application</h2><ul>
+<li>WAS에 deploy 되어 동작하는 어플리케이션.</li>
+<li>자바 웹 어플리케이션에는 HTML, CSS, 이미지, 자바로 작성된 클래스(Servlet도 포함됨, package, interface 등), 각종 설정 파일들이 포함 된다.</li>
+</ul>
+<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
+<li>Java Web Application의 구성요소 중 동적인 처리를 하는 프로그램의 역할</li>
+<li>WAS에서 동작하는 JAVA class이다.</li>
+<li>Servlet은 HttpServlet에서 클래스를 상속 받아야 한다.</li>
+<li>Servlet과 JSP로부터 최상의 결과를 얻으려면, 웹 페이지를 개발할 때 이 두가지(JSP, Servlet) 을 조화롭게 사용해야 한다. (ex. Web page를 구성하는 화면 HTML은 JSP로 표현하고, 복잡한 프로그래밍은 Servlet으로 구현)</li>
+</ul>
+<h2 id="Servlet의-작성-방법"><a href="#Servlet의-작성-방법" class="headerlink" title="Servlet의 작성 방법"></a>Servlet의 작성 방법</h2><p>3.x 버전과 그 아래 버전이 다르다는 점 유의</p>
+<ol>
+<li>Servlet 3.0 spec이상에서 사용하는 방법</li>
+</ol>
+<ul>
+<li>web.xml 파일을 사용 X</li>
+<li>Java annotation을 사용</li>
+</ul>
+<ol start="2">
+<li>Servlet 3.0 spec 미만에서 사용하는 방법</li>
+</ol>
+<ul>
+<li>Servlet을 등록할 때 web.xml파일에 등록</li>
+</ul>
+<h2 id="Servlet의-Life-Cycle"><a href="#Servlet의-Life-Cycle" class="headerlink" title="Servlet의 Life Cycle"></a>Servlet의 Life Cycle</h2><p><img src="/images/2.png" alt="Servlet Life Cycle"></p>
+<ul>
+<li>WAS는 서블릿 요청을 받으면 해당 서블릿이 메모리에 있는지 확인 합니다.</li>
+<li>if (메모리에 없음) {<br>해당 Servlet class를 memory에 올림<br>init() 메소드를 실행<br>}</li>
+<li>service() 메소드를 실행</li>
+<li>was가 종료되거나, 웹 어플리케이션이 새롭게 갱신될 경우 destroy() 메소드가 실행 된다.</li>
+<li>HttpServlet의 3가지 method를 override 해서 확인</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> examples;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/LifecycleServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LifecycleServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LifecycleServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;LifecycleServlet 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;init 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Destroy 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Service 호출!!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="service-request-response-메소드"><a href="#service-request-response-메소드" class="headerlink" title="service(request, response) 메소드"></a>service(request, response) 메소드</h2><ul>
+<li>HttpServlet의 service method는 template method 패턴으로 구현</li>
+<li>클라이언트 요청이 GET일경우 자신이 가지고 있는 doGET(request, response) 메소드를 호출</li>
+<li>클라이언트 요청이 Post일경우 자신이 가지고 있는 doPost(request, response)를 호출</li>
+<li>override 된 method만 정리</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = resp.getWriter();</span><br><span class="line">  out.println(<span class="string">&quot;&lt;html&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;head&gt;&lt;title&gt;form&lt;/title&gt;&lt;/head&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;form method=&#x27;post&#x27; action=&#x27;/firstweb/LifecycleServlet&#x27;&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;name : &lt;input type=&#x27;text&#x27; name=&#x27;name&#x27;&gt;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;input type=&#x27;submit&#x27; value=&#x27;ok&#x27;&gt;&lt;br&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/form&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/body&gt;&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;/html&gt;&quot;</span>);</span><br><span class="line">  out.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">  resp.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">  PrintWriter out = resp.getWriter();</span><br><span class="line">  String name = req.getParameter(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">  out.println(<span class="string">&quot;&lt;h1&gt; hello &quot;</span> + name + <span class="string">&quot;&lt;/h1&gt;&quot;</span>);</span><br><span class="line">  out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1812,322 +2076,6 @@
 <ul>
 <li>If there is some relational dependencies between tables, it should be deleted in reverse order of creation.</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/08/200808-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/08/200808-TIL/" class="post-title-link" itemprop="url">200808 TIL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-08-08 20:00:05" itemprop="dateCreated datePublished" datetime="2020-08-08T20:00:05+09:00">2020-08-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-03 10:28:31" itemprop="dateModified" datetime="2020-09-03T10:28:31+09:00">2020-09-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/DB/" itemprop="url" rel="index"><span itemprop="name">DB</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Database-and-Database-Management-System-DBMS"><a href="#Database-and-Database-Management-System-DBMS" class="headerlink" title="Database and Database Management System (DBMS)"></a>Database and Database Management System (DBMS)</h2><p>도서관의 책들이 데이터베이스 라고 한다면, 도서관 사서 또는 도서 정보를 찾아주는 컴퓨터를 DBMS<br> 라고 할 수 있다.</p>
-<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><ul>
-<li>데이터의 집합 (A Set of Data)</li>
-<li>여러 응용 시스템(프로그램)들의 통합된 정보들을 저장하여 운영할 수 있는 공용(share) 데이터의 집합</li>
-<li>효율적으로 저장, 검색, 갱신 할 수 있도록 데이터 집합들끼리 연관시키고 조직화 되어야 한다.</li>
-</ul>
-<h3 id="Feature-of-Database"><a href="#Feature-of-Database" class="headerlink" title="Feature of Database"></a>Feature of Database</h3><ul>
-<li>Real-time Accessbility<ul>
-<li>사용자 요구를 즉시 처리</li>
-</ul>
-</li>
-<li>Continuous Evolution<ul>
-<li>정확한 값을 유지하려고 삽입, 삭제, 수정 작업등을 이용해 데이터를 지속적으로 갱신</li>
-</ul>
-</li>
-<li>Concurrent Sharing<ul>
-<li>사용자마다 서로 다른 목적으로 사용하므로 동시에 여러 사람이 동일한 데이터에 접근하고 이용 할 수 있다.</li>
-</ul>
-</li>
-<li>Content Reference<ul>
-<li>저장한 데이터 레코드의 위치나 주소가 아닌 사용자가 요구하는 데이터의 내용, 즉 데이터 값에 따라 참조 할 수 있어야 한다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Database-Management-System-DBMS"><a href="#Database-Management-System-DBMS" class="headerlink" title="Database Management System (DBMS)"></a>Database Management System (DBMS)</h2><blockquote>
-<p>A database management system (DBMS) is a software package designed to define, manipulate,<br>retrieve and manage data in database. A DBMS generally manipulates the data itself, the data<br>format, field names, record structure and file structure. It also defines rules to validate and<br>manipulate this data.</p>
-</blockquote>
-<ul>
-<li>데이터베이스를 관리하는 소프트웨어</li>
-<li>여러 응용 소프트웨어(프로그램) 또는 시스템이 동시에 데이터베이스에 접근하여 사용할 수 있게 한다.</li>
-<li>필수 3기능<ul>
-<li>정의기능: 데이터베이스의 논리적, 물리적 구조를 정의</li>
-<li>조작기능: 데이터를 검색, 삭제, 갱신, 삽입, 삭제 하는 기능</li>
-<li>제어기능: 데이터베이스의 내용 정확성과 안정성을 유지하도록 제어하는 기능</li>
-</ul>
-</li>
-<li>Oracle, SQL Server, MySQL, DB2 등의 상용 또는 공개 DBMS가 있음</li>
-</ul>
-<h3 id="데이터베이스-관리-시스템의-장-단점"><a href="#데이터베이스-관리-시스템의-장-단점" class="headerlink" title="데이터베이스 관리 시스템의 장/단점"></a>데이터베이스 관리 시스템의 장/단점</h3><ul>
-<li>장점<ul>
-<li>데이터 중복이 최소화</li>
-<li>데이터 일관성 및 무결성 유지</li>
-<li>데이터 보안 보장</li>
-</ul>
-</li>
-<li>단점<ul>
-<li>운영비가 비싸다</li>
-<li>백업 및 복구에 대한 관리가 복잡</li>
-<li>부분적 데이터베이스 손실이 전체 시스템을 정지</li>
-</ul>
-</li>
-</ul>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
-<li><p>Install</p>
-<p><code>$ brew install Mysql</code></p>
-</li>
-<li><p>Starting server</p>
-<p><code>$ mysql.server start</code></p>
-<ul>
-<li><p>starting on deamon(using HomeBrew)</p>
-<p><code>$ brew service start mysql</code></p>
-</li>
-<li><p>restarting</p>
-<p><code>$ brew service restart mysql</code></p>
-</li>
-<li><p>listing</p>
-<p><code>$ brew services list</code></p>
-</li>
-</ul>
-</li>
-<li><p>Exit MySQL</p>
-<p><code>$ mysql.server stop</code></p>
-<ul>
-<li><p>Quiting on HomeBrew</p>
-<p><code>$ brew services stop mysql</code></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="SQL-Structured-Query-Language"><a href="#SQL-Structured-Query-Language" class="headerlink" title="SQL(Structured Query Language)"></a>SQL(Structured Query Language)</h2><ul>
-<li>SQL은 데이터를 보다 쉽게 검색하고 추가, 삭제, 수정 같은 조작을 할 수 있도록 고안된 컴퓨터 언어</li>
-<li>관계형 데이터베이스에서 데이터를 조작하고 쿼리하는 표준 수단</li>
-<li>DML(Data Manipulate Language): 데이터를 조작하기 위해서 사용, INSERT, UPDATE, DELETE, SELECT등</li>
-<li>DDL(Data Definition Language): 데이터베이스의 스키마를 정의하거나 조작하기 위해 사용, CREATE, DROP, ALTER등</li>
-<li>DCL(Data Control Language): 데이터를 제어하는 언어, 권한을 관리하고, 데이터의 보안, 무결성 등을 정의 GRANT, REVOKE등</li>
-</ul>
-<h2 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h2><ul>
-<li>우리와 SpreadSheet에서의 table과 유사한 개념</li>
-<li>데이터베이스는 table의 형태로 존재하는 것이 아님</li>
-<li>table을 보려면 table을 생성하는 SQL을 사용해야함</li>
-<li>테이블에 앖을 저장하려면 저장하기 위한 SQL을 사용</li>
-</ul>
-<h3 id="Table의-구성요소"><a href="#Table의-구성요소" class="headerlink" title="Table의 구성요소"></a>Table의 구성요소</h3><ul>
-<li>Table: RDBMS의 기본적 저장구조, 한 개 이상의 column과 0개 이상의 row로 구성</li>
-<li>Column: 테이블 상에서의 단일 종류의 데이터를 나타냄, 특정 데이터 타입 및 크기를 가지고 있음</li>
-<li>Row: Column들의 값의 조합, 레코드라고 불림, 기본키에 의해서 구분 되며 기본키는 중복을 허용하지 않고, 없어서는 안됨</li>
-<li>Field: Row와 Column의 교차점으로 Field는 데이터를 포함할 수 있고 없을때는 <code>NULL</code> 값을 가지고 있음</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/07/200807-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/07/200807-TIL/" class="post-title-link" itemprop="url">200807-TIL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-08-07 18:07:20" itemprop="dateCreated datePublished" datetime="2020-08-07T18:07:20+09:00">2020-08-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-03 10:28:08" itemprop="dateModified" datetime="2020-09-03T10:28:08+09:00">2020-09-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Git-Summary"><a href="#Git-Summary" class="headerlink" title="Git Summary"></a>Git Summary</h1><h2 id="git-Process-and-command"><a href="#git-Process-and-command" class="headerlink" title="git Process and command"></a>git Process and command</h2><p><img src="/images/1.png" alt="git diagram"></p>
-<h2 id="Set-configuration"><a href="#Set-configuration" class="headerlink" title="Set configuration"></a>Set configuration</h2><pre><code>$ git config --global user.name &quot;&#123;github username&#125;&quot;
-$ git config --global user.email &quot;&#123;github email address&#125;&quot;
-$ git config --global core.editor &quot;vim&quot;
-$ git config --global core.pager &quot;cat&quot;
-$ git config --list</code></pre>
-<ul>
-<li>optional: <code>$ git config --global alias.lg &quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</code></li>
-</ul>
-<h2 id="First-Repo"><a href="#First-Repo" class="headerlink" title="First Repo"></a>First Repo</h2><pre><code>$ mkdir first-repo &amp;&amp; cd first-repo
-$ git init
-$ git remote add origin https://github.com/&#123;username&#125;/&#123;reponame&#125;.git
-$ touch README.md
-$ git add README.md
-$ git commit -m &quot;docs: Create README.md&quot;
-$ git push -u origin master # setting up stream</code></pre>
-<h2 id="Basic-workflow-of-git"><a href="#Basic-workflow-of-git" class="headerlink" title="Basic workflow of git"></a>Basic workflow of git</h2><pre><code>$ git status
-$ git add .
-$ git commit
-$ git push origin master</code></pre>
-<h2 id="Commit-Convention"><a href="#Commit-Convention" class="headerlink" title="Commit Convention"></a>Commit Convention</h2><ul>
-<li>커밋 제목은 50자 이내</li>
-<li>제목과 내용사이 한칸</li>
-<li>prefix를 사용하여 한눈에 커밋의 용도를 알기 쉽게 한다<ul>
-<li>feat: features</li>
-<li>docs: documentations</li>
-<li>conf:  configurations</li>
-<li>test: test</li>
-<li>fix: bug-fix</li>
-<li>refactor: refactoring</li>
-<li>perf: Performance</li>
-</ul>
-</li>
-</ul>
-<h2 id="vim-key"><a href="#vim-key" class="headerlink" title="vim key"></a>vim key</h2><ul>
-<li>A: append text at the end of the string</li>
-<li>o: add line below</li>
-<li>O: insert line above</li>
-</ul>
-<h2 id="Using-Hexo-Blog-posting"><a href="#Using-Hexo-Blog-posting" class="headerlink" title="Using Hexo: Blog posting"></a>Using Hexo: Blog posting</h2><h3 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h3><ol>
-<li>git</li>
-<li>node.js<br><code>npm install -g hexo-cli</code></li>
-</ol>
-<h3 id="Init-Blog"><a href="#Init-Blog" class="headerlink" title="Init Blog"></a>Init Blog</h3><pre><code>$ npm install hexo-cli -g
-$ hexo init blog
-$ cd blog
-$ npm install
-$ hexo server</code></pre>
-<h3 id="New-Post"><a href="#New-Post" class="headerlink" title="New Post"></a>New Post</h3><pre><code>$ hexo new post &quot;&#123;file name&#125;&quot;
-$ vi source/_posts/&#123;file name&#125;
-$ `jot something`</code></pre>
-<h3 id="Generate-test-and-deploy"><a href="#Generate-test-and-deploy" class="headerlink" title="Generate, test and deploy"></a>Generate, test and deploy</h3><pre><code>$ hexo clean &amp;&amp; hexo generate
-$ hexo server // local run and check whether the article is generated and displayed well.
-$ hexo deploy</code></pre>
 
       
     </div>
