@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"namhogim.github.io","root":"/","scheme":"Muse","version":"8.0.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="Background2000년도에 Roy Fielding 박사의 학위논문에 REST라는 개념이 처음 등장REST는 ‘Representational State Transfer’의 약자로 자원을 이름으로 구분 하여해당 자원의 상태(정보)를 주고 받는 것을 의미한다.Roy Fielding은 Web Architecture의 요구사항과 해결해야할 문제를 설명하고 이를">
+<meta property="og:type" content="article">
+<meta property="og:title" content="REST API">
+<meta property="og:url" content="https://namhogim.github.io/2020/10/03/REST-API/index.html">
+<meta property="og:site_name" content="A Software Guy Blog">
+<meta property="og:description" content="Background2000년도에 Roy Fielding 박사의 학위논문에 REST라는 개념이 처음 등장REST는 ‘Representational State Transfer’의 약자로 자원을 이름으로 구분 하여해당 자원의 상태(정보)를 주고 받는 것을 의미한다.Roy Fielding은 Web Architecture의 요구사항과 해결해야할 문제를 설명하고 이를">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-03T02:30:57.000Z">
+<meta property="article:modified_time" content="2020-10-03T02:43:00.522Z">
+<meta property="article:author" content="Namho Kim">
+<meta property="article:tag" content="REST">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://namhogim.github.io/2020/10/03/REST-API/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>REST API | A Software Guy Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">A Software Guy Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/namho/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Background"><span class="nav-number">1.</span> <span class="nav-text">Background</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-%EA%B5%AC%EC%84%B1"><span class="nav-number">1.1.</span> <span class="nav-text">REST 구성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST%EC%9D%98-%ED%8A%B9%EC%A7%95"><span class="nav-number">1.2.</span> <span class="nav-text">REST의 특징</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-API-%EC%84%A4%EA%B3%84-%EA%B0%80%EC%9D%B4%EB%93%9C"><span class="nav-number">1.3.</span> <span class="nav-text">REST API 설계 가이드</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Namho Kim"
+      src="/images/Tiffany_Blue.png">
+  <p class="site-author-name" itemprop="name">Namho Kim</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/NamhoGim" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NamhoGim" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/NamhoGim" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/10/03/REST-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          REST API
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-10-03 11:30:57 / Modified: 11:43:00" itemprop="dateCreated datePublished" datetime="2020-10-03T11:30:57+09:00">2020-10-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/REST/" itemprop="url" rel="index"><span itemprop="name">REST</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/REST/REST-API/" itemprop="url" rel="index"><span itemprop="name">REST API</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>2000년도에 Roy Fielding 박사의 학위논문에 REST라는 개념이 처음 등장<br><strong>REST</strong>는 ‘Representational State Transfer’의 약자로 자원을 이름으로 구분 하여<br>해당 자원의 상태(정보)를 주고 받는 것을 의미한다.<br>Roy Fielding은 Web Architecture의 요구사항과 해결해야할 문제를 설명하고 이를 해결하기 위한<br>접근 방법을 논문에서 제시 하며, 이를 위한 아키텍처 스타일인 REST를 소개 합니다.</p>
+<p>REST는 기본적으로 Web의 기존 기술과 HTTP protocol을 그대로 활용하기 때문에 Web의 장점을 최대한<br>활용할 수 있는 아키텍처 스타일이다.</p>
+<h3 id="REST-구성"><a href="#REST-구성" class="headerlink" title="REST 구성"></a>REST 구성</h3><p>REST API는 다음과 같은 3가지 구분으로 구성 됩니다.</p>
+<ul>
+<li>자원(Resource): 자원은 Data, Meta Data, HATEOAS</li>
+<li>행위(Verb): HTTP Method로 표현됩니다.</li>
+<li>표현(Representations)</li>
+</ul>
+<h3 id="REST의-특징"><a href="#REST의-특징" class="headerlink" title="REST의 특징"></a>REST의 특징</h3><ol>
+<li>Uniform Interface</li>
+</ol>
+<p>구성 요소(Client, Server 등) 사이의 인터페이스는 균일(uniform) 해야한다.<br>인터페이스를 일반화함으로써, 전체 시스템의 아키텍처가 단순해지고, 상호 작용의 가시성이 개선되며,<br>구현과 서비스가 분리되므로 독립적인 진화가 가능해질 수 있다.</p>
+<ol start="2">
+<li><p>Stateless</p>
+<p>클라이언트와 서버의 통신에는 상태가 없어야한다. 모든 요청은 필요한 모든 정보를 담고 있어야 한다.<br>요청 하나만 봐도 뭔지 알 수 있으므로 가시성이 개선되고, task 실패시 복원이 쉬우므로 신뢰성이 개선되며,<br>상태를 저장할 필요가 없으므로 규모 확장성이 개선될 수 있다.</p>
+</li>
+<li><p>Cacheable</p>
+<p>캐시가 가능해야한다. 즉, 모든 서버 응답은 캐시가 가능한지 아닌지 알 수 있어야함<br>효율, 규모 확장성, 사용자 입장에서의 성능이 개선 된다.</p>
+</li>
+<li><p>Self-descriptiveness</p>
+<p>REST의 또 다른 큰 특징 중 하나는 REST API 메시지만 보고도 이를 쉽게 이해 할 수 있는 자체 표현 구조로 되어 있다는 것</p>
+</li>
+<li><p>Client - Server 구조</p>
+<p>클라이언트 - 서버 스타일은 사용자 인터페이스에 대한 관심(concern)을 데이터 저장에 대한 관심으로 부터 분리<br>함으로써 클라이언트의 이식성과 서버의 규모 확장성을 개선할 수 있다.</p>
+</li>
+<li><p>Layered System</p>
+<p>REST 서버는 다중 계층으로 구성될 수 있으며 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있고 PROXY, 게이트웨이 같은 네트워크 기반의 중간 매체를 사용할 수 있게 합니다.</p>
+</li>
+</ol>
+<h3 id="REST-API-설계-가이드"><a href="#REST-API-설계-가이드" class="headerlink" title="REST API 설계 가이드"></a>REST API 설계 가이드</h3><p>REST API 설계시 가장 중요한 항목은 다음의 2가지로 요약 할 수 있다.<br>첫 번째, URI는 정보의 자원을 표현해야 한다.<br>두 번째, 자원에 대한 행위는 HTTP Method (GET, POST, PUT, DELETE)로 표현한다.</p>
+<ol>
+<li>URI는 정보의 자원을 표현해야 한다.</li>
+<li>자원에 대한 행위는 HTTP Method (GET, POST, PUT, DELETE)로 표현 한다.</li>
+<li>URI에 HTTP Method가 들어가면 안된다.</li>
+<li>URI에 행위에 대한 동사 표현이 들어가면 안된다.</li>
+<li>경로 부분 중 변하는 부분은 유일한 값으로 대체 한다.</li>
+<li>슬래시 구분자(/)는 계층 관계를 나타내는데 사용한다.</li>
+<li>URI 마지막 문제로 (/)를 포함하지 않는다.</li>
+<li>URI에 포함되는 모든 글자는 리소스의 유일한 식별자로 사용되어야 하며,<br>URI가 다르다는 것은 리소스가 다르다는 것이고, 역으로 리소스가 다르면 URI도 달라져야 한다.</li>
+<li>하이픈(-)은 URI 가독성을 높이는데 사용할 수 있다.</li>
+<li>under score는 URI에 사용하지 않는다.</li>
+<li>URI 경로에는 소문자가 적합하다.</li>
+<li>파일 확장자는 URI에 포함하지 않는다 Accept header를 사용하도록 한다.</li>
+<li>리소스 간에 연관 관계가 있는 경우 다음과 같은 방법으로 표현 한다.<br>ex) GET: /books/{bookid}/viewers (일반적으로 소유 ‘has’ 관계를 표현할 때)</li>
+<li>자원을 표현하는 Collection과 Document<br>Collection은 객체의 집합, Document는 객체라고 생각하면 된다. Collection과 Document모두 리소스로 표현 할 수 있으며 URI로 표현 할 수 있다.</li>
+</ol>
+<p>-&gt; REST API를 완벽하게 구현하지 못할 경우 Web API라 한다.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/REST/" rel="tag"># REST</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/09/09/Java-collection-type/" rel="prev" title="Java Collections Framework">
+                  <i class="fa fa-chevron-left"></i> Java Collections Framework
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/03/layered-architecture/" rel="next" title="Layered Architecture">
+                  Layered Architecture <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+  
+  
+  
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Namho Kim</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Layered Architecture</title>
+      <link href="/2020/10/03/layered-architecture/"/>
+      <url>/2020/10/03/layered-architecture/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Background-MVC-model"><a href="#Background-MVC-model" class="headerlink" title="Background: MVC model"></a>Background: MVC model</h2><blockquote><p>Model-view-controller (usually known as MVC) is a software design pattern<br>commonly used for developing user interfaces that divides the related program logic<br>into three interconnected elements.</p></blockquote><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><p><img src="/images/MVC-Process-crop.pdf" alt="MVC Process"></p><h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><blockquote><p>The central component of the pattern. It is the application’s dynamic data structure,<br>independent of the user interface. It directly manages the data, logic and rules of the application.</p></blockquote><h4 id="View"><a href="#View" class="headerlink" title="View"></a>View</h4><blockquote><p>Any representation of information such as chart, diagram or table.<br>Mulitple view of the same informantion are possible,<br>such as a bar chart for management and tabular view for accountants.</p></blockquote><h4 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h4><blockquote><p>Accepts input and converts it to commands for the model or view</p><ul><li>The model is responsible for managing the data of the application. It receives user input from the controller.</li><li>The view means presentation of the model in a particular format.</li><li>The controller responds to the user input and performs interactions on the data model objects.<br>The controller receives the input, optionally validates it and then passes the input to the model.</li></ul></blockquote><p>웹 페이지는 중복 개발되는 요소가 존재한다.</p><p>Controller에서 중복으로 호출 되는 부분을 처리하기 위해서</p><ul><li>별도의 객체로 분리한다.</li><li>별도의 메소드로 분리한다.</li></ul><h2 id="Controller와-Service"><a href="#Controller와-Service" class="headerlink" title="Controller와 Service"></a>Controller와 Service</h2><p>Business method를 별도의 Service 객체에서 구현하도록 하고 컨트롤러는 Service객체를 사용하도록 한다.</p><h3 id="Service-객체"><a href="#Service-객체" class="headerlink" title="Service 객체"></a>Service 객체</h3><blockquote><p>Between the controller and the model, a layer called a <em>service</em> is sometimes interposed.<br>It fetches data from the model and lets the controller use the fetched data.<br>This layer allows a cleaner separation of data storage (model), data fetching (service) and data manipulation (controller).<br>Since this layer is not part of the original MVC concept, it is optional,<br>but can be useful for code management and reusability purposes in some cases.</p></blockquote><p>Business logic을 수행하는 method를 가지고 있는 객체를 서비스 객체라고 한다.<br>보통 하나의 Business logic은 하나의 <em>transaction</em> 으로 동작한다.</p><h3 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h3><ol><li><p>원자성 (Atomicity)<br>모든 과정이 성공했을 때만 정보를 반영한다</p></li><li><p>일관성 (Consistency)<br>Transaction 작업 처리 결과가 항상 일관성이 있어야 한다. 처음에 참조한 데이터로 transaction이 진행 되어야 한다. 각 사용자가 일관된 데이터를 볼 수 있다.</p></li><li><p>독립성 (Isolation)<br>독립성은 둘 이상의 Transaction이 동시에 병행 실행되고 있을 경우, 어느 하나의 transaction이라도 다른 transaction의 연산에 끼어들 수 없다.</p></li><li><p>지속성 (Durability)<br>지속성은 transaction이 성공적으로 완료되었을 경우, 결과는 영구적으로 반영되어야 한다는 점 입니다.</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web Architecture </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Model-view-controller </tag>
+            
+            <tag> Layered Architecture </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>REST API</title>
+      <link href="/2020/10/03/REST-API/"/>
+      <url>/2020/10/03/REST-API/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>2000년도에 Roy Fielding 박사의 학위논문에 REST라는 개념이 처음 등장<br><strong>REST</strong>는 ‘Representational State Transfer’의 약자로 자원을 이름으로 구분 하여<br>해당 자원의 상태(정보)를 주고 받는 것을 의미한다.<br>Roy Fielding은 Web Architecture의 요구사항과 해결해야할 문제를 설명하고 이를 해결하기 위한<br>접근 방법을 논문에서 제시 하며, 이를 위한 아키텍처 스타일인 REST를 소개 합니다.</p><p>REST는 기본적으로 Web의 기존 기술과 HTTP protocol을 그대로 활용하기 때문에 Web의 장점을 최대한<br>활용할 수 있는 아키텍처 스타일이다.</p><h3 id="REST-구성"><a href="#REST-구성" class="headerlink" title="REST 구성"></a>REST 구성</h3><p>REST API는 다음과 같은 3가지 구분으로 구성 됩니다.</p><ul><li>자원(Resource): 자원은 Data, Meta Data, HATEOAS</li><li>행위(Verb): HTTP Method로 표현됩니다.</li><li>표현(Representations)</li></ul><h3 id="REST의-특징"><a href="#REST의-특징" class="headerlink" title="REST의 특징"></a>REST의 특징</h3><ol><li>Uniform Interface</li></ol><p>구성 요소(Client, Server 등) 사이의 인터페이스는 균일(uniform) 해야한다.<br>인터페이스를 일반화함으로써, 전체 시스템의 아키텍처가 단순해지고, 상호 작용의 가시성이 개선되며,<br>구현과 서비스가 분리되므로 독립적인 진화가 가능해질 수 있다.</p><ol start="2"><li><p>Stateless</p><p>클라이언트와 서버의 통신에는 상태가 없어야한다. 모든 요청은 필요한 모든 정보를 담고 있어야 한다.<br>요청 하나만 봐도 뭔지 알 수 있으므로 가시성이 개선되고, task 실패시 복원이 쉬우므로 신뢰성이 개선되며,<br>상태를 저장할 필요가 없으므로 규모 확장성이 개선될 수 있다.</p></li><li><p>Cacheable</p><p>캐시가 가능해야한다. 즉, 모든 서버 응답은 캐시가 가능한지 아닌지 알 수 있어야함<br>효율, 규모 확장성, 사용자 입장에서의 성능이 개선 된다.</p></li><li><p>Self-descriptiveness</p><p>REST의 또 다른 큰 특징 중 하나는 REST API 메시지만 보고도 이를 쉽게 이해 할 수 있는 자체 표현 구조로 되어 있다는 것</p></li><li><p>Client - Server 구조</p><p>클라이언트 - 서버 스타일은 사용자 인터페이스에 대한 관심(concern)을 데이터 저장에 대한 관심으로 부터 분리<br>함으로써 클라이언트의 이식성과 서버의 규모 확장성을 개선할 수 있다.</p></li><li><p>Layered System</p><p>REST 서버는 다중 계층으로 구성될 수 있으며 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있고 PROXY, 게이트웨이 같은 네트워크 기반의 중간 매체를 사용할 수 있게 합니다.</p></li></ol><h3 id="REST-API-설계-가이드"><a href="#REST-API-설계-가이드" class="headerlink" title="REST API 설계 가이드"></a>REST API 설계 가이드</h3><p>REST API 설계시 가장 중요한 항목은 다음의 2가지로 요약 할 수 있다.<br>첫 번째, URI는 정보의 자원을 표현해야 한다.<br>두 번째, 자원에 대한 행위는 HTTP Method (GET, POST, PUT, DELETE)로 표현한다.</p><ol><li>URI는 정보의 자원을 표현해야 한다.</li><li>자원에 대한 행위는 HTTP Method (GET, POST, PUT, DELETE)로 표현 한다.</li><li>URI에 HTTP Method가 들어가면 안된다.</li><li>URI에 행위에 대한 동사 표현이 들어가면 안된다.</li><li>경로 부분 중 변하는 부분은 유일한 값으로 대체 한다.</li><li>슬래시 구분자(/)는 계층 관계를 나타내는데 사용한다.</li><li>URI 마지막 문제로 (/)를 포함하지 않는다.</li><li>URI에 포함되는 모든 글자는 리소스의 유일한 식별자로 사용되어야 하며,<br>URI가 다르다는 것은 리소스가 다르다는 것이고, 역으로 리소스가 다르면 URI도 달라져야 한다.</li><li>하이픈(-)은 URI 가독성을 높이는데 사용할 수 있다.</li><li>under score는 URI에 사용하지 않는다.</li><li>URI 경로에는 소문자가 적합하다.</li><li>파일 확장자는 URI에 포함하지 않는다 Accept header를 사용하도록 한다.</li><li>리소스 간에 연관 관계가 있는 경우 다음과 같은 방법으로 표현 한다.<br>ex) GET: /books/{bookid}/viewers (일반적으로 소유 ‘has’ 관계를 표현할 때)</li><li>자원을 표현하는 Collection과 Document<br>Collection은 객체의 집합, Document는 객체라고 생각하면 된다. Collection과 Document모두 리소스로 표현 할 수 있으며 URI로 표현 할 수 있다.</li></ol><p>-&gt; REST API를 완벽하게 구현하지 못할 경우 Web API라 한다.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> REST </category>
+          
+          <category> REST API </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> REST </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java Collections Framework</title>
       <link href="/2020/09/09/Java-collection-type/"/>
       <url>/2020/09/09/Java-collection-type/</url>
