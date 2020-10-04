@@ -220,20 +220,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -271,6 +271,162 @@
       
 
       
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/30/200830-TIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Tiffany_Blue.png">
+      <meta itemprop="name" content="Namho Kim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="A Software Guy Blog">
+    </span>
+
+    
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/30/200830-TIL/" class="post-title-link" itemprop="url">200830 TIL</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-08-30 20:39:15" itemprop="dateCreated datePublished" datetime="2020-08-30T20:39:15+09:00">2020-08-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-09-03 10:45:09" itemprop="dateModified" datetime="2020-09-03T10:45:09+09:00">2020-09-03</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TIL/EL/" itemprop="url" rel="index"><span itemprop="name">EL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Expression-Language"><a href="#Expression-Language" class="headerlink" title="Expression Language"></a>Expression Language</h2><ul>
+<li><p>표현 언어가 제공하는 기능</p>
+<ul>
+<li>JSP의 scope에 맞는 속성 사용</li>
+<li>집합 객체에 대한 접근 방법 제공</li>
+<li>수치 연산, 관계 연산, 논리 연산자 제공</li>
+<li>Java class method 호출 기능 제공</li>
+<li>표현 언어만의 기본 객체 제공</li>
+<li>Java 코드보다 조금 깔끔하게 JSP 파일을 작성 할 수 있다.</li>
+</ul>
+</li>
+<li><p>표현언어의 표현 방법</p>
+<ul>
+<li>${expr}</li>
+<li>example</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">&quot;/module/$&#123;skin.id&#125;/header.jsp&quot;</span> flush=<span class="string">&quot;true&quot;</span>/&gt;</span><br><span class="line">&lt;b&gt;$&#123;sessionScope.member.id&#125;&lt;/b&gt;님 환영합니다.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="표현-언어의-데이터-타입"><a href="#표현-언어의-데이터-타입" class="headerlink" title="표현 언어의 데이터 타입"></a>표현 언어의 데이터 타입</h3><ul>
+<li>boolean type: true, false</li>
+<li>integer type: 0-9</li>
+<li>floating point type</li>
+<li>string type: 따옴포 (‘ or “)로 둘러싼 문자열<ul>
+<li>작은 따옴표를 사용해서 표현할 경우 값에 표현된 작은 따옴표는 &#39;와 같이 \기호와 함께 사용해야 한다.</li>
+<li>\ 기호 자체는 \ \로 표시한다.</li>
+</ul>
+</li>
+<li>null type: null</li>
+</ul>
+<h4 id="객체-접근-규칙"><a href="#객체-접근-규칙" class="headerlink" title="객체 접근 규칙"></a>객체 접근 규칙</h4>  <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;&lt;expr1&gt;.&lt;expr2&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>expr1이 expr2가 null이면 null을 반환한다.</li>
+<li>expr1이 Map일 경우 expr2를 key로한 값을 반환한다.</li>
+<li>expr1이 List나 Array이면, expr2가 정수일 경우 해당 정수번째 index에 해당하는 값을 반환한다.<ul>
+<li>만약 정수가 아닐 경우 오류가 발생한다.</li>
+</ul>
+</li>
+<li>expr1이 객체일 경우는 expr2에 해당하는 getter method에 해당하는 method를 호출한 결과를 반환한다.</li>
+</ul>
+<h3 id="수치-연산자"><a href="#수치-연산자" class="headerlink" title="수치 연산자"></a>수치 연산자</h3><ul>
+<li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> or <code>div</code></li>
+<li>숫자가 아닌 객체와 수치 연산자를 사용할 경우 객체를 숫자 값으로 변환 후 연산자를 수행 : ${“10”+1} → ${10+1}</li>
+<li>숫자로 변환할 수 없는 객체와 수치 연산자를 함께 사용하면 에러를 발생 : ${“열”+1} → 에러</li>
+<li>수치 연산자에서 사용되는 객체가 null이면 0으로 처리 : ${null + 1} → ${0+1}</li>
+</ul>
+<h3 id="비교-연산자"><a href="#비교-연산자" class="headerlink" title="비교 연산자"></a>비교 연산자</h3><ul>
+<li><code>==</code> 또는 <code>eq</code></li>
+<li><code>!=</code> 또는 <code>ne</code></li>
+<li><code>&lt;</code> 또는 <code>lt</code></li>
+<li><code>&gt;</code> 또는 <code>gt</code></li>
+<li><code>&lt;=</code> 또는 <code>le</code></li>
+<li><code>&gt;=</code> 또는 <code>ge</code></li>
+<li>문자열 비교: <code>$&#123;str == &#39;값&#39;&#125;</code> <code>str.compareTo(&quot;값&quot;) == 0</code> 과 동일</li>
+</ul>
+<h3 id="논리-연산자"><a href="#논리-연산자" class="headerlink" title="논리 연산자"></a>논리 연산자</h3><ul>
+<li><code>&amp;&amp;</code> 또는 <code>and</code></li>
+<li><code>||</code> 또는 <code>or</code></li>
+<li><code>!</code> 또는 <code>not</code></li>
+</ul>
+<h3 id="표현-언어-비활성화"><a href="#표현-언어-비활성화" class="headerlink" title="표현 언어 비활성화"></a>표현 언어 비활성화</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page isELIgnored = <span class="string">&quot;true&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="empty-연산자"><a href="#empty-연산자" class="headerlink" title="empty 연산자"></a><code>empty</code> 연산자</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">empty&lt;value&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>값이 비어 있거나 zero 값인 경우 <code>true</code>를 리턴 그외의 경우 <code>false</code>를 리턴</li>
+</ul>
+<h3 id="비교-선택-연산자"><a href="#비교-선택-연산자" class="headerlink" title="비교 선택 연산자"></a>비교 선택 연산자</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;expr&gt; ? &lt;value1&gt; : &lt;value2&gt;</span><br><span class="line"></span><br><span class="line">- `&lt;expr&gt;`의 값이 `<span class="keyword">true</span>`이면 value1을 리턴하고, `<span class="keyword">false</span>`이면 value2를 리턴</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scope별-EL의-사용"><a href="#Scope별-EL의-사용" class="headerlink" title="Scope별 EL의 사용"></a>Scope별 EL의 사용</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">    pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  pageContext.setAttribute(<span class="string">&quot;p1&quot;</span>, <span class="string">&quot;page scope value&quot;</span>);</span><br><span class="line">  request.setAttribute(<span class="string">&quot;r1&quot;</span>, <span class="string">&quot;request scope value&quot;</span>);</span><br><span class="line">  session.setAttribute(<span class="string">&quot;s1&quot;</span>, <span class="string">&quot;session scope value&quot;</span>);</span><br><span class="line">  application.setAttribute(<span class="string">&quot;a1&quot;</span>, <span class="string">&quot;application scope value&quot;</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>) : &lt;%=pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>) %&gt;</span><br><span class="line">pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>) : $&#123;pageScope.p1&#125;&lt;br&gt;</span><br><span class="line">request.getAttribute(<span class="string">&quot;r1&quot;</span>) : $&#123;requestScope.r1&#125;&lt;br&gt;</span><br><span class="line">session.getAttribute(<span class="string">&quot;s1&quot;</span>) : $&#123;sessionScope.s1&#125;&lt;br&gt;</span><br><span class="line">application.getAttribute(<span class="string">&quot;a1&quot;</span>) : $&#123;applicationScope.a1&#125;&lt;br&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">pageContext.getAttribute(<span class="string">&quot;p1&quot;</span>): $&#123;p1&#125;&lt;br&gt;</span><br><span class="line">request.getAttribute(<span class="string">&quot;r1&quot;</span>): $&#123;r1&#125;&lt;br&gt;</span><br><span class="line">session.getAttribute(<span class="string">&quot;s1&quot;</span>): $&#123;s1&#125;&lt;br&gt;</span><br><span class="line">application.getAttribute(<span class="string">&quot;a1&quot;</span>): $&#123;a1&#125;&lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="EL-연산"><a href="#EL-연산" class="headerlink" title="EL 연산"></a>EL 연산</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span></span><br><span class="line">  pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  request.setAttribute(<span class="string">&quot;k&quot;</span>, <span class="number">10</span>);</span><br><span class="line">  request.setAttribute(<span class="string">&quot;m&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">k: $&#123;k &#125;&lt;br&gt;</span><br><span class="line">k + <span class="number">5</span>: $&#123; k + <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k - <span class="number">5</span>: $&#123; k - <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k * <span class="number">5</span>: $&#123; k * <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k / <span class="number">5</span>: $&#123; k div <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">k: $&#123;k &#125;&lt;br&gt;</span><br><span class="line">m: $&#123;m &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">k &gt; <span class="number">5</span>: $&#123; k &gt; <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k &lt; <span class="number">5</span>: $&#123; k &lt; <span class="number">5</span> &#125;&lt;br&gt;</span><br><span class="line">k &lt;= <span class="number">10</span>: $&#123;k &lt;= <span class="number">10</span> &#125;&lt;br&gt;</span><br><span class="line">k &gt;= <span class="number">10</span>: $&#123;k &gt;= <span class="number">10</span> &#125;&lt;br&gt;</span><br><span class="line">m: $&#123;m &#125;&lt;br&gt;</span><br><span class="line">!m: $&#123;!m &#125;&lt;br&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1807,169 +1963,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">  <span class="keyword">enum</span> ErrorCode &#123;</span><br><span class="line">    ERROR_A, ERROR_B;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> ErrorCode errorCode;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(ErrorCode errorCode, String message)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(message)</span><br><span class="line">    <span class="keyword">this</span>.erroCode = errorCode;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getLocalizedMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String message = getMessage();</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> localizedMessage;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://namhogim.github.io/2020/08/13/200813-TIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/Tiffany_Blue.png">
-      <meta itemprop="name" content="Namho Kim">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="A Software Guy Blog">
-    </span>
-
-    
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/13/200813-TIL/" class="post-title-link" itemprop="url">200813 TIL</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-08-13 20:26:06" itemprop="dateCreated datePublished" datetime="2020-08-13T20:26:06+09:00">2020-08-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-09-03 10:43:52" itemprop="dateModified" datetime="2020-09-03T10:43:52+09:00">2020-09-03</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Generics"><a href="#Generics" class="headerlink" title="Generics"></a>Generics</h2><ul>
-<li>대상 객체의 타입을 입력 받아서 사용하는 방식</li>
-<li>미리 사용할 수 있는 타입을 명시해서 컴파일 타임에 체크 가능<ul>
-<li>입력을 Object로 할 수도 있으나, runtime에 <code>instanceof</code> 로 객체를 체크 해야 함</li>
-<li>제네릭을 사용할 경우 이러한 과정 없이 간결하게 코드 작성을 할 수 있다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Generic-Class"><a href="#Generic-Class" class="headerlink" title="Generic Class"></a>Generic Class</h3><ul>
-<li>클래스를 선언 할때는 설정되지 않은 타입이 있으며 이것을 타입 파라미터로 표현</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="comment">// T: type parameter</span></span><br><span class="line">  String name;</span><br><span class="line">  T memberVar;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">GenericFoo</span><span class="params">(String name, T memberVar)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.memberVar = memberVar;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>여러개의 타입 파라미터 또한 가능</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>인터페이스도 generic이 가능하다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GenericInterface</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Geneirc type 사용시 유의점</p>
-<ul>
-<li><p>문법적으로 문제가 있는 경우</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> T classVar; <span class="comment">// -&gt; T는 객체를 생성할 때 결정 되기 때문에 complie time에 T를 알 수 없다.</span></span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mehtod</span><span class="params">(T varl)</span> </span>&#123; &#125; <span class="comment">// 마찬가지 이유로 complie time에 T를 알 수 없음</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>문법적으로는 문제가 없을 것 같으나, 안정성 문제로 금지됨 -&gt; 암기 요소</p>
-<ol>
-<li>Type parameter 의 instance를 생성하는 것은 불가능하다.</li>
-<li>Generic type parameter 에 대한 instance checking은 불가능하다.</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  T memberVar = <span class="keyword">new</span> T(); <span class="comment">// -&gt; 안정성 문제 때문에 불가능</span></span><br><span class="line">  &#123;</span><br><span class="line">    Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> T) &#123; <span class="comment">// not possible instance 체크 불가능</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="Inheritance-of-Generic-Type"><a href="#Inheritance-of-Generic-Type" class="headerlink" title="Inheritance of Generic Type"></a>Inheritance of Generic Type</h3><ul>
-<li>타입 파라미터는 부모 제네릭 타입 파라미터를 모두 채워줘야 함</li>
-<li>추가적인 타입 파라미터도 사용할 수 있다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IGIFooTwo</span>&lt;<span class="title">K</span>, <span class="title">T</span>, <span class="title">D</span>&gt; <span class="title">extents</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>부모 클래스 / 인터페이스들에 동일한 타입 파라미터를 넘겨줄 수 있다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IGIFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>타입 제한을 하지 않으면 <code>extends Object</code>와 동일하다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNoTypeLimit</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Object</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>extends</code>를 이용해서 부모 클래스를 제한 할 수 있다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">                                                <span class="comment">// interface upper limit</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericTypeLimitation</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span> &amp; <span class="title">Clonable</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Generic-Method"><a href="#Generic-Method" class="headerlink" title="Generic Method"></a>Generic Method</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">staticMethod</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Wild-Card"><a href="#Wild-Card" class="headerlink" title="Wild Card"></a>Wild Card</h3><ul>
-<li>Wild Card <code>?</code> 는 method 의 입력 타입에 Generic 이 쓰일 경우, Generic 의 타입 변수를 제한 할 수 있다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildFoo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildBar</span> <span class="keyword">extends</span> <span class="title">WildFoo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildGeneric</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildCard</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(WildGeneric&lt;T&gt; x)</span> </span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mehtod1</span><span class="params">(WildGeneric&lt;?&gt; x)</span> </span>&#123;&#125; <span class="comment">// T, ?의 차이점: super 키워드를 사용하여 상한을 정할 수 있다.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1_eq</span><span class="params">(WildGeneric&lt;? extends Object&gt; x)</span> </span>&#123;&#125; <span class="comment">// Object가 상한</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">(WildGeneric&lt;? extends WildFoo&gt; x)</span> </span>&#123;&#125; <span class="comment">// WildFoo, WildBar 상한</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">(WildGeneric&lt;? <span class="keyword">super</span> WildBar&gt; x)</span> </span>&#123;&#125; <span class="comment">// Object, WildFoo, WildBar, 하한</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Dynamic-Binding-JIT-Complie"><a href="#Dynamic-Binding-JIT-Complie" class="headerlink" title="Dynamic Binding: JIT Complie"></a>Dynamic Binding: JIT Complie</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">staticMethod</span><span class="params">(T t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(T x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Dynamic binding: behavior of method defined on runtim with JIT complication</span></span><br><span class="line">    GenericMethod.staticMethod(<span class="string">&quot;abcde&quot;</span>);</span><br><span class="line">    GenericMethod.staticMethod(<span class="number">12345</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Wrapper-Class"><a href="#Wrapper-Class" class="headerlink" title="Wrapper Class"></a>Wrapper Class</h2><ul>
-<li>기본형 타입을 객체로 쓰기 위해 있는 클래스</li>
-<li>기본형 타입이 허용되지 않는 문법에 기본형 타입을 쓰기 위해서 제공</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">add</span><span class="params">(Integer x, Integer y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">  <span class="comment">// 자동으로 기본 자료형으로 변형 및 계산</span></span><br><span class="line">  <span class="comment">// 반환시 다시 Autoboxing이 이루어짐</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>여러가지 선언 방법들</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br><span class="line">Interger integer1 = Integer.valueOf(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">Charactor character = <span class="keyword">new</span> Character(<span class="string">&#x27;d&#x27;</span>);</span><br><span class="line">Charactor character1 = Character.value(<span class="string">&#x27;f&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Autoboxing</span></span><br><span class="line">Integer integer2 = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 문자열 &lt;-&gt; 기본자료형</span></span><br><span class="line"><span class="keyword">int</span> x = Integer.parseInt(<span class="string">&quot;100&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> y = <span class="keyword">new</span> Integer(<span class="string">&quot;100&quot;</span>);</span><br><span class="line"><span class="keyword">int</span> z = Integer.valueOf(<span class="string">&quot;200&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m = <span class="keyword">new</span> Integer(<span class="number">10</span>); <span class="comment">// 기본 자료형이 필요한 자리에 Wrapper class가 있을 경우 unboxing이 일어난다</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
