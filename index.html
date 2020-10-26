@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/Tiffany_Blue.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Tiffany_Blue.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/Tiffany_Blue.ico">
+  <link rel="mask-icon" href="/images/Tiffany_Blue.ico" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -242,6 +242,9 @@
       <span class="links-of-author-item">
         <a href="https://github.com/NamhoGim" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;NamhoGim" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/namho-kim-6b1848118" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;namho-kim-6b1848118" rel="noopener" target="_blank"><i class="fab fa-linkedin fa-fw"></i>LinkedIn</a>
+      </span>
   </div>
 
 
@@ -302,10 +305,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-10-05 08:32:52 / Modified: 08:36:02" itemprop="dateCreated datePublished" datetime="2020-10-05T08:32:52+09:00">2020-10-05</time>
+      <time title="Created: 2020-10-05 08:32:52" itemprop="dateCreated datePublished" datetime="2020-10-05T08:32:52+09:00">2020-10-05</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-07 09:01:59" itemprop="dateModified" datetime="2020-10-07T09:01:59+09:00">2020-10-07</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -331,7 +340,7 @@
 <ul>
 <li>Before (Java 7)</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Dish&gt; lowCaloricDishes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(Dish dish: menu) &#123;</span><br><span class="line">    <span class="keyword">if</span>(dish.getCalories() &lt; <span class="number">400</span>) &#123;</span><br><span class="line">        lowCaloricDishes.add(dish); <span class="comment">// Filters the elements using an accumulator</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Collections.sort(lowCaloricDishes, <span class="keyword">new</span> Comparator&lt;Dish&gt;() &#123; <span class="comment">// Sorts the dishes with an anonymous class</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Dish dish1, Dish dish2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(dish1.getCalories(), dish2.getCalories());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; lowCaloricDishesName = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(Dish dish: lowCaloricDishes) &#123;</span><br><span class="line">    lowCaloricDishesName.add(dish.getName()); <span class="comment">// Processes the sorted list to select the names of dishes</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Dish&gt; lowCaloricDishes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(Dish dish: menu) &#123;</span><br><span class="line">  <span class="keyword">if</span>(dish.getCalories() &lt; <span class="number">400</span>) &#123;</span><br><span class="line">    lowCaloricDishes.add(dish); <span class="comment">// Filters the elements using an accumulator</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Collections.sort(lowCaloricDishes, <span class="keyword">new</span> Comparator&lt;Dish&gt;() &#123; <span class="comment">// Sorts the dishes with an anonymous class</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Dish dish1, Dish dish2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Integer.compare(dish1.getCalories(), dish2.getCalories());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; lowCaloricDishesName = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(Dish dish: lowCaloricDishes) &#123;</span><br><span class="line">  lowCaloricDishesName.add(dish.getName()); <span class="comment">// Processes the sorted list to select the names of dishes</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>After (Java 8)</li>
@@ -565,6 +574,7 @@
 <p>Here, you pass to the <code>groupingBy</code> method a <code>Function</code> (expressed in the form of a<br>method reference) extracting the corresponding <code>Dish.Type</code> for each <code>Dish</code> in the stream. We call this <code>Function</code> a <em>classification</em> function specifically because it’s used to classify the elements of the stream into different groups.</p>
 <h3 id="Partitioning"><a href="#Partitioning" class="headerlink" title="Partitioning"></a>Partitioning</h3><p>Partitioning is a special case of grouping: having a predicate called a <em>partitioning function</em> as a classification fuction. The fact that the partitioning<br>fuction returns a boolean means the resulting grouping <code>Map</code> will have <code>Boolean</code> as<br>a key type, and therefore, there can be at most two different groups – one for <code>true</code> and one for <code>false</code>.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Boolean, List&lt;Dish&gt;&gt; partitionedMenu =</span><br><span class="line">             menu.stream().collect(partitioningBy(Dish::isVegetarian));</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
